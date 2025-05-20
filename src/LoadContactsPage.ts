@@ -1,57 +1,74 @@
 import { Event, nip05, nip19 } from 'nostr-tools';
 import { sanitize } from 'isomorphic-dompurify';
 import {
-  fetchAllCachedProfileEvents, fetchCachedMyProfileEvent, fetchCachedProfileEvent,
-  fetchProfileEvent, getContactMostPopularPetname, getContactName, getMyPetnameForUser,
-  getMyRelayForUser, isUserMyContact, submitUnsignedEvent,
+  fetchCachedMyProfileEvent,
+  fetchCachedProfileEvent,
+  fetchProfileEvent,
+  getContactName,
+  isUserMyContact,
+  submitUnsignedEvent,
 } from './fetchEvents';
 import { Kind3Event, loadBackupHistory } from './LoadHistory';
 import { localStorageGetItem } from './LocalStorage';
 
+// Constants
+const DEBOUNCE_DELAY = 300; // ms
+
+// Cache for nip05 lookups to reduce network calls
+const nip05cache: { [nip05Search: string]: string | null } = {};
+let nip05Searching = '';
+
+// In-memory DOM cache to reduce element lookups
+const domCache: { [id: string]: HTMLElement } = {};
+
 /**
- * TODO
- *   > 'Suggested Housekeeping' section that:
- *     > highligts out suggestions (deleted, do not use, compromised, old profile)
- *     > add relays
+ * Get a cached DOM element or query it and cache the result
+ * @param id Element ID
+ * @returns HTML element or null if not found
  */
-const getPubkey = (e: Event | string) => (typeof e === 'string' ? e : e.pubkey);
-
-const generateMicroCardLi = (eventorpubkey: Event | string): string => {
-  const pubkey = getPubkey(eventorpubkey);
-  return `
-    <li>
-      <a
-        href="#"
-        onclick="return false;"
-        class="microcard ${typeof eventorpubkey === 'string' ? 'nokind0' : ''}"
-        id="contact-microcard-${pubkey}"
-      >
-        ${getContactName(pubkey)}
-      </a>
-    </li>
-  `;
+const getElement = (id: string): HTMLElement | null => {
+  if (!domCache[id]) {
+    const element = document.getElementById(id);
+    if (element) domCache[id] = element;
+    else return null;
+  }
+  return domCache[id];
 };
 
-const generateMicroCardList = (eventorpubkeys: (Event | string)[]): string => {
-  const lis = eventorpubkeys.map(
-    (e) => generateMicroCardLi(typeof e === 'string' ? e : e.pubkey),
-  ).join('');
-  return `<ul id="maincontactlist">${lis}</ul>`;
+/**
+ * Debounce a function to limit how often it runs
+ * @param func Function to debounce
+ * @param wait Wait time in ms
+ * @returns Debounced function
+ */
+const debounce = (func: Function, wait: number) => {
+  let timeout: ReturnType<typeof setTimeout> | null = null;
+  return function(...args: any[]) {
+    const context = this;
+    if (timeout) clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(context, args), wait);
+  };
 };
 
+/**
+ * Generate HTML for contact details
+ * @param pubkey Public key of contact
+ * @returns HTML string for contact details
+ */
 const generateContactDetails = (pubkey: string): string => {
   const e = fetchCachedProfileEvent(pubkey, 0);
   if (!e) {
     return `
       <article>
         <strong>${getContactName(pubkey)}</strong>
-        <p>loading users metadata...</p>
+        <p>loading user metadata...</p>
       </article>
     `;
   }
+  
   const m = JSON.parse(e.content);
-  const otherspetname = getContactMostPopularPetname(pubkey);
   const ismycontact = isUserMyContact(pubkey);
+  
   return `
     <article>
       <div>
@@ -59,148 +76,182 @@ const generateContactDetails = (pubkey: string): string => {
         <div class="contactdetailsmain">
           <strong>${getContactName(pubkey)}</strong>
           ${m.nip05 ? `<small id="nip05-${pubkey}">${sanitize(m.nip05)} </small>` : ''}<span id="nip05-${pubkey}-verified"></span>
-          ${otherspetname && otherspetname !== m.name ? `<div>popular petname: ${otherspetname}</div>` : ''}
           <div><small>${m.about ? sanitize(m.about) : ''}</small></div>
         </div>
       </div>
-      <footer class="contactdetailsform">
+      <footer>
         <div class="grid">
-          <label for="mypetname">
-            petname
-            <input
-              type="text"
-              name="mypetname"
-              placeholder="petname"
-              value="${getMyPetnameForUser(pubkey) || ''}"
-              id="petname-contact-form-${pubkey}"
-              onkeypress = "this.onchange();"
-              onpaste    = "this.onchange();"
-              oninput    = "this.onchange();"
-            >
-          </label>
-          <label for="myrelay">
-            relay
-            <input
-              type="text"
-              name="myrelay"
-              placeholder="relay"
-              value="${getMyRelayForUser(pubkey) || ''}"
-              id="relay-contact-form-${pubkey}"
-              onkeypress = "this.onchange();"
-              onpaste    = "this.onchange();"
-              oninput    = "this.onchange();"
-            >
-          </label>
-          <div class="contact-form-buttons">
-            <button id="add-contact-${pubkey}" class="${ismycontact ? 'hide' : ''}">Add</button>
-            <button id="update-contact-${pubkey}" class="hide">Update</button>
-            <button id="remove-contact-${pubkey}" class="${ismycontact ? '' : 'hide'}">Remove Contact</button>
+          <div class="contact-actions">
+            <button id="back-to-history-${pubkey}" class="secondary outline">Back to History</button>
+            ${!ismycontact ? `<button id="restore-contact-${pubkey}" class="secondary">Restore Contact</button>` : ''}
           </div>
-        </div>
-        <div class="grid">
         </div>
       </footer>
     </article>
   `;
 };
 
+/**
+ * Load contact details into the contact details container
+ * @param pubkey Public key of contact
+ */
 const loadContactDetails = (pubkey: string): void => {
-  // load html
-  (document.getElementById('contactdetails') as HTMLDivElement)
-    .innerHTML = generateContactDetails(pubkey);
-  // scroll to top
+  // Get container
+  const container = getElement('contactdetails');
+  if (!container) return;
+  
+  // Load HTML
+  container.innerHTML = generateContactDetails(pubkey);
+  
+  // Scroll to top
   window.scrollTo(0, 0);
-  // reload if no kind0
-  const reload = () => setTimeout(() => loadContactDetails(pubkey), 500);
-  if (!fetchCachedProfileEvent(pubkey, 0)) reload();
-  // on form change show update button instead of remove button
-  const onchange = () => {
-    if (!isUserMyContact(pubkey)) return;
-    (document.getElementById(`update-contact-${pubkey}`) as HTMLButtonElement)
-      .classList.remove('hide');
-    (document.getElementById(`remove-contact-${pubkey}`) as HTMLButtonElement)
-      .classList.add('hide');
-  };
-  (document.getElementById(`relay-contact-form-${pubkey}`) as HTMLInputElement)
-    .onchange = onchange;
-  (document.getElementById(`petname-contact-form-${pubkey}`) as HTMLInputElement)
-    .onchange = onchange;
-  // nip05
+  
+  // Reload if no kind0 profile found
+  if (!fetchCachedProfileEvent(pubkey, 0)) {
+    setTimeout(() => loadContactDetails(pubkey), 500);
+  }
+  
+  // Check nip05 verification
   const checkUserNip05 = async () => {
-    const nip05el = document.getElementById(`nip05-${pubkey}`);
-    if (nip05el) {
-      const addr = nip05el.innerHTML.trim();
-      let verified: boolean = false;
-      try {
-        const r = await nip05.queryProfile(addr);
-        verified = !!r && r.pubkey === pubkey;
-      } catch { /* empty */ }
-      const verifiedel = (document.getElementById(`nip05-${pubkey}-verified`) as HTMLElement);
-      if (verified) verifiedel.innerHTML = '<ins>&#10004; verified</ins>';
-      else verifiedel.innerHTML = '<del>&#10004; verified</del>';
+    const nip05el = getElement(`nip05-${pubkey}`);
+    if (!nip05el) return;
+    
+    const addr = nip05el.innerHTML.trim();
+    
+    // Check cache first
+    if (nip05cache[addr] !== undefined) {
+      const verified = nip05cache[addr] === pubkey;
+      const verifiedEl = getElement(`nip05-${pubkey}-verified`);
+      if (verifiedEl) {
+        verifiedEl.innerHTML = verified ? 
+          '<ins>&#10004; verified</ins>' : 
+          '<del>&#10004; verified</del>';
+      }
+      return;
+    }
+    
+    // Not in cache, verify
+    let verified = false;
+    try {
+      const r = await nip05.queryProfile(addr);
+      verified = !!r && r.pubkey === pubkey;
+      
+      // Cache the result
+      nip05cache[addr] = verified ? pubkey : null;
+    } catch {
+      nip05cache[addr] = null;
+    }
+    
+    // Update UI
+    const verifiedEl = getElement(`nip05-${pubkey}-verified`);
+    if (verifiedEl) {
+      verifiedEl.innerHTML = verified ? 
+        '<ins>&#10004; verified</ins>' : 
+        '<del>&#10004; verified</del>';
     }
   };
+  
+  // Run nip05 verification
   checkUserNip05();
-  // add / update / remove buttons
-  const generateTag = (): ['p', string, string, string] => [
-    'p',
-    pubkey,
-    (document.getElementById(`relay-contact-form-${pubkey}`) as HTMLInputElement).value || '',
-    (document.getElementById(`petname-contact-form-${pubkey}`) as HTMLInputElement).value || '',
-  ];
-  const addUpdateOrRemoveContact = async (tags: ['p', string, string, string][], ButtonID: string) => {
-    await submitUnsignedEvent(
-      {
-        pubkey: localStorageGetItem('pubkey') as string,
-        kind: 3,
-        created_at: Math.floor(Date.now() / 1000),
-        content: '',
-        tags,
-      },
-      ButtonID,
-    );
-    loadContactDetails(pubkey);
-  };
-  // add button
-  (document.getElementById(`add-contact-${pubkey}`) as HTMLButtonElement).onclick = (event) => {
-    event.preventDefault();
-    const ce = fetchCachedMyProfileEvent(3) as Kind3Event || null;
-    const tags = ce ? [...ce.tags, generateTag()] : [generateTag()];
-    addUpdateOrRemoveContact(tags, `add-contact-${pubkey}`);
-  };
-  // update button
-  (document.getElementById(`update-contact-${pubkey}`) as HTMLButtonElement).onclick = (event) => {
-    event.preventDefault();
-    const ce = fetchCachedMyProfileEvent(3) as Kind3Event;
-    const tags = [...ce.tags.map((t) => (t[1] === pubkey ? generateTag() : t))];
-    addUpdateOrRemoveContact(tags, `update-contact-${pubkey}`);
-  };
-  // remove button
-  (document.getElementById(`remove-contact-${pubkey}`) as HTMLButtonElement).onclick = (event) => {
-    event.preventDefault();
-    const ce = fetchCachedMyProfileEvent(3) as Kind3Event;
-    const tags = [...ce.tags.filter((t) => (t[1] !== pubkey))];
-    addUpdateOrRemoveContact(tags, `remove-contact-${pubkey}`);
-  };
+  
+  // Set up back button
+  const backBtn = getElement(`back-to-history-${pubkey}`);
+  if (backBtn) {
+    backBtn.onclick = () => {
+      const contactHistory = getElement('contactsbackuphistory');
+      if (contactHistory) {
+        contactHistory.style.display = 'block';
+      }
+      if (container) {
+        container.innerHTML = '';
+      }
+    };
+  }
+  
+  // Set up restore button for historical contacts
+  const restoreBtn = getElement(`restore-contact-${pubkey}`);
+  if (restoreBtn) {
+    restoreBtn.onclick = async () => {
+      // Get current contacts
+      const ce = fetchCachedMyProfileEvent(3) as Kind3Event;
+      if (!ce) return;
+      
+      // Create tags with the contact to be restored
+      const tags = [...ce.tags];
+      const existingTag = tags.find(t => t[1] === pubkey);
+      
+      if (!existingTag) {
+        // Add new contact
+        tags.push(['p', pubkey, '', '']);
+        
+        await submitUnsignedEvent(
+          {
+            pubkey: localStorageGetItem('pubkey') as string,
+            kind: 3,
+            created_at: Math.floor(Date.now() / 1000),
+            content: '',
+            tags,
+          },
+          `restore-contact-${pubkey}`,
+          'Contact Restored'
+        );
+        
+        // Reload history
+        loadBackupHistory('contactsbackuphistory', 3);
+        
+        // Show success message
+        if (container) {
+          container.innerHTML = `
+            <div class="success-message">
+              <h4>Contact Restored Successfully</h4>
+              <p>The contact has been added back to your contact list.</p>
+              <button id="back-to-history" class="secondary outline">Back to History</button>
+            </div>
+          `;
+          
+          const newBackBtn = getElement('back-to-history');
+          if (newBackBtn) {
+            newBackBtn.onclick = () => {
+              const contactHistory = getElement('contactsbackuphistory');
+              if (contactHistory) {
+                contactHistory.style.display = 'block';
+              }
+              if (container) {
+                container.innerHTML = '';
+              }
+            };
+          }
+        }
+      }
+    };
+  }
 };
 
+/**
+ * Process a hex or NIP-19 string to extract pubkey
+ * @param s Input string
+ * @returns Object with pubkey and relays
+ */
 const processHexOrNip19 = (s: string): { pubkey: string | null; relays: string[] | null } => {
   let pubkey: string | null = null;
   let relays: string[] | null = null;
-  // is hex string?
+  
+  // Is it a hex string?
   const regexhex64 = /^[a-fA-F0-9]{64}$/i;
   if (regexhex64.test(s)) {
-    pubkey = s; // this could be an event id?
+    pubkey = s;
     return { pubkey, relays };
   }
-  // check for nip19
+  
+  // Check for nip19
   try {
     const { data, type } = nip19.decode(s) as {
       type: string, data: {
-        pubkey?: string, // not present in nevent, nsec or note
+        pubkey?: string,
         relays?: string[];
       }
     };
+    
     if (typeof data === 'string') {
       if (type === 'npub') pubkey = data;
       else throw new Error('no pubkey');
@@ -208,195 +259,78 @@ const processHexOrNip19 = (s: string): { pubkey: string | null; relays: string[]
       if (data.pubkey) pubkey = data.pubkey;
       if (data.relays) relays = data.relays;
     }
-  } catch { /* empty */ }
+  } catch {
+    // Parsing failed
+  }
+  
   return { pubkey, relays };
 };
 
-const nip05cache: { [nip05Search: string]: string | null } = {};
-
-let nip05Searching = '';
-const searchNip05 = async (input: HTMLInputElement): Promise<null | 'searching' | string> => {
-  const s = input.value;
-  const searchstatus = document.getElementById('searchstatus') as HTMLDivElement;
-  const setLoading = () => { searchstatus.innerHTML = '<p aria-busy="true">Searching nip05...<p>'; };
-  // check valid NIP05 string
-  if (!!s || (s.indexOf('.') === -1 && s.indexOf('@') === -1)) return null;
-  // check cache
-  if (nip05cache[s]) return nip05cache[s];
-  if (nip05cache[s] === null) return null;
-  // check if already searching
-  if (s === nip05Searching) return 'searching';
-  // wait for typing to pause
-  const repsonse = await new Promise((finished) => {
-    setTimeout(async () => {
-      // if value hasn't changed
-      if (input.value === s) {
-        // set loading
-        setLoading();
-        // prevent duplicate queries
-        nip05Searching = s;
-        // make request call
-        try {
-          const r = await nip05.queryProfile(s);
-          if (!!r && r.pubkey) nip05cache[s] = r.pubkey;
-          else nip05cache[s] = null;
-        } catch {
-          // mark as not valid
-          nip05cache[s] = null;
-        }
-        // if search query has changed return 'searching' to end
-        if (s === nip05Searching) finished('searching');
-        else {
-          // reset nip05Searching;
-          nip05Searching = '';
-          // return value
-          finished(nip05cache[s]);
-        }
-      }
-    }, 500);
-  }) as null | string;
-  return repsonse;
-};
-
-const generateResults = (eventorpubkeys: (Event | string)[]) => {
-  const mycontacts = eventorpubkeys;
-  return `
-    <div id="contactdetails"></div>
-    <div id="mycontacts">
-      <h6>My Contacts</h6>
-      ${generateMicroCardList(mycontacts)}
-    </div>
-    <div id="mycontactscontacts"></div>
-    <div id="otherusers"></div>
-  `;
-};
-
-const refreshResults = (eventorpubkeys?: (Event | string)[]) => {
-  (document.getElementById('searchstatus') as HTMLDivElement).innerHTML = '';
-  // if called without array load my contacts
-  if (!eventorpubkeys) {
-    const e3 = fetchCachedMyProfileEvent(3);
-    if (e3) refreshResults(e3.tags.map((c) => c[1]));
-    return;
-  }
-  // display results
-  (document.getElementById('searchresults') as HTMLDivElement)
-    .innerHTML = eventorpubkeys.length === 0
-      ? 'no results'
-      : generateResults(eventorpubkeys);
-  eventorpubkeys.forEach((e) => {
-    const microcarda = document.getElementById(`contact-microcard-${getPubkey(e)}`) as HTMLAnchorElement;
-    // activate buttons to view details.
-    microcarda.onclick = () => {
-      loadContactDetails(getPubkey(e));
-      return false;
-    };
-    // replace pubkey with metadata when loaded
-    const recheckForKind0 = () => {
-      setTimeout(() => {
-        try {
-          const ne = fetchCachedProfileEvent(getPubkey(e), 0);
-          // this will add with kind 0 name or if its  not found petnames from other users
-          const name = getContactName(getPubkey(ne || e));
-          if (name !== microcarda.innerHTML) microcarda.innerHTML = name;
-          if (!ne) recheckForKind0();
-        } catch { /* empty - assume element has been removed */ }
-      }, 750);
-    };
-    if (microcarda.classList.contains('nokind0')) recheckForKind0();
+/**
+ * Enhance the history view with custom event handlers
+ */
+const enhanceContactHistory = (): void => {
+  // Find all contact links in the history and make them clickable
+  const history = getElement('contactsbackuphistory');
+  if (!history) return;
+  
+  // Add click handler to contact marks
+  const marks = history.querySelectorAll('mark[title]');
+  marks.forEach(mark => {
+    const titleAttr = mark.getAttribute('title');
+    if (titleAttr && titleAttr.length === 64) {
+      // It's a pubkey
+      const pubkey = titleAttr;
+      mark.style.cursor = 'pointer';
+      
+      mark.addEventListener('click', () => {
+        history.style.display = 'none';
+        loadContactDetails(pubkey);
+      });
+      
+      // Add hover effect
+      mark.addEventListener('mouseover', () => {
+        mark.style.textDecoration = 'underline';
+      });
+      
+      mark.addEventListener('mouseout', () => {
+        mark.style.textDecoration = 'none';
+      });
+    }
   });
-  // display details if only result
-  if (eventorpubkeys.length === 1) loadContactDetails(getPubkey(eventorpubkeys[0]));
 };
 
-const setSearchInputOnChangeEvent = () => {
-  const input = document.getElementById('searchinput') as HTMLInputElement;
-  const searchstatus = document.getElementById('searchstatus') as HTMLDivElement;
-  input.onchange = async () => {
-    const s = input.value;
-    let pubkey: string | null = null;
-    let relays: string[] | null = null;
-    // no search
-    if (!s || s.trim().length === 0) {
-      const e3 = fetchCachedMyProfileEvent(3);
-      if (e3) refreshResults(e3.tags.map((c) => c[1]));
-      return;
-    }
-    // if 61+ assume hex, or nip19 (npub, nprofile, naddr) and get pubkey / relays
-    if (s.length > 60) {
-      ({ pubkey, relays } = processHexOrNip19(s));
-      if (!pubkey) {
-        searchstatus.innerHTML = 'invalid search input - try npub, nprofile, naddr or hex';
-        return;
-      }
-      searchstatus.innerHTML = 'extracted pubkey. searching for profile...';
-    } else {
-      // keyword search kind 0s
-      const allkind0s = fetchAllCachedProfileEvents(0);
-      const words = s.split(' ');
-      const matches = allkind0s
-        .filter((e) => words.map((w) => e.content.indexOf(w)).some((v) => v > -1));
-      refreshResults(matches);
-      // search nip05
-      if (!!s && (s.indexOf('.') > -1 && s.indexOf('@') > -1)) {
-        const r = await searchNip05(input);
-        if (r === 'searching') return;
-        if (!r) searchstatus.innerHTML = '<p>not a verified nip05 address</p>';
-        else {
-          searchstatus.innerHTML = '<p>Verified nip05 address. loading profile...</p>';
-          pubkey = r;
-        }
-      }
-    }
-    // if extracted pubkey - hex, nip19 or nip05
-    if (pubkey) {
-      const ce = fetchCachedProfileEvent(pubkey, 0);
-      // kind 0 not found for user
-      if (!ce) {
-        // request from relay
-        const r = await fetchProfileEvent(pubkey, 0, relays);
-        // found not profile
-        if (!r) {
-          searchstatus.innerHTML = 'extracted pubkey. but couldn\'t find profile.';
-          return;
-        }
-      }
-      refreshResults();
-      loadContactDetails(pubkey);
-    }
-  };
-};
-
-const loadViewContacts = (RootElementID: string) => {
-  (document.getElementById(RootElementID) as HTMLDivElement)
-    .innerHTML = `
-    <div id="contactsearch">
-      <input
-        type="search"
-        id="searchinput"
-        placeholder="nip05, npub, nprofile or keywords for contacts of contacts"
-        onkeypress = "this.onchange();"
-        onpaste    = "this.onchange();"
-        oninput    = "this.onchange();"
-      >
-      <div id="searchstatus"></div>
-    </div>
-    <div id="searchresults"></div>
-  `;
-  setSearchInputOnChangeEvent();
-  refreshResults();
-};
-
-const LoadContactsPage = () => {
-  const o: HTMLElement = document.getElementById('PM-container') as HTMLElement;
-  o.innerHTML = `
+/**
+ * Main function to load the contacts page (focused only on history)
+ */
+const LoadContactsPage = (): void => {
+  const container = getElement('PM-container');
+  if (!container) return;
+  
+  // Clear DOM cache to prevent stale references
+  Object.keys(domCache).forEach(key => delete domCache[key]);
+  
+  container.innerHTML = `
     <div id="contactspage" class="container">
-      <div id="viewcontacts"></div>
-      <div id="contactsbackuphistory"></div>
-    <div>
+      <div id="contactdetails"></div>
+      <div id="contactsbackuphistory">
+        <h3>Contact List History</h3>
+        <p>View the history of changes to your contact list. Click on a contact name to view details.</p>
+        <div id="history-loading" aria-busy="true">Loading contact history...</div>
+      </div>
+    </div>
   `;
-  loadBackupHistory('contactsbackuphistory', 3);
-  loadViewContacts('viewcontacts');
+  
+  // Load backup history with improved loading indicator
+  setTimeout(() => {
+    const loadingElement = getElement('history-loading');
+    if (loadingElement) loadingElement.remove();
+    
+    loadBackupHistory('contactsbackuphistory', 3);
+    
+    // Enhance history after a short delay to ensure it's loaded
+    setTimeout(() => enhanceContactHistory(), 100);
+  }, 0);
 };
 
 export default LoadContactsPage;
