@@ -5,6 +5,7 @@ import { localStorageGetItem, localStorageSetItem } from './LocalStorage';
 import { LoadMetadataPage } from './LoadMetadataPage';
 import LoadContactsPage from './LoadContactsPage';
 import LoadRelaysPage from './LoadRelaysPage';
+import LoadDeletePage from './LoadDeletePage';
 import Logout from './Logout';
 
 declare global {
@@ -29,6 +30,7 @@ const loadProfile = async () => {
   (document.getElementById('navmetadata') as HTMLElement).onclick = LoadMetadataPage;
   (document.getElementById('navcontacts') as HTMLElement).onclick = LoadContactsPage;
   (document.getElementById('navrelays') as HTMLElement).onclick = LoadRelaysPage;
+  (document.getElementById('navdelete') as HTMLElement).onclick = LoadDeletePage;
   (document.getElementById('navlogout') as HTMLElement).onclick = Logout;
   // get events from my contacts
   await fetchMyContactsProfileEvents();
@@ -41,7 +43,7 @@ const LoadLandingPage = () => {
         ${generateLogoHero()}
         <div id="herocontent">
           <h1>Nostr Profile Manager</h1>
-          <p>Backup /&nbsp;Refine /&nbsp;Restore profile events</p>
+          <p>Backup /&nbsp;Refine /&nbsp;Restore /&nbsp;Delete profile events</p>
           <a id="loadextension" href="#" onclick="return false;" role="button" class="contrast">Load My Profile</a>
         </div>
       </div>
@@ -60,6 +62,10 @@ const LoadLandingPage = () => {
           <h5>Restore</h5>
           <p>View profile backups and restore your favourate</p>
         </article>
+        <article>
+          <h5>Delete</h5>
+          <p>Securely remove unwanted events. Publish deletion requests to your relays.</p>
+        </article>
       </div>
     </div>
   `;
@@ -76,7 +82,7 @@ const LoadLandingPage = () => {
       } else {
         a.outerHTML = `
           <p>You need a NIP-07 browser extension like nos2x to use this webapp.</p>
-          <a href="https://github.com/nostr-protocol/nips/blob/master/07.md#nip-07" role="button" class="contrast">Get Browser Extension</a>
+          <a href="https://github.com/nostr-protocol/nips/blob/master/07.md" role="button" class="contrast">Get Browser Extension</a>
         `;
       }
     };

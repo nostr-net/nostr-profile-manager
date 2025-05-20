@@ -130,3 +130,54 @@ mark.removed {
         margin: 10px 10px 10px 0;
     }
 }
+
+/* Delete page styles */
+.event-list {
+    margin-top: 1rem;
+}
+
+.event-item {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: #f9f9f9;
+}
+
+.event-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.event-content {
+    margin-bottom: 0.8rem;
+    font-weight: bold;
+}
+
+.event-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#delete-status {
+    margin-top: 1.5rem;
+}
+
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
