@@ -1,0 +1,2427 @@
+"use strict";(()=>{var ll=Object.create;var po=Object.defineProperty,ul=Object.defineProperties,dl=Object.getOwnPropertyDescriptor,fl=Object.getOwnPropertyDescriptors,hl=Object.getOwnPropertyNames,Kn=Object.getOwnPropertySymbols,pl=Object.getPrototypeOf,mo=Object.prototype.hasOwnProperty,ui=Object.prototype.propertyIsEnumerable;var li=(t,e,n)=>e in t?po(t,e,{enumerable:!0,configurable:!0,writable:!0,value:n}):t[e]=n,go=(t,e)=>{for(var n in e||={})mo.call(e,n)&&li(t,n,e[n]);if(Kn)for(var n of Kn(e))ui.call(e,n)&&li(t,n,e[n]);return t},yo=(t,e)=>ul(t,fl(e));var di=(t,e)=>{var n={};for(var r in t)mo.call(t,r)&&e.indexOf(r)<0&&(n[r]=t[r]);if(t!=null&&Kn)for(var r of Kn(t))e.indexOf(r)<0&&ui.call(t,r)&&(n[r]=t[r]);return n};var $=(t,e)=>()=>(t&&(e=t(t=0)),e);var ie=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports);var ml=(t,e,n,r)=>{if(e&&typeof e=="object"||typeof e=="function")for(let o of hl(e))!mo.call(t,o)&&o!==n&&po(t,o,{get:()=>e[o],enumerable:!(r=dl(e,o))||r.enumerable});return t};var Ke=(t,e,n)=>(n=t!=null?ll(pl(t)):{},ml(e||!t||!t.__esModule?po(n,"default",{value:t,enumerable:!0}):n,t));var N=(t,e,n)=>new Promise((r,o)=>{var s=c=>{try{a(n.next(c))}catch(d){o(d)}},i=c=>{try{a(n.throw(c))}catch(d){o(d)}},a=c=>c.done?r(c.value):Promise.resolve(c.value).then(s,i);a((n=n.apply(t,e)).next())});var xo=ie((bo,wo)=>{(function(t,e){typeof bo=="object"&&typeof wo<"u"?wo.exports=e():typeof define=="function"&&define.amd?define(e):(t=typeof globalThis<"u"?globalThis:t||self,t.DOMPurify=e())})(bo,function(){"use strict";let{entries:t,setPrototypeOf:e,isFrozen:n,getPrototypeOf:r,getOwnPropertyDescriptor:o}=Object,{freeze:s,seal:i,create:a}=Object,{apply:c,construct:d}=typeof Reflect<"u"&&Reflect;c||(c=function(_,K,P){return _.apply(K,P)}),s||(s=function(_){return _}),i||(i=function(_){return _}),d||(d=function(_,K){return new _(...K)});let u=v(Array.prototype.forEach),l=v(Array.prototype.pop),h=v(Array.prototype.push),p=v(String.prototype.toLowerCase),m=v(String.prototype.toString),y=v(String.prototype.match),w=v(String.prototype.replace),T=v(String.prototype.indexOf),L=v(String.prototype.trim),g=v(RegExp.prototype.test),B=V(TypeError);function v(z){return function(_){for(var K=arguments.length,P=new Array(K>1?K-1:0),J=1;J<K;J++)P[J-1]=arguments[J];return c(z,_,P)}}function V(z){return function(){for(var _=arguments.length,K=new Array(_),P=0;P<_;P++)K[P]=arguments[P];return d(z,K)}}function S(z,_,K){var P;K=(P=K)!==null&&P!==void 0?P:p,e&&e(z,null);let J=_.length;for(;J--;){let Ee=_[J];if(typeof Ee=="string"){let Se=K(Ee);Se!==Ee&&(n(_)||(_[J]=Se),Ee=Se)}z[Ee]=!0}return z}function j(z){let _=a(null);for(let[K,P]of t(z))_[K]=P;return _}function C(z,_){for(;z!==null;){let P=o(z,_);if(P){if(P.get)return v(P.get);if(typeof P.value=="function")return v(P.value)}z=r(z)}function K(P){return console.warn("fallback value for",P),null}return K}let se=s(["a","abbr","acronym","address","area","article","aside","audio","b","bdi","bdo","big","blink","blockquote","body","br","button","canvas","caption","center","cite","code","col","colgroup","content","data","datalist","dd","decorator","del","details","dfn","dialog","dir","div","dl","dt","element","em","fieldset","figcaption","figure","font","footer","form","h1","h2","h3","h4","h5","h6","head","header","hgroup","hr","html","i","img","input","ins","kbd","label","legend","li","main","map","mark","marquee","menu","menuitem","meter","nav","nobr","ol","optgroup","option","output","p","picture","pre","progress","q","rp","rt","ruby","s","samp","section","select","shadow","small","source","spacer","span","strike","strong","style","sub","summary","sup","table","tbody","td","template","textarea","tfoot","th","thead","time","tr","track","tt","u","ul","var","video","wbr"]),de=s(["svg","a","altglyph","altglyphdef","altglyphitem","animatecolor","animatemotion","animatetransform","circle","clippath","defs","desc","ellipse","filter","font","g","glyph","glyphref","hkern","image","line","lineargradient","marker","mask","metadata","mpath","path","pattern","polygon","polyline","radialgradient","rect","stop","style","switch","symbol","text","textpath","title","tref","tspan","view","vkern"]),oe=s(["feBlend","feColorMatrix","feComponentTransfer","feComposite","feConvolveMatrix","feDiffuseLighting","feDisplacementMap","feDistantLight","feDropShadow","feFlood","feFuncA","feFuncB","feFuncG","feFuncR","feGaussianBlur","feImage","feMerge","feMergeNode","feMorphology","feOffset","fePointLight","feSpecularLighting","feSpotLight","feTile","feTurbulence"]),$e=s(["animate","color-profile","cursor","discard","font-face","font-face-format","font-face-name","font-face-src","font-face-uri","foreignobject","hatch","hatchpath","mesh","meshgradient","meshpatch","meshrow","missing-glyph","script","set","solidcolor","unknown","use"]),xt=s(["math","menclose","merror","mfenced","mfrac","mglyph","mi","mlabeledtr","mmultiscripts","mn","mo","mover","mpadded","mphantom","mroot","mrow","ms","mspace","msqrt","mstyle","msub","msup","msubsup","mtable","mtd","mtext","mtr","munder","munderover","mprescripts"]),Et=s(["maction","maligngroup","malignmark","mlongdiv","mscarries","mscarry","msgroup","mstack","msline","msrow","semantics","annotation","annotation-xml","mprescripts","none"]),Ms=s(["#text"]),Cs=s(["accept","action","align","alt","autocapitalize","autocomplete","autopictureinpicture","autoplay","background","bgcolor","border","capture","cellpadding","cellspacing","checked","cite","class","clear","color","cols","colspan","controls","controlslist","coords","crossorigin","datetime","decoding","default","dir","disabled","disablepictureinpicture","disableremoteplayback","download","draggable","enctype","enterkeyhint","face","for","headers","height","hidden","high","href","hreflang","id","inputmode","integrity","ismap","kind","label","lang","list","loading","loop","low","max","maxlength","media","method","min","minlength","multiple","muted","name","nonce","noshade","novalidate","nowrap","open","optimum","pattern","placeholder","playsinline","poster","preload","pubdate","radiogroup","readonly","rel","required","rev","reversed","role","rows","rowspan","spellcheck","scope","selected","shape","size","sizes","span","srclang","start","src","srcset","step","style","summary","tabindex","title","translate","type","usemap","valign","value","width","xmlns","slot"]),qr=s(["accent-height","accumulate","additive","alignment-baseline","ascent","attributename","attributetype","azimuth","basefrequency","baseline-shift","begin","bias","by","class","clip","clippathunits","clip-path","clip-rule","color","color-interpolation","color-interpolation-filters","color-profile","color-rendering","cx","cy","d","dx","dy","diffuseconstant","direction","display","divisor","dur","edgemode","elevation","end","fill","fill-opacity","fill-rule","filter","filterunits","flood-color","flood-opacity","font-family","font-size","font-size-adjust","font-stretch","font-style","font-variant","font-weight","fx","fy","g1","g2","glyph-name","glyphref","gradientunits","gradienttransform","height","href","id","image-rendering","in","in2","k","k1","k2","k3","k4","kerning","keypoints","keysplines","keytimes","lang","lengthadjust","letter-spacing","kernelmatrix","kernelunitlength","lighting-color","local","marker-end","marker-mid","marker-start","markerheight","markerunits","markerwidth","maskcontentunits","maskunits","max","mask","media","method","mode","min","name","numoctaves","offset","operator","opacity","order","orient","orientation","origin","overflow","paint-order","path","pathlength","patterncontentunits","patterntransform","patternunits","points","preservealpha","preserveaspectratio","primitiveunits","r","rx","ry","radius","refx","refy","repeatcount","repeatdur","restart","result","rotate","scale","seed","shape-rendering","specularconstant","specularexponent","spreadmethod","startoffset","stddeviation","stitchtiles","stop-color","stop-opacity","stroke-dasharray","stroke-dashoffset","stroke-linecap","stroke-linejoin","stroke-miterlimit","stroke-opacity","stroke","stroke-width","style","surfacescale","systemlanguage","tabindex","targetx","targety","transform","transform-origin","text-anchor","text-decoration","text-rendering","textlength","type","u1","u2","unicode","values","viewbox","visibility","version","vert-adv-y","vert-origin-x","vert-origin-y","width","word-spacing","wrap","writing-mode","xchannelselector","ychannelselector","x","x1","x2","xmlns","y","y1","y2","z","zoomandpan"]),Us=s(["accent","accentunder","align","bevelled","close","columnsalign","columnlines","columnspan","denomalign","depth","dir","display","displaystyle","encoding","fence","frame","height","href","id","largeop","length","linethickness","lspace","lquote","mathbackground","mathcolor","mathsize","mathvariant","maxsize","minsize","movablelimits","notation","numalign","open","rowalign","rowlines","rowspacing","rowspan","rspace","rquote","scriptlevel","scriptminsize","scriptsizemultiplier","selection","separator","separators","stretchy","subscriptshift","supscriptshift","symmetric","voffset","width","xmlns"]),On=s(["xlink:href","xml:id","xlink:title","xml:space","xmlns:xlink"]),Ic=i(/\{\{[\w\W]*|[\w\W]*\}\}/gm),Mc=i(/<%[\w\W]*|[\w\W]*%>/gm),Cc=i(/\${[\w\W]*}/gm),Uc=i(/^data-[\-\w.\u00B7-\uFFFF]/),Rc=i(/^aria-[\-\w]+$/),Rs=i(/^(?:(?:(?:f|ht)tps?|mailto|tel|callto|sms|cid|xmpp):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i),$c=i(/^(?:\w+script|data):/i),Oc=i(/[\u0000-\u0020\u00A0\u1680\u180E\u2000-\u2029\u205F\u3000]/g),$s=i(/^html$/i);var Os=Object.freeze({__proto__:null,MUSTACHE_EXPR:Ic,ERB_EXPR:Mc,TMPLIT_EXPR:Cc,DATA_ATTR:Uc,ARIA_ATTR:Rc,IS_ALLOWED_URI:Rs,IS_SCRIPT_OR_DATA:$c,ATTR_WHITESPACE:Oc,DOCTYPE_NAME:$s});let Dc=()=>typeof window>"u"?null:window,Nc=function(_,K){if(typeof _!="object"||typeof _.createPolicy!="function")return null;let P=null,J="data-tt-policy-suffix";K&&K.hasAttribute(J)&&(P=K.getAttribute(J));let Ee="dompurify"+(P?"#"+P:"");try{return _.createPolicy(Ee,{createHTML(Se){return Se},createScriptURL(Se){return Se}})}catch{return console.warn("TrustedTypes policy "+Ee+" could not be created."),null}};function Ds(){let z=arguments.length>0&&arguments[0]!==void 0?arguments[0]:Dc(),_=A=>Ds(A);if(_.version="3.0.3",_.removed=[],!z||!z.document||z.document.nodeType!==9)return _.isSupported=!1,_;let K=z.document,P=K.currentScript,{document:J}=z,{DocumentFragment:Ee,HTMLTemplateElement:Se,Node:Vr,Element:Ns,NodeFilter:Zr,NamedNodeMap:Fc=z.NamedNodeMap||z.MozNamedAttrMap,HTMLFormElement:jc,DOMParser:zc,trustedTypes:Dn}=z,Nn=Ns.prototype,Wc=C(Nn,"cloneNode"),Gc=C(Nn,"nextSibling"),Kc=C(Nn,"childNodes"),Yr=C(Nn,"parentNode");if(typeof Se=="function"){let A=J.createElement("template");A.content&&A.content.ownerDocument&&(J=A.content.ownerDocument)}let ae,ln="",{implementation:Xr,createNodeIterator:qc,createDocumentFragment:Vc,getElementsByTagName:Zc}=J,{importNode:Yc}=K,Le={};_.isSupported=typeof t=="function"&&typeof Yr=="function"&&Xr&&Xr.createHTMLDocument!==void 0;let{MUSTACHE_EXPR:Jr,ERB_EXPR:Qr,TMPLIT_EXPR:eo,DATA_ATTR:Xc,ARIA_ATTR:Jc,IS_SCRIPT_OR_DATA:Qc,ATTR_WHITESPACE:Ps}=Os,{IS_ALLOWED_URI:Fs}=Os,Q=null,js=S({},[...se,...de,...oe,...xt,...Ms]),ee=null,zs=S({},[...Cs,...qr,...Us,...On]),X=Object.seal(Object.create(null,{tagNameCheck:{writable:!0,configurable:!1,enumerable:!0,value:null},attributeNameCheck:{writable:!0,configurable:!1,enumerable:!0,value:null},allowCustomizedBuiltInElements:{writable:!0,configurable:!1,enumerable:!0,value:!1}})),un=null,to=null,Ws=!0,no=!0,Gs=!1,Ks=!0,Nt=!1,vt=!1,ro=!1,oo=!1,Pt=!1,Pn=!1,Fn=!1,qs=!0,Vs=!1,el="user-content-",so=!0,dn=!1,Ft={},jt=null,Zs=S({},["annotation-xml","audio","colgroup","desc","foreignobject","head","iframe","math","mi","mn","mo","ms","mtext","noembed","noframes","noscript","plaintext","script","style","svg","template","thead","title","video","xmp"]),Ys=null,Xs=S({},["audio","video","img","source","image","track"]),io=null,Js=S({},["alt","class","for","id","label","name","pattern","placeholder","role","summary","title","value","style","xmlns"]),jn="http://www.w3.org/1998/Math/MathML",zn="http://www.w3.org/2000/svg",Oe="http://www.w3.org/1999/xhtml",zt=Oe,ao=!1,co=null,tl=S({},[jn,zn,Oe],m),kt,nl=["application/xhtml+xml","text/html"],rl="text/html",te,Wt=null,ol=J.createElement("form"),Qs=function(f){return f instanceof RegExp||f instanceof Function},lo=function(f){if(!(Wt&&Wt===f)){if((!f||typeof f!="object")&&(f={}),f=j(f),kt=nl.indexOf(f.PARSER_MEDIA_TYPE)===-1?kt=rl:kt=f.PARSER_MEDIA_TYPE,te=kt==="application/xhtml+xml"?m:p,Q="ALLOWED_TAGS"in f?S({},f.ALLOWED_TAGS,te):js,ee="ALLOWED_ATTR"in f?S({},f.ALLOWED_ATTR,te):zs,co="ALLOWED_NAMESPACES"in f?S({},f.ALLOWED_NAMESPACES,m):tl,io="ADD_URI_SAFE_ATTR"in f?S(j(Js),f.ADD_URI_SAFE_ATTR,te):Js,Ys="ADD_DATA_URI_TAGS"in f?S(j(Xs),f.ADD_DATA_URI_TAGS,te):Xs,jt="FORBID_CONTENTS"in f?S({},f.FORBID_CONTENTS,te):Zs,un="FORBID_TAGS"in f?S({},f.FORBID_TAGS,te):{},to="FORBID_ATTR"in f?S({},f.FORBID_ATTR,te):{},Ft="USE_PROFILES"in f?f.USE_PROFILES:!1,Ws=f.ALLOW_ARIA_ATTR!==!1,no=f.ALLOW_DATA_ATTR!==!1,Gs=f.ALLOW_UNKNOWN_PROTOCOLS||!1,Ks=f.ALLOW_SELF_CLOSE_IN_ATTR!==!1,Nt=f.SAFE_FOR_TEMPLATES||!1,vt=f.WHOLE_DOCUMENT||!1,Pt=f.RETURN_DOM||!1,Pn=f.RETURN_DOM_FRAGMENT||!1,Fn=f.RETURN_TRUSTED_TYPE||!1,oo=f.FORCE_BODY||!1,qs=f.SANITIZE_DOM!==!1,Vs=f.SANITIZE_NAMED_PROPS||!1,so=f.KEEP_CONTENT!==!1,dn=f.IN_PLACE||!1,Fs=f.ALLOWED_URI_REGEXP||Rs,zt=f.NAMESPACE||Oe,X=f.CUSTOM_ELEMENT_HANDLING||{},f.CUSTOM_ELEMENT_HANDLING&&Qs(f.CUSTOM_ELEMENT_HANDLING.tagNameCheck)&&(X.tagNameCheck=f.CUSTOM_ELEMENT_HANDLING.tagNameCheck),f.CUSTOM_ELEMENT_HANDLING&&Qs(f.CUSTOM_ELEMENT_HANDLING.attributeNameCheck)&&(X.attributeNameCheck=f.CUSTOM_ELEMENT_HANDLING.attributeNameCheck),f.CUSTOM_ELEMENT_HANDLING&&typeof f.CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements=="boolean"&&(X.allowCustomizedBuiltInElements=f.CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements),Nt&&(no=!1),Pn&&(Pt=!0),Ft&&(Q=S({},[...Ms]),ee=[],Ft.html===!0&&(S(Q,se),S(ee,Cs)),Ft.svg===!0&&(S(Q,de),S(ee,qr),S(ee,On)),Ft.svgFilters===!0&&(S(Q,oe),S(ee,qr),S(ee,On)),Ft.mathMl===!0&&(S(Q,xt),S(ee,Us),S(ee,On))),f.ADD_TAGS&&(Q===js&&(Q=j(Q)),S(Q,f.ADD_TAGS,te)),f.ADD_ATTR&&(ee===zs&&(ee=j(ee)),S(ee,f.ADD_ATTR,te)),f.ADD_URI_SAFE_ATTR&&S(io,f.ADD_URI_SAFE_ATTR,te),f.FORBID_CONTENTS&&(jt===Zs&&(jt=j(jt)),S(jt,f.FORBID_CONTENTS,te)),so&&(Q["#text"]=!0),vt&&S(Q,["html","head","body"]),Q.table&&(S(Q,["tbody"]),delete un.tbody),f.TRUSTED_TYPES_POLICY){if(typeof f.TRUSTED_TYPES_POLICY.createHTML!="function")throw B('TRUSTED_TYPES_POLICY configuration option must provide a "createHTML" hook.');if(typeof f.TRUSTED_TYPES_POLICY.createScriptURL!="function")throw B('TRUSTED_TYPES_POLICY configuration option must provide a "createScriptURL" hook.');ae=f.TRUSTED_TYPES_POLICY,ln=ae.createHTML("")}else ae===void 0&&(ae=Nc(Dn,P)),ae!==null&&typeof ln=="string"&&(ln=ae.createHTML(""));s&&s(f),Wt=f}},ei=S({},["mi","mo","mn","ms","mtext"]),ti=S({},["foreignobject","desc","title","annotation-xml"]),sl=S({},["title","style","font","a","script"]),Wn=S({},de);S(Wn,oe),S(Wn,$e);let uo=S({},xt);S(uo,Et);let il=function(f){let b=Yr(f);(!b||!b.tagName)&&(b={namespaceURI:zt,tagName:"template"});let E=p(f.tagName),W=p(b.tagName);return co[f.namespaceURI]?f.namespaceURI===zn?b.namespaceURI===Oe?E==="svg":b.namespaceURI===jn?E==="svg"&&(W==="annotation-xml"||ei[W]):!!Wn[E]:f.namespaceURI===jn?b.namespaceURI===Oe?E==="math":b.namespaceURI===zn?E==="math"&&ti[W]:!!uo[E]:f.namespaceURI===Oe?b.namespaceURI===zn&&!ti[W]||b.namespaceURI===jn&&!ei[W]?!1:!uo[E]&&(sl[E]||!Wn[E]):!!(kt==="application/xhtml+xml"&&co[f.namespaceURI]):!1},Tt=function(f){h(_.removed,{element:f});try{f.parentNode.removeChild(f)}catch{f.remove()}},fo=function(f,b){try{h(_.removed,{attribute:b.getAttributeNode(f),from:b})}catch{h(_.removed,{attribute:null,from:b})}if(b.removeAttribute(f),f==="is"&&!ee[f])if(Pt||Pn)try{Tt(b)}catch{}else try{b.setAttribute(f,"")}catch{}},ni=function(f){let b,E;if(oo)f="<remove></remove>"+f;else{let pe=y(f,/^[\r\n\t ]+/);E=pe&&pe[0]}kt==="application/xhtml+xml"&&zt===Oe&&(f='<html xmlns="http://www.w3.org/1999/xhtml"><head></head><body>'+f+"</body></html>");let W=ae?ae.createHTML(f):f;if(zt===Oe)try{b=new zc().parseFromString(W,kt)}catch{}if(!b||!b.documentElement){b=Xr.createDocument(zt,"template",null);try{b.documentElement.innerHTML=ao?ln:W}catch{}}let ne=b.body||b.documentElement;return f&&E&&ne.insertBefore(J.createTextNode(E),ne.childNodes[0]||null),zt===Oe?Zc.call(b,vt?"html":"body")[0]:vt?b.documentElement:ne},ri=function(f){return qc.call(f.ownerDocument||f,f,Zr.SHOW_ELEMENT|Zr.SHOW_COMMENT|Zr.SHOW_TEXT,null,!1)},al=function(f){return f instanceof jc&&(typeof f.nodeName!="string"||typeof f.textContent!="string"||typeof f.removeChild!="function"||!(f.attributes instanceof Fc)||typeof f.removeAttribute!="function"||typeof f.setAttribute!="function"||typeof f.namespaceURI!="string"||typeof f.insertBefore!="function"||typeof f.hasChildNodes!="function")},Gn=function(f){return typeof Vr=="object"?f instanceof Vr:f&&typeof f=="object"&&typeof f.nodeType=="number"&&typeof f.nodeName=="string"},De=function(f,b,E){Le[f]&&u(Le[f],W=>{W.call(_,b,E,Wt)})},oi=function(f){let b;if(De("beforeSanitizeElements",f,null),al(f))return Tt(f),!0;let E=te(f.nodeName);if(De("uponSanitizeElement",f,{tagName:E,allowedTags:Q}),f.hasChildNodes()&&!Gn(f.firstElementChild)&&(!Gn(f.content)||!Gn(f.content.firstElementChild))&&g(/<[/\w]/g,f.innerHTML)&&g(/<[/\w]/g,f.textContent))return Tt(f),!0;if(!Q[E]||un[E]){if(!un[E]&&ii(E)&&(X.tagNameCheck instanceof RegExp&&g(X.tagNameCheck,E)||X.tagNameCheck instanceof Function&&X.tagNameCheck(E)))return!1;if(so&&!jt[E]){let W=Yr(f)||f.parentNode,ne=Kc(f)||f.childNodes;if(ne&&W){let pe=ne.length;for(let Z=pe-1;Z>=0;--Z)W.insertBefore(Wc(ne[Z],!0),Gc(f))}}return Tt(f),!0}return f instanceof Ns&&!il(f)||(E==="noscript"||E==="noembed")&&g(/<\/no(script|embed)/i,f.innerHTML)?(Tt(f),!0):(Nt&&f.nodeType===3&&(b=f.textContent,b=w(b,Jr," "),b=w(b,Qr," "),b=w(b,eo," "),f.textContent!==b&&(h(_.removed,{element:f.cloneNode()}),f.textContent=b)),De("afterSanitizeElements",f,null),!1)},si=function(f,b,E){if(qs&&(b==="id"||b==="name")&&(E in J||E in ol))return!1;if(!(no&&!to[b]&&g(Xc,b))){if(!(Ws&&g(Jc,b))){if(!ee[b]||to[b]){if(!(ii(f)&&(X.tagNameCheck instanceof RegExp&&g(X.tagNameCheck,f)||X.tagNameCheck instanceof Function&&X.tagNameCheck(f))&&(X.attributeNameCheck instanceof RegExp&&g(X.attributeNameCheck,b)||X.attributeNameCheck instanceof Function&&X.attributeNameCheck(b))||b==="is"&&X.allowCustomizedBuiltInElements&&(X.tagNameCheck instanceof RegExp&&g(X.tagNameCheck,E)||X.tagNameCheck instanceof Function&&X.tagNameCheck(E))))return!1}else if(!io[b]){if(!g(Fs,w(E,Ps,""))){if(!((b==="src"||b==="xlink:href"||b==="href")&&f!=="script"&&T(E,"data:")===0&&Ys[f])){if(!(Gs&&!g(Qc,w(E,Ps,"")))){if(E)return!1}}}}}}return!0},ii=function(f){return f.indexOf("-")>0},ai=function(f){let b,E,W,ne;De("beforeSanitizeAttributes",f,null);let{attributes:pe}=f;if(!pe)return;let Z={attrName:"",attrValue:"",keepAttr:!0,allowedAttributes:ee};for(ne=pe.length;ne--;){b=pe[ne];let{name:_e,namespaceURI:ho}=b;if(E=_e==="value"?b.value:L(b.value),W=te(_e),Z.attrName=W,Z.attrValue=E,Z.keepAttr=!0,Z.forceKeepAttr=void 0,De("uponSanitizeAttribute",f,Z),E=Z.attrValue,Z.forceKeepAttr||(fo(_e,f),!Z.keepAttr))continue;if(!Ks&&g(/\/>/i,E)){fo(_e,f);continue}Nt&&(E=w(E,Jr," "),E=w(E,Qr," "),E=w(E,eo," "));let ci=te(f.nodeName);if(si(ci,W,E)){if(Vs&&(W==="id"||W==="name")&&(fo(_e,f),E=el+E),ae&&typeof Dn=="object"&&typeof Dn.getAttributeType=="function"&&!ho)switch(Dn.getAttributeType(ci,W)){case"TrustedHTML":{E=ae.createHTML(E);break}case"TrustedScriptURL":{E=ae.createScriptURL(E);break}}try{ho?f.setAttributeNS(ho,_e,E):f.setAttribute(_e,E),l(_.removed)}catch{}}}De("afterSanitizeAttributes",f,null)},cl=function A(f){let b,E=ri(f);for(De("beforeSanitizeShadowDOM",f,null);b=E.nextNode();)De("uponSanitizeShadowNode",b,null),!oi(b)&&(b.content instanceof Ee&&A(b.content),ai(b));De("afterSanitizeShadowDOM",f,null)};return _.sanitize=function(A){let f=arguments.length>1&&arguments[1]!==void 0?arguments[1]:{},b,E,W,ne;if(ao=!A,ao&&(A="<!-->"),typeof A!="string"&&!Gn(A))if(typeof A.toString=="function"){if(A=A.toString(),typeof A!="string")throw B("dirty is not a string, aborting")}else throw B("toString is not a function");if(!_.isSupported)return A;if(ro||lo(f),_.removed=[],typeof A=="string"&&(dn=!1),dn){if(A.nodeName){let _e=te(A.nodeName);if(!Q[_e]||un[_e])throw B("root node is forbidden and cannot be sanitized in-place")}}else if(A instanceof Vr)b=ni("<!---->"),E=b.ownerDocument.importNode(A,!0),E.nodeType===1&&E.nodeName==="BODY"||E.nodeName==="HTML"?b=E:b.appendChild(E);else{if(!Pt&&!Nt&&!vt&&A.indexOf("<")===-1)return ae&&Fn?ae.createHTML(A):A;if(b=ni(A),!b)return Pt?null:Fn?ln:""}b&&oo&&Tt(b.firstChild);let pe=ri(dn?A:b);for(;W=pe.nextNode();)oi(W)||(W.content instanceof Ee&&cl(W.content),ai(W));if(dn)return A;if(Pt){if(Pn)for(ne=Vc.call(b.ownerDocument);b.firstChild;)ne.appendChild(b.firstChild);else ne=b;return(ee.shadowroot||ee.shadowrootmod)&&(ne=Yc.call(K,ne,!0)),ne}let Z=vt?b.outerHTML:b.innerHTML;return vt&&Q["!doctype"]&&b.ownerDocument&&b.ownerDocument.doctype&&b.ownerDocument.doctype.name&&g($s,b.ownerDocument.doctype.name)&&(Z="<!DOCTYPE "+b.ownerDocument.doctype.name+`>
+`+Z),Nt&&(Z=w(Z,Jr," "),Z=w(Z,Qr," "),Z=w(Z,eo," ")),ae&&Fn?ae.createHTML(Z):Z},_.setConfig=function(A){lo(A),ro=!0},_.clearConfig=function(){Wt=null,ro=!1},_.isValidAttribute=function(A,f,b){Wt||lo({});let E=te(A),W=te(f);return si(E,W,b)},_.addHook=function(A,f){typeof f=="function"&&(Le[A]=Le[A]||[],h(Le[A],f))},_.removeHook=function(A){if(Le[A])return l(Le[A])},_.removeHooks=function(A){Le[A]&&(Le[A]=[])},_.removeAllHooks=function(){Le={}},_}var Pc=Ds();return Pc})});var Gt=ie((Ah,fi)=>{fi.exports=window.DOMPurify||(window.DOMPurify=xo().default||xo())});var Y,At,hi,qe=$(()=>{"use strict";Y=t=>localStorage.getItem(t),At=(t,e)=>{localStorage.setItem(t,e)},hi=()=>{localStorage.clear()}});var pi=ie(()=>{});function yi(t){let{a:e,b:n}=F,r=x(t*t),o=x(r*t);return x(o+e*t+n)}function bi(t){if(!(t instanceof D))throw new TypeError("JacobianPoint expected")}function Zn(t,e){let n=e.negate();return t?n:e}function wi(t){return Number.parseInt(t[0],16)>=8?"00"+t:t}function xi(t){if(t.length<2||t[0]!==2)throw new Error(`Invalid signature integer tag: ${Vt(t)}`);let e=t[1],n=t.subarray(2,e+2);if(!e||n.length!==e)throw new Error("Invalid signature integer: wrong length");if(n[0]===0&&n[1]<=127)throw new Error("Invalid signature integer: trailing length");return{data:he(n),left:t.subarray(e+2)}}function bl(t){if(t.length<2||t[0]!=48)throw new Error(`Invalid signature tag: ${Vt(t)}`);if(t[1]!==t.length-2)throw new Error("Invalid signature: incorrect length");let{data:e,left:n}=xi(t.subarray(2)),{data:r,left:o}=xi(n);if(o.length)throw new Error(`Invalid signature: left bytes after parsing: ${Vt(o)}`);return{r:e,s:r}}function Ze(...t){if(!t.every(r=>r instanceof Uint8Array))throw new Error("Uint8Array list expected");if(t.length===1)return t[0];let e=t.reduce((r,o)=>r+o.length,0),n=new Uint8Array(e);for(let r=0,o=0;r<t.length;r++){let s=t[r];n.set(s,o),o+=s.length}return n}function Vt(t){if(!(t instanceof Uint8Array))throw new Error("Expected Uint8Array");let e="";for(let n=0;n<t.length;n++)e+=wl[t[n]];return e}function Xe(t){if(typeof t!="bigint")throw new Error("Expected bigint");if(!(O<=t&&t<xl))throw new Error("Expected number 0 <= n < 2^256");return t.toString(16).padStart(64,"0")}function Zt(t){let e=Je(Xe(t));if(e.length!==32)throw new Error("Error: expected 32 bytes");return e}function fn(t){let e=t.toString(16);return e.length&1?`0${e}`:e}function er(t){if(typeof t!="string")throw new TypeError("hexToNumber: expected string, got "+typeof t);return BigInt(`0x${t}`)}function Je(t){if(typeof t!="string")throw new TypeError("hexToBytes: expected string, got "+typeof t);if(t.length%2)throw new Error("hexToBytes: received invalid unpadded hex"+t.length);let e=new Uint8Array(t.length/2);for(let n=0;n<e.length;n++){let r=n*2,o=t.slice(r,r+2),s=Number.parseInt(o,16);if(Number.isNaN(s)||s<0)throw new Error("Invalid byte sequence");e[n]=s}return e}function he(t){return er(Vt(t))}function He(t){return t instanceof Uint8Array?Uint8Array.from(t):Je(t)}function Ei(t){if(typeof t=="number"&&Number.isSafeInteger(t)&&t>0)return BigInt(t);if(typeof t=="bigint"&&Yt(t))return t;throw new TypeError("Expected valid private scalar: 0 < scalar < curve.n")}function x(t,e=F.P){let n=t%e;return n>=O?n:e+n}function me(t,e){let{P:n}=F,r=t;for(;e-- >O;)r*=r,r%=n;return r}function El(t){let{P:e}=F,n=BigInt(6),r=BigInt(11),o=BigInt(22),s=BigInt(23),i=BigInt(44),a=BigInt(88),c=t*t*t%e,d=c*c*t%e,u=me(d,hn)*d%e,l=me(u,hn)*d%e,h=me(l,Ye)*c%e,p=me(h,r)*h%e,m=me(p,o)*p%e,y=me(m,i)*m%e,w=me(y,a)*y%e,T=me(w,i)*m%e,L=me(T,hn)*d%e,g=me(L,s)*p%e,B=me(g,n)*c%e,v=me(B,Ye);if(v*v%e!==t)throw new Error("Cannot find square root");return v}function Xt(t,e=F.P){if(t===O||e<=O)throw new Error(`invert: expected positive integers, got n=${t} mod=${e}`);let n=x(t,e),r=e,o=O,s=q,i=q,a=O;for(;n!==O;){let d=r/n,u=r%n,l=o-i*d,h=s-a*d;r=n,n=u,o=i,s=a,i=l,a=h}if(r!==q)throw new Error("invert: does not exist");return x(o,e)}function vl(t,e=F.P){let n=new Array(t.length),r=t.reduce((s,i,a)=>i===O?s:(n[a]=s,x(s*i,e)),q),o=Xt(r,e);return t.reduceRight((s,i,a)=>i===O?s:(n[a]=x(s*n[a],e),x(s*i,e)),o),n}function kl(t){let e=t.length*8-qt*8,n=he(t);return e>0?n>>BigInt(e):n}function ko(t,e=!1){let n=kl(t);if(e)return n;let{n:r}=F;return n>=r?n-r:n}function Yt(t){return O<t&&t<F.n}function Xn(t){return O<t&&t<F.P}function Tl(t,e,n,r=!0){let{n:o}=F,s=ko(t,!0);if(!Yt(s))return;let i=Xt(s,o),a=R.BASE.multiply(s),c=x(a.x,o);if(c===O)return;let d=x(i*x(e+n*c,o),o);if(d===O)return;let u=new ge(c,d),l=(a.x===u.r?0:2)|Number(a.y&q);return r&&u.hasHighS()&&(u=u.normalizeS(),l^=1),{sig:u,recovery:l}}function St(t){let e;if(typeof t=="bigint")e=t;else if(typeof t=="number"&&Number.isSafeInteger(t)&&t>0)e=BigInt(t);else if(typeof t=="string"){if(t.length!==2*qt)throw new Error("Expected 32 bytes of private key");e=er(t)}else if(t instanceof Uint8Array){if(t.length!==qt)throw new Error("Expected 32 bytes of private key");e=he(t)}else throw new TypeError("Expected valid private key");if(!Yt(e))throw new Error("Expected private key: 0 < key < n");return e}function To(t){return t instanceof R?(t.assertValidity(),t):R.fromHex(t)}function ki(t){if(t instanceof ge)return t.assertValidity(),t;try{return ge.fromDER(t)}catch{return ge.fromCompact(t)}}function Ti(t,e=!1){return R.fromPrivateKey(t).toRawBytes(e)}function vi(t){let e=t instanceof Uint8Array,n=typeof t=="string",r=(e||n)&&t.length;return e?r===Jn||r===Qn:n?r===Jn*2||r===Qn*2:t instanceof R}function Ao(t,e,n=!1){if(vi(t))throw new TypeError("getSharedSecret: first arg must be private key");if(!vi(e))throw new TypeError("getSharedSecret: second arg must be public key");let r=To(e);return r.assertValidity(),r.multiply(St(t)).toRawBytes(n)}function Ai(t){let e=t.length>ve?t.slice(0,ve):t;return he(e)}function Al(t){let e=Ai(t),n=x(e,F.n);return Si(n<O?e:n)}function Si(t){return Zt(t)}function Sl(t,e,n){if(t==null)throw new Error(`sign: expected valid message hash, not "${t}"`);let r=He(t),o=St(e),s=[Si(o),Al(r)];if(n!=null){n===!0&&(n=H.randomBytes(ve));let c=He(n);if(c.length!==ve)throw new Error(`sign: Expected ${ve} bytes of extra data`);s.push(c)}let i=Ze(...s),a=Ai(r);return{seed:i,m:a,d:o}}function Ll(t,e){let{sig:n,recovery:r}=t,{der:o,recovered:s}=Object.assign({canonical:!0,der:!0},e),i=o?n.toDERRawBytes():n.toCompactRawBytes();return s?[i,r]:i}function Li(t,e,n={}){let{seed:r,m:o,d:s}=Sl(t,e,n.extraEntropy),i=new vo(yl,qt);i.reseedSync(r);let a;for(;!(a=Tl(i.generateSync(),o,s,n.canonical));)i.reseedSync();return Ll(a,n)}function _i(t,e,n,r=_l){let o;try{o=ki(t),e=He(e)}catch{return!1}let{r:s,s:i}=o;if(r.strict&&o.hasHighS())return!1;let a=ko(e),c;try{c=To(n)}catch{return!1}let{n:d}=F,u=Xt(i,d),l=x(a*u,d),h=x(s*u,d),p=R.BASE.multiplyAndAddUnsafe(c,l,h);return p?x(p.x,d)===s:!1}function tr(t){return x(he(t),F.n)}function Hl(t){return R.fromPrivateKey(t).toRawX()}async function Bl(t,e,n){return new nr(t,e,n).calc()}function Il(t,e,n){return new nr(t,e,n).calcSync()}function Hi(t,e,n){let r=t instanceof Qe,o=r?t:Qe.fromHex(t);return r&&o.assertValidity(),{...o,m:He(e),P:To(n)}}function Bi(t,e,n,r){let o=R.BASE.multiplyAndAddUnsafe(e,St(n),x(-r,F.n));return!(!o||!o.hasEvenY()||o.x!==t)}async function Ii(t,e,n){try{let{r,s:o,m:s,P:i}=Hi(t,e,n),a=tr(await H.taggedHash(Ve.challenge,Zt(r),i.toRawX(),s));return Bi(r,i,o,a)}catch{return!1}}function Mi(t,e,n){try{let{r,s:o,m:s,P:i}=Hi(t,e,n),a=tr(H.taggedHashSync(Ve.challenge,Zt(r),i.toRawX(),s));return Bi(r,i,o,a)}catch(r){if(r instanceof mn)throw r;return!1}}var gl,O,q,Ye,hn,mi,F,gi,qn,ve,qt,yl,Jn,Qn,Vn,mn,D,Eo,R,ge,wl,xl,Kt,pn,vo,_l,Qe,nr,Lt,fe,Ve,Yn,H,Ne=$(()=>{gl=Ke(pi(),1);O=BigInt(0),q=BigInt(1),Ye=BigInt(2),hn=BigInt(3),mi=BigInt(8),F=Object.freeze({a:O,b:BigInt(7),P:BigInt("0xfffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2f"),n:BigInt("0xfffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141"),h:q,Gx:BigInt("55066263022277343669578718895168534326250603453777594175500187360389116729240"),Gy:BigInt("32670510020758816978083085130507043184471273380659243275938904335757337482424"),beta:BigInt("0x7ae96a2b657c07106e64479eac3434e99cf0497512f58995c1396c28719501ee")}),gi=(t,e)=>(t+e/Ye)/e,qn={beta:BigInt("0x7ae96a2b657c07106e64479eac3434e99cf0497512f58995c1396c28719501ee"),splitScalar(t){let{n:e}=F,n=BigInt("0x3086d221a7d46bcde86c90e49284eb15"),r=-q*BigInt("0xe4437ed6010e88286f547fa90abfe4c3"),o=BigInt("0x114ca50f7a8e2f3f657c1108d9d44cfd8"),s=n,i=BigInt("0x100000000000000000000000000000000"),a=gi(s*t,e),c=gi(-r*t,e),d=x(t-a*n-c*o,e),u=x(-a*r-c*s,e),l=d>i,h=u>i;if(l&&(d=e-d),h&&(u=e-u),d>i||u>i)throw new Error("splitScalarEndo: Endomorphism failed, k="+t);return{k1neg:l,k1:d,k2neg:h,k2:u}}},ve=32,qt=32,yl=32,Jn=ve+1,Qn=2*ve+1;Vn=F.a===O,mn=class extends Error{constructor(e){super(e)}};D=class{constructor(e,n,r){this.x=e,this.y=n,this.z=r}static fromAffine(e){if(!(e instanceof R))throw new TypeError("JacobianPoint#fromAffine: expected Point");return e.equals(R.ZERO)?D.ZERO:new D(e.x,e.y,q)}static toAffineBatch(e){let n=vl(e.map(r=>r.z));return e.map((r,o)=>r.toAffine(n[o]))}static normalizeZ(e){return D.toAffineBatch(e).map(D.fromAffine)}equals(e){bi(e);let{x:n,y:r,z:o}=this,{x:s,y:i,z:a}=e,c=x(o*o),d=x(a*a),u=x(n*d),l=x(s*c),h=x(x(r*a)*d),p=x(x(i*o)*c);return u===l&&h===p}negate(){return new D(this.x,x(-this.y),this.z)}double(){let{x:e,y:n,z:r}=this,o=x(e*e),s=x(n*n),i=x(s*s),a=e+s,c=x(Ye*(x(a*a)-o-i)),d=x(hn*o),u=x(d*d),l=x(u-Ye*c),h=x(d*(c-l)-mi*i),p=x(Ye*n*r);return new D(l,h,p)}add(e){bi(e);let{x:n,y:r,z:o}=this,{x:s,y:i,z:a}=e;if(s===O||i===O)return this;if(n===O||r===O)return e;let c=x(o*o),d=x(a*a),u=x(n*d),l=x(s*c),h=x(x(r*a)*d),p=x(x(i*o)*c),m=x(l-u),y=x(p-h);if(m===O)return y===O?this.double():D.ZERO;let w=x(m*m),T=x(m*w),L=x(u*w),g=x(y*y-T-Ye*L),B=x(y*(L-g)-h*T),v=x(o*a*m);return new D(g,B,v)}subtract(e){return this.add(e.negate())}multiplyUnsafe(e){let n=D.ZERO;if(typeof e=="bigint"&&e===O)return n;let r=Ei(e);if(r===q)return this;if(!Vn){let l=n,h=this;for(;r>O;)r&q&&(l=l.add(h)),h=h.double(),r>>=q;return l}let{k1neg:o,k1:s,k2neg:i,k2:a}=qn.splitScalar(r),c=n,d=n,u=this;for(;s>O||a>O;)s&q&&(c=c.add(u)),a&q&&(d=d.add(u)),u=u.double(),s>>=q,a>>=q;return o&&(c=c.negate()),i&&(d=d.negate()),d=new D(x(d.x*qn.beta),d.y,d.z),c.add(d)}precomputeWindow(e){let n=Vn?128/e+1:256/e+1,r=[],o=this,s=o;for(let i=0;i<n;i++){s=o,r.push(s);for(let a=1;a<2**(e-1);a++)s=s.add(o),r.push(s);o=s.double()}return r}wNAF(e,n){!n&&this.equals(D.BASE)&&(n=R.BASE);let r=n&&n._WINDOW_SIZE||1;if(256%r)throw new Error("Point#wNAF: Invalid precomputation window, must be power of 2");let o=n&&Eo.get(n);o||(o=this.precomputeWindow(r),n&&r!==1&&(o=D.normalizeZ(o),Eo.set(n,o)));let s=D.ZERO,i=D.BASE,a=1+(Vn?128/r:256/r),c=2**(r-1),d=BigInt(2**r-1),u=2**r,l=BigInt(r);for(let h=0;h<a;h++){let p=h*c,m=Number(e&d);e>>=l,m>c&&(m-=u,e+=q);let y=p,w=p+Math.abs(m)-1,T=h%2!==0,L=m<0;m===0?i=i.add(Zn(T,o[y])):s=s.add(Zn(L,o[w]))}return{p:s,f:i}}multiply(e,n){let r=Ei(e),o,s;if(Vn){let{k1neg:i,k1:a,k2neg:c,k2:d}=qn.splitScalar(r),{p:u,f:l}=this.wNAF(a,n),{p:h,f:p}=this.wNAF(d,n);u=Zn(i,u),h=Zn(c,h),h=new D(x(h.x*qn.beta),h.y,h.z),o=u.add(h),s=l.add(p)}else{let{p:i,f:a}=this.wNAF(r,n);o=i,s=a}return D.normalizeZ([o,s])[0]}toAffine(e){let{x:n,y:r,z:o}=this,s=this.equals(D.ZERO);e==null&&(e=s?mi:Xt(o));let i=e,a=x(i*i),c=x(a*i),d=x(n*a),u=x(r*c),l=x(o*i);if(s)return R.ZERO;if(l!==q)throw new Error("invZ was invalid");return new R(d,u)}};D.BASE=new D(F.Gx,F.Gy,q);D.ZERO=new D(O,q,O);Eo=new WeakMap,R=class{constructor(e,n){this.x=e,this.y=n}_setWindowSize(e){this._WINDOW_SIZE=e,Eo.delete(this)}hasEvenY(){return this.y%Ye===O}static fromCompressedHex(e){let n=e.length===32,r=he(n?e:e.subarray(1));if(!Xn(r))throw new Error("Point is not on curve");let o=yi(r),s=El(o),i=(s&q)===q;n?i&&(s=x(-s)):(e[0]&1)===1!==i&&(s=x(-s));let a=new R(r,s);return a.assertValidity(),a}static fromUncompressedHex(e){let n=he(e.subarray(1,ve+1)),r=he(e.subarray(ve+1,ve*2+1)),o=new R(n,r);return o.assertValidity(),o}static fromHex(e){let n=He(e),r=n.length,o=n[0];if(r===ve)return this.fromCompressedHex(n);if(r===Jn&&(o===2||o===3))return this.fromCompressedHex(n);if(r===Qn&&o===4)return this.fromUncompressedHex(n);throw new Error(`Point.fromHex: received invalid point. Expected 32-${Jn} compressed bytes or ${Qn} uncompressed bytes, not ${r}`)}static fromPrivateKey(e){return R.BASE.multiply(St(e))}static fromSignature(e,n,r){let{r:o,s}=ki(n);if(![0,1,2,3].includes(r))throw new Error("Cannot recover: invalid recovery bit");let i=ko(He(e)),{n:a}=F,c=r===2||r===3?o+a:o,d=Xt(c,a),u=x(-i*d,a),l=x(s*d,a),h=r&1?"03":"02",p=R.fromHex(h+Xe(c)),m=R.BASE.multiplyAndAddUnsafe(p,u,l);if(!m)throw new Error("Cannot recover signature: point at infinify");return m.assertValidity(),m}toRawBytes(e=!1){return Je(this.toHex(e))}toHex(e=!1){let n=Xe(this.x);return e?`${this.hasEvenY()?"02":"03"}${n}`:`04${n}${Xe(this.y)}`}toHexX(){return this.toHex(!0).slice(2)}toRawX(){return this.toRawBytes(!0).slice(1)}assertValidity(){let e="Point is not on elliptic curve",{x:n,y:r}=this;if(!Xn(n)||!Xn(r))throw new Error(e);let o=x(r*r),s=yi(n);if(x(o-s)!==O)throw new Error(e)}equals(e){return this.x===e.x&&this.y===e.y}negate(){return new R(this.x,x(-this.y))}double(){return D.fromAffine(this).double().toAffine()}add(e){return D.fromAffine(this).add(D.fromAffine(e)).toAffine()}subtract(e){return this.add(e.negate())}multiply(e){return D.fromAffine(this).multiply(e,this).toAffine()}multiplyAndAddUnsafe(e,n,r){let o=D.fromAffine(this),s=n===O||n===q||this!==R.BASE?o.multiplyUnsafe(n):o.multiply(n),i=D.fromAffine(e).multiplyUnsafe(r),a=s.add(i);return a.equals(D.ZERO)?void 0:a.toAffine()}};R.BASE=new R(F.Gx,F.Gy);R.ZERO=new R(O,O);ge=class{constructor(e,n){this.r=e,this.s=n,this.assertValidity()}static fromCompact(e){let n=e instanceof Uint8Array,r="Signature.fromCompact";if(typeof e!="string"&&!n)throw new TypeError(`${r}: Expected string or Uint8Array`);let o=n?Vt(e):e;if(o.length!==128)throw new Error(`${r}: Expected 64-byte hex`);return new ge(er(o.slice(0,64)),er(o.slice(64,128)))}static fromDER(e){let n=e instanceof Uint8Array;if(typeof e!="string"&&!n)throw new TypeError("Signature.fromDER: Expected string or Uint8Array");let{r,s:o}=bl(n?e:Je(e));return new ge(r,o)}static fromHex(e){return this.fromDER(e)}assertValidity(){let{r:e,s:n}=this;if(!Yt(e))throw new Error("Invalid Signature: r must be 0 < r < n");if(!Yt(n))throw new Error("Invalid Signature: s must be 0 < s < n")}hasHighS(){let e=F.n>>q;return this.s>e}normalizeS(){return this.hasHighS()?new ge(this.r,x(-this.s,F.n)):this}toDERRawBytes(){return Je(this.toDERHex())}toDERHex(){let e=wi(fn(this.s)),n=wi(fn(this.r)),r=e.length/2,o=n.length/2,s=fn(r),i=fn(o);return`30${fn(o+r+4)}02${i}${n}02${s}${e}`}toRawBytes(){return this.toDERRawBytes()}toHex(){return this.toDERHex()}toCompactRawBytes(){return Je(this.toCompactHex())}toCompactHex(){return Xe(this.r)+Xe(this.s)}};wl=Array.from({length:256},(t,e)=>e.toString(16).padStart(2,"0"));xl=BigInt("0x10000000000000000000000000000000000000000000000000000000000000000");vo=class{constructor(e,n){if(this.hashLen=e,this.qByteLen=n,typeof e!="number"||e<2)throw new Error("hashLen must be a number");if(typeof n!="number"||n<2)throw new Error("qByteLen must be a number");this.v=new Uint8Array(e).fill(1),this.k=new Uint8Array(e).fill(0),this.counter=0}hmac(...e){return H.hmacSha256(this.k,...e)}hmacSync(...e){return pn(this.k,...e)}checkSync(){if(typeof pn!="function")throw new mn("hmacSha256Sync needs to be set")}incr(){if(this.counter>=1e3)throw new Error("Tried 1,000 k values for sign(), all were invalid");this.counter+=1}async reseed(e=new Uint8Array){this.k=await this.hmac(this.v,Uint8Array.from([0]),e),this.v=await this.hmac(this.v),e.length!==0&&(this.k=await this.hmac(this.v,Uint8Array.from([1]),e),this.v=await this.hmac(this.v))}reseedSync(e=new Uint8Array){this.checkSync(),this.k=this.hmacSync(this.v,Uint8Array.from([0]),e),this.v=this.hmacSync(this.v),e.length!==0&&(this.k=this.hmacSync(this.v,Uint8Array.from([1]),e),this.v=this.hmacSync(this.v))}async generate(){this.incr();let e=0,n=[];for(;e<this.qByteLen;){this.v=await this.hmac(this.v);let r=this.v.slice();n.push(r),e+=this.v.length}return Ze(...n)}generateSync(){this.checkSync(),this.incr();let e=0,n=[];for(;e<this.qByteLen;){this.v=this.hmacSync(this.v);let r=this.v.slice();n.push(r),e+=this.v.length}return Ze(...n)}};_l={strict:!0};Qe=class{constructor(e,n){this.r=e,this.s=n,this.assertValidity()}static fromHex(e){let n=He(e);if(n.length!==64)throw new TypeError(`SchnorrSignature.fromHex: expected 64 bytes, not ${n.length}`);let r=he(n.subarray(0,32)),o=he(n.subarray(32,64));return new Qe(r,o)}assertValidity(){let{r:e,s:n}=this;if(!Xn(e)||!Yt(n))throw new Error("Invalid signature")}toHex(){return Xe(this.r)+Xe(this.s)}toRawBytes(){return Je(this.toHex())}};nr=class{constructor(e,n,r=H.randomBytes()){if(e==null)throw new TypeError(`sign: Expected valid message, not "${e}"`);this.m=He(e);let{x:o,scalar:s}=this.getScalar(St(n));if(this.px=o,this.d=s,this.rand=He(r),this.rand.length!==32)throw new TypeError("sign: Expected 32 bytes of aux randomness")}getScalar(e){let n=R.fromPrivateKey(e),r=n.hasEvenY()?e:F.n-e;return{point:n,scalar:r,x:n.toRawX()}}initNonce(e,n){return Zt(e^he(n))}finalizeNonce(e){let n=x(he(e),F.n);if(n===O)throw new Error("sign: Creation of signature failed. k is zero");let{point:r,x:o,scalar:s}=this.getScalar(n);return{R:r,rx:o,k:s}}finalizeSig(e,n,r,o){return new Qe(e.x,x(n+r*o,F.n)).toRawBytes()}error(){throw new Error("sign: Invalid signature produced")}async calc(){let{m:e,d:n,px:r,rand:o}=this,s=H.taggedHash,i=this.initNonce(n,await s(Ve.aux,o)),{R:a,rx:c,k:d}=this.finalizeNonce(await s(Ve.nonce,i,r,e)),u=tr(await s(Ve.challenge,c,r,e)),l=this.finalizeSig(a,d,u,n);return await Ii(l,e,r)||this.error(),l}calcSync(){let{m:e,d:n,px:r,rand:o}=this,s=H.taggedHashSync,i=this.initNonce(n,s(Ve.aux,o)),{R:a,rx:c,k:d}=this.finalizeNonce(s(Ve.nonce,i,r,e)),u=tr(s(Ve.challenge,c,r,e)),l=this.finalizeSig(a,d,u,n);return Mi(l,e,r)||this.error(),l}};Lt={Signature:Qe,getPublicKey:Hl,sign:Bl,verify:Ii,signSync:Il,verifySync:Mi};R.BASE._setWindowSize(8);fe={node:gl,web:typeof self=="object"&&"crypto"in self?self.crypto:void 0},Ve={challenge:"BIP0340/challenge",aux:"BIP0340/aux",nonce:"BIP0340/nonce"},Yn={},H={bytesToHex:Vt,hexToBytes:Je,concatBytes:Ze,mod:x,invert:Xt,isValidPrivateKey(t){try{return St(t),!0}catch{return!1}},_bigintTo32Bytes:Zt,_normalizePrivateKey:St,hashToPrivateKey:t=>{t=He(t);let e=qt+8;if(t.length<e||t.length>1024)throw new Error("Expected valid bytes of private key as per FIPS 186");let n=x(he(t),F.n-q)+q;return Zt(n)},randomBytes:(t=32)=>{if(fe.web)return fe.web.getRandomValues(new Uint8Array(t));if(fe.node){let{randomBytes:e}=fe.node;return Uint8Array.from(e(t))}else throw new Error("The environment doesn't have randomBytes function")},randomPrivateKey:()=>H.hashToPrivateKey(H.randomBytes(qt+8)),precompute(t=8,e=R.BASE){let n=e===R.BASE?e:new R(e.x,e.y);return n._setWindowSize(t),n.multiply(hn),n},sha256:async(...t)=>{if(fe.web){let e=await fe.web.subtle.digest("SHA-256",Ze(...t));return new Uint8Array(e)}else if(fe.node){let{createHash:e}=fe.node,n=e("sha256");return t.forEach(r=>n.update(r)),Uint8Array.from(n.digest())}else throw new Error("The environment doesn't have sha256 function")},hmacSha256:async(t,...e)=>{if(fe.web){let n=await fe.web.subtle.importKey("raw",t,{name:"HMAC",hash:{name:"SHA-256"}},!1,["sign"]),r=Ze(...e),o=await fe.web.subtle.sign("HMAC",n,r);return new Uint8Array(o)}else if(fe.node){let{createHmac:n}=fe.node,r=n("sha256",t);return e.forEach(o=>r.update(o)),Uint8Array.from(r.digest())}else throw new Error("The environment doesn't have hmac-sha256 function")},sha256Sync:void 0,hmacSha256Sync:void 0,taggedHash:async(t,...e)=>{let n=Yn[t];if(n===void 0){let r=await H.sha256(Uint8Array.from(t,o=>o.charCodeAt(0)));n=Ze(r,r),Yn[t]=n}return H.sha256(n,...e)},taggedHashSync:(t,...e)=>{if(typeof Kt!="function")throw new mn("sha256Sync is undefined, you need to set it");let n=Yn[t];if(n===void 0){let r=Kt(Uint8Array.from(t,o=>o.charCodeAt(0)));n=Ze(r,r),Yn[t]=n}return Kt(n,...e)},_JacobianPoint:D};Object.defineProperties(H,{sha256Sync:{configurable:!1,get(){return Kt},set(t){Kt||(Kt=t)}},hmacSha256Sync:{configurable:!1,get(){return pn},set(t){pn||(pn=t)}}})});var gn,Ci=$(()=>{gn={node:void 0,web:typeof self=="object"&&"crypto"in self?self.crypto:void 0}});function Cl(t){if(typeof t!="string")throw new TypeError(`utf8ToBytes expected string, got ${typeof t}`);return new TextEncoder().encode(t)}function yn(t){if(typeof t=="string"&&(t=Cl(t)),!(t instanceof Uint8Array))throw new TypeError(`Expected input type is Uint8Array (got ${typeof t})`);return t}function Ui(t){if(!Number.isSafeInteger(t)||t<0)throw new Error(`Wrong positive integer: ${t}`)}function Ri(t){if(typeof t!="function"||typeof t.create!="function")throw new Error("Hash should be wrapped by utils.wrapConstructor");Ui(t.outputLen),Ui(t.blockLen)}function $i(t){let e=r=>t().update(yn(r)).digest(),n=t();return e.outputLen=n.outputLen,e.blockLen=n.blockLen,e.create=()=>t(),e}function Oi(t=32){if(gn.web)return gn.web.getRandomValues(new Uint8Array(t));if(gn.node)return new Uint8Array(gn.node.randomBytes(t).buffer);throw new Error("The environment doesn't have randomBytes function")}var rr,ke,Ml,Ih,Mh,_t,bn=$(()=>{Ci();rr=t=>new DataView(t.buffer,t.byteOffset,t.byteLength),ke=(t,e)=>t<<32-e|t>>>e,Ml=new Uint8Array(new Uint32Array([287454020]).buffer)[0]===68;if(!Ml)throw new Error("Non little-endian hardware is not supported");Ih=Array.from({length:256},(t,e)=>e.toString(16).padStart(2,"0")),Mh=(()=>{let t=typeof module<"u"&&typeof module.require=="function"&&module.require.bind(module);try{if(t){let{setImmediate:e}=t("timers");return()=>new Promise(n=>e(n))}}catch{}return()=>new Promise(e=>setTimeout(e,0))})();_t=class{clone(){return this._cloneInto()}}});function Ul(t,e,n,r){if(typeof t.setBigUint64=="function")return t.setBigUint64(e,n,r);let o=BigInt(32),s=BigInt(4294967295),i=Number(n>>o&s),a=Number(n&s),c=r?4:0,d=r?0:4;t.setUint32(e+c,i,r),t.setUint32(e+d,a,r)}var or,Di=$(()=>{bn();or=class extends _t{constructor(e,n,r,o){super(),this.blockLen=e,this.outputLen=n,this.padOffset=r,this.isLE=o,this.finished=!1,this.length=0,this.pos=0,this.destroyed=!1,this.buffer=new Uint8Array(e),this.view=rr(this.buffer)}update(e){if(this.destroyed)throw new Error("instance is destroyed");let{view:n,buffer:r,blockLen:o,finished:s}=this;if(s)throw new Error("digest() was already called");e=yn(e);let i=e.length;for(let a=0;a<i;){let c=Math.min(o-this.pos,i-a);if(c===o){let d=rr(e);for(;o<=i-a;a+=o)this.process(d,a);continue}r.set(e.subarray(a,a+c),this.pos),this.pos+=c,a+=c,this.pos===o&&(this.process(n,0),this.pos=0)}return this.length+=e.length,this.roundClean(),this}digestInto(e){if(this.destroyed)throw new Error("instance is destroyed");if(!(e instanceof Uint8Array)||e.length<this.outputLen)throw new Error("_Sha2: Invalid output buffer");if(this.finished)throw new Error("digest() was already called");this.finished=!0;let{buffer:n,view:r,blockLen:o,isLE:s}=this,{pos:i}=this;n[i++]=128,this.buffer.subarray(i).fill(0),this.padOffset>o-i&&(this.process(r,0),i=0);for(let c=i;c<o;c++)n[c]=0;Ul(r,o-8,BigInt(this.length*8),s),this.process(r,0);let a=rr(e);this.get().forEach((c,d)=>a.setUint32(4*d,c,s))}digest(){let{buffer:e,outputLen:n}=this;this.digestInto(e);let r=e.slice(0,n);return this.destroy(),r}_cloneInto(e){e||(e=new this.constructor),e.set(...this.get());let{blockLen:n,buffer:r,length:o,finished:s,destroyed:i,pos:a}=this;return e.length=o,e.pos=a,e.finished=s,e.destroyed=i,o%n&&e.buffer.set(r),e}}});var Rl,$l,Ol,tt,nt,So,rt,sr=$(()=>{Di();bn();Rl=(t,e,n)=>t&e^~t&n,$l=(t,e,n)=>t&e^t&n^e&n,Ol=new Uint32Array([1116352408,1899447441,3049323471,3921009573,961987163,1508970993,2453635748,2870763221,3624381080,310598401,607225278,1426881987,1925078388,2162078206,2614888103,3248222580,3835390401,4022224774,264347078,604807628,770255983,1249150122,1555081692,1996064986,2554220882,2821834349,2952996808,3210313671,3336571891,3584528711,113926993,338241895,666307205,773529912,1294757372,1396182291,1695183700,1986661051,2177026350,2456956037,2730485921,2820302411,3259730800,3345764771,3516065817,3600352804,4094571909,275423344,430227734,506948616,659060556,883997877,958139571,1322822218,1537002063,1747873779,1955562222,2024104815,2227730452,2361852424,2428436474,2756734187,3204031479,3329325298]),tt=new Uint32Array([1779033703,3144134277,1013904242,2773480762,1359893119,2600822924,528734635,1541459225]),nt=new Uint32Array(64),So=class extends or{constructor(){super(64,32,8,!1),this.A=tt[0]|0,this.B=tt[1]|0,this.C=tt[2]|0,this.D=tt[3]|0,this.E=tt[4]|0,this.F=tt[5]|0,this.G=tt[6]|0,this.H=tt[7]|0}get(){let{A:e,B:n,C:r,D:o,E:s,F:i,G:a,H:c}=this;return[e,n,r,o,s,i,a,c]}set(e,n,r,o,s,i,a,c){this.A=e|0,this.B=n|0,this.C=r|0,this.D=o|0,this.E=s|0,this.F=i|0,this.G=a|0,this.H=c|0}process(e,n){for(let l=0;l<16;l++,n+=4)nt[l]=e.getUint32(n,!1);for(let l=16;l<64;l++){let h=nt[l-15],p=nt[l-2],m=ke(h,7)^ke(h,18)^h>>>3,y=ke(p,17)^ke(p,19)^p>>>10;nt[l]=y+nt[l-7]+m+nt[l-16]|0}let{A:r,B:o,C:s,D:i,E:a,F:c,G:d,H:u}=this;for(let l=0;l<64;l++){let h=ke(a,6)^ke(a,11)^ke(a,25),p=u+h+Rl(a,c,d)+Ol[l]+nt[l]|0,y=(ke(r,2)^ke(r,13)^ke(r,22))+$l(r,o,s)|0;u=d,d=c,c=a,a=i+p|0,i=s,s=o,o=r,r=p+y|0}r=r+this.A|0,o=o+this.B|0,s=s+this.C|0,i=i+this.D|0,a=a+this.E|0,c=c+this.F|0,d=d+this.G|0,u=u+this.H|0,this.set(r,o,s,i,a,c,d,u)}roundClean(){nt.fill(0)}destroy(){this.set(0,0,0,0,0,0,0,0),this.buffer.fill(0)}},rt=$i(()=>new So)});function Ht(t){if(!Number.isSafeInteger(t))throw new Error(`Wrong integer: ${t}`)}function Be(...t){let e=(o,s)=>i=>o(s(i)),n=Array.from(t).reverse().reduce((o,s)=>o?e(o,s.encode):s.encode,void 0),r=t.reduce((o,s)=>o?e(o,s.decode):s.decode,void 0);return{encode:n,decode:r}}function Pe(t){return{encode:e=>{if(!Array.isArray(e)||e.length&&typeof e[0]!="number")throw new Error("alphabet.encode input should be an array of numbers");return e.map(n=>{if(Ht(n),n<0||n>=t.length)throw new Error(`Digit index outside alphabet: ${n} (alphabet: ${t.length})`);return t[n]})},decode:e=>{if(!Array.isArray(e)||e.length&&typeof e[0]!="string")throw new Error("alphabet.decode input should be array of strings");return e.map(n=>{if(typeof n!="string")throw new Error(`alphabet.decode: not string element=${n}`);let r=t.indexOf(n);if(r===-1)throw new Error(`Unknown letter: "${n}". Allowed: ${t}`);return r})}}}function Fe(t=""){if(typeof t!="string")throw new Error("join separator should be string");return{encode:e=>{if(!Array.isArray(e)||e.length&&typeof e[0]!="string")throw new Error("join.encode input should be array of strings");for(let n of e)if(typeof n!="string")throw new Error(`join.encode: non-string input=${n}`);return e.join(t)},decode:e=>{if(typeof e!="string")throw new Error("join.decode input should be string");return e.split(t)}}}function cr(t,e="="){if(Ht(t),typeof e!="string")throw new Error("padding chr should be string");return{encode(n){if(!Array.isArray(n)||n.length&&typeof n[0]!="string")throw new Error("padding.encode input should be array of strings");for(let r of n)if(typeof r!="string")throw new Error(`padding.encode: non-string input=${r}`);for(;n.length*t%8;)n.push(e);return n},decode(n){if(!Array.isArray(n)||n.length&&typeof n[0]!="string")throw new Error("padding.encode input should be array of strings");for(let o of n)if(typeof o!="string")throw new Error(`padding.decode: non-string input=${o}`);let r=n.length;if(r*t%8)throw new Error("Invalid padding: string should have whole number of bytes");for(;r>0&&n[r-1]===e;r--)if(!((r-1)*t%8))throw new Error("Invalid padding: string has too much padding");return n.slice(0,r)}}}function Wi(t){if(typeof t!="function")throw new Error("normalize fn should be function");return{encode:e=>e,decode:e=>t(e)}}function Ni(t,e,n){if(e<2)throw new Error(`convertRadix: wrong from=${e}, base cannot be less than 2`);if(n<2)throw new Error(`convertRadix: wrong to=${n}, base cannot be less than 2`);if(!Array.isArray(t))throw new Error("convertRadix: data should be array");if(!t.length)return[];let r=0,o=[],s=Array.from(t);for(s.forEach(i=>{if(Ht(i),i<0||i>=e)throw new Error(`Wrong integer: ${i}`)});;){let i=0,a=!0;for(let c=r;c<s.length;c++){let d=s[c],u=e*i+d;if(!Number.isSafeInteger(u)||e*i/e!==i||u-d!==e*i)throw new Error("convertRadix: carry overflow");if(i=u%n,s[c]=Math.floor(u/n),!Number.isSafeInteger(s[c])||s[c]*n+i!==u)throw new Error("convertRadix: carry overflow");if(a)s[c]?a=!1:r=c;else continue}if(o.push(i),a)break}for(let i=0;i<t.length-1&&t[i]===0;i++)o.push(0);return o.reverse()}function Lo(t,e,n,r){if(!Array.isArray(t))throw new Error("convertRadix2: data should be array");if(e<=0||e>32)throw new Error(`convertRadix2: wrong from=${e}`);if(n<=0||n>32)throw new Error(`convertRadix2: wrong to=${n}`);if(ir(e,n)>32)throw new Error(`convertRadix2: carry overflow from=${e} to=${n} carryBits=${ir(e,n)}`);let o=0,s=0,i=2**n-1,a=[];for(let c of t){if(Ht(c),c>=2**e)throw new Error(`convertRadix2: invalid data word=${c} from=${e}`);if(o=o<<e|c,s+e>32)throw new Error(`convertRadix2: carry overflow pos=${s} from=${e}`);for(s+=e;s>=n;s-=n)a.push((o>>s-n&i)>>>0);o&=2**s-1}if(o=o<<n-s&i,!r&&s>=e)throw new Error("Excess padding");if(!r&&o)throw new Error(`Non-zero padding: ${o}`);return r&&s>0&&a.push(o>>>0),a}function Dl(t){return Ht(t),{encode:e=>{if(!(e instanceof Uint8Array))throw new Error("radix.encode input should be Uint8Array");return Ni(Array.from(e),2**8,t)},decode:e=>{if(!Array.isArray(e)||e.length&&typeof e[0]!="number")throw new Error("radix.decode input should be array of strings");return Uint8Array.from(Ni(e,t,2**8))}}}function ot(t,e=!1){if(Ht(t),t<=0||t>32)throw new Error("radix2: bits should be in (0..32]");if(ir(8,t)>32||ir(t,8)>32)throw new Error("radix2: carry overflow");return{encode:n=>{if(!(n instanceof Uint8Array))throw new Error("radix2.encode input should be Uint8Array");return Lo(Array.from(n),8,t,!e)},decode:n=>{if(!Array.isArray(n)||n.length&&typeof n[0]!="number")throw new Error("radix2.decode input should be array of strings");return Uint8Array.from(Lo(n,t,8,e))}}}function Pi(t){if(typeof t!="function")throw new Error("unsafeWrapper fn should be function");return function(...e){try{return t.apply(null,e)}catch{}}}function Nl(t,e){if(Ht(t),typeof e!="function")throw new Error("checksum fn should be function");return{encode(n){if(!(n instanceof Uint8Array))throw new Error("checksum.encode: input should be Uint8Array");let r=e(n).slice(0,t),o=new Uint8Array(n.length+t);return o.set(n),o.set(r,n.length),o},decode(n){if(!(n instanceof Uint8Array))throw new Error("checksum.decode: input should be Uint8Array");let r=n.slice(0,-t),o=e(r).slice(0,t),s=n.slice(-t);for(let i=0;i<t;i++)if(o[i]!==s[i])throw new Error("Invalid checksum");return r}}}function wn(t){let e=t>>25,n=(t&33554431)<<5;for(let r=0;r<ji.length;r++)(e>>r&1)===1&&(n^=ji[r]);return n}function zi(t,e,n=1){let r=t.length,o=1;for(let s=0;s<r;s++){let i=t.charCodeAt(s);if(i<33||i>126)throw new Error(`Invalid prefix (${t})`);o=wn(o)^i>>5}o=wn(o);for(let s=0;s<r;s++)o=wn(o)^t.charCodeAt(s)&31;for(let s of e)o=wn(o)^s;for(let s=0;s<6;s++)o=wn(o);return o^=n,_o.encode(Lo([o%2**30],30,5,!1))}function qi(t){let e=t==="bech32"?1:734539939,n=ot(5),r=n.decode,o=n.encode,s=Pi(r);function i(u,l,h=90){if(typeof u!="string")throw new Error(`bech32.encode prefix should be string, not ${typeof u}`);if(!Array.isArray(l)||l.length&&typeof l[0]!="number")throw new Error(`bech32.encode words should be array of numbers, not ${typeof l}`);let p=u.length+7+l.length;if(h!==!1&&p>h)throw new TypeError(`Length ${p} exceeds limit ${h}`);return u=u.toLowerCase(),`${u}1${_o.encode(l)}${zi(u,l,e)}`}function a(u,l=90){if(typeof u!="string")throw new Error(`bech32.decode input should be string, not ${typeof u}`);if(u.length<8||l!==!1&&u.length>l)throw new TypeError(`Wrong string length: ${u.length} (${u}). Expected (8..${l})`);let h=u.toLowerCase();if(u!==h&&u!==u.toUpperCase())throw new Error("String must be lowercase or uppercase");u=h;let p=u.lastIndexOf("1");if(p===0||p===-1)throw new Error('Letter "1" must be present between prefix and data only');let m=u.slice(0,p),y=u.slice(p+1);if(y.length<6)throw new Error("Data must be at least 6 characters long");let w=_o.decode(y).slice(0,-6),T=zi(m,w,e);if(!y.endsWith(T))throw new Error(`Invalid checksum in ${u}: expected "${T}"`);return{prefix:m,words:w}}let c=Pi(a);function d(u){let{prefix:l,words:h}=a(u,!1);return{prefix:l,words:h,bytes:r(h)}}return{encode:i,decode:a,decodeToBytes:d,decodeUnsafe:c,fromWords:r,fromWordsUnsafe:s,toWords:o}}var Gi,ir,Pl,Fl,Nh,Ph,Jt,jl,Ho,ar,Fh,jh,Fi,zl,Ki,_o,ji,le,zh,Wl,Gl,Kl,Wh,xn=$(()=>{Gi=(t,e)=>e?Gi(e,t%e):t,ir=(t,e)=>t+(e-Gi(t,e));Pl=Be(ot(4),Pe("0123456789ABCDEF"),Fe("")),Fl=Be(ot(5),Pe("ABCDEFGHIJKLMNOPQRSTUVWXYZ234567"),cr(5),Fe("")),Nh=Be(ot(5),Pe("0123456789ABCDEFGHIJKLMNOPQRSTUV"),cr(5),Fe("")),Ph=Be(ot(5),Pe("0123456789ABCDEFGHJKMNPQRSTVWXYZ"),Fe(""),Wi(t=>t.toUpperCase().replace(/O/g,"0").replace(/[IL]/g,"1"))),Jt=Be(ot(6),Pe("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"),cr(6),Fe("")),jl=Be(ot(6),Pe("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_"),cr(6),Fe("")),Ho=t=>Be(Dl(58),Pe(t),Fe("")),ar=Ho("123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"),Fh=Ho("123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ"),jh=Ho("rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz"),Fi=[0,2,3,5,6,7,9,10,11],zl={encode(t){let e="";for(let n=0;n<t.length;n+=8){let r=t.subarray(n,n+8);e+=ar.encode(r).padStart(Fi[r.length],"1")}return e},decode(t){let e=[];for(let n=0;n<t.length;n+=11){let r=t.slice(n,n+11),o=Fi.indexOf(r.length),s=ar.decode(r);for(let i=0;i<s.length-o;i++)if(s[i]!==0)throw new Error("base58xmr: wrong padding");e=e.concat(Array.from(s.slice(s.length-o)))}return Uint8Array.from(e)}},Ki=t=>Be(Nl(4,e=>t(t(e))),ar),_o=Be(Pe("qpzry9x8gf2tvdw0s3jn54khce6mua7l"),Fe("")),ji=[996825010,642813549,513874426,1027748829,705979059];le=qi("bech32"),zh=qi("bech32m"),Wl={encode:t=>new TextDecoder().decode(t),decode:t=>new TextEncoder().encode(t)},Gl=Be(ot(4),Pe("0123456789abcdef"),Fe(""),Wi(t=>{if(typeof t!="string"||t.length%2)throw new TypeError(`hex.decode: expected string, got ${typeof t} with length ${t.length}`);return t.toLowerCase()})),Kl={utf8:Wl,hex:Gl,base16:Pl,base32:Fl,base64:Jt,base64url:jl,base58:ar,base58xmr:zl},Wh=`Invalid encoding type. Available types: ${Object.keys(Kl).join(", ")}`});var Vi=ie(lr=>{"use strict";Object.defineProperty(lr,"__esModule",{value:!0});lr.wordlist=void 0;lr.wordlist=`abandon
+ability
+able
+about
+above
+absent
+absorb
+abstract
+absurd
+abuse
+access
+accident
+account
+accuse
+achieve
+acid
+acoustic
+acquire
+across
+act
+action
+actor
+actress
+actual
+adapt
+add
+addict
+address
+adjust
+admit
+adult
+advance
+advice
+aerobic
+affair
+afford
+afraid
+again
+age
+agent
+agree
+ahead
+aim
+air
+airport
+aisle
+alarm
+album
+alcohol
+alert
+alien
+all
+alley
+allow
+almost
+alone
+alpha
+already
+also
+alter
+always
+amateur
+amazing
+among
+amount
+amused
+analyst
+anchor
+ancient
+anger
+angle
+angry
+animal
+ankle
+announce
+annual
+another
+answer
+antenna
+antique
+anxiety
+any
+apart
+apology
+appear
+apple
+approve
+april
+arch
+arctic
+area
+arena
+argue
+arm
+armed
+armor
+army
+around
+arrange
+arrest
+arrive
+arrow
+art
+artefact
+artist
+artwork
+ask
+aspect
+assault
+asset
+assist
+assume
+asthma
+athlete
+atom
+attack
+attend
+attitude
+attract
+auction
+audit
+august
+aunt
+author
+auto
+autumn
+average
+avocado
+avoid
+awake
+aware
+away
+awesome
+awful
+awkward
+axis
+baby
+bachelor
+bacon
+badge
+bag
+balance
+balcony
+ball
+bamboo
+banana
+banner
+bar
+barely
+bargain
+barrel
+base
+basic
+basket
+battle
+beach
+bean
+beauty
+because
+become
+beef
+before
+begin
+behave
+behind
+believe
+below
+belt
+bench
+benefit
+best
+betray
+better
+between
+beyond
+bicycle
+bid
+bike
+bind
+biology
+bird
+birth
+bitter
+black
+blade
+blame
+blanket
+blast
+bleak
+bless
+blind
+blood
+blossom
+blouse
+blue
+blur
+blush
+board
+boat
+body
+boil
+bomb
+bone
+bonus
+book
+boost
+border
+boring
+borrow
+boss
+bottom
+bounce
+box
+boy
+bracket
+brain
+brand
+brass
+brave
+bread
+breeze
+brick
+bridge
+brief
+bright
+bring
+brisk
+broccoli
+broken
+bronze
+broom
+brother
+brown
+brush
+bubble
+buddy
+budget
+buffalo
+build
+bulb
+bulk
+bullet
+bundle
+bunker
+burden
+burger
+burst
+bus
+business
+busy
+butter
+buyer
+buzz
+cabbage
+cabin
+cable
+cactus
+cage
+cake
+call
+calm
+camera
+camp
+can
+canal
+cancel
+candy
+cannon
+canoe
+canvas
+canyon
+capable
+capital
+captain
+car
+carbon
+card
+cargo
+carpet
+carry
+cart
+case
+cash
+casino
+castle
+casual
+cat
+catalog
+catch
+category
+cattle
+caught
+cause
+caution
+cave
+ceiling
+celery
+cement
+census
+century
+cereal
+certain
+chair
+chalk
+champion
+change
+chaos
+chapter
+charge
+chase
+chat
+cheap
+check
+cheese
+chef
+cherry
+chest
+chicken
+chief
+child
+chimney
+choice
+choose
+chronic
+chuckle
+chunk
+churn
+cigar
+cinnamon
+circle
+citizen
+city
+civil
+claim
+clap
+clarify
+claw
+clay
+clean
+clerk
+clever
+click
+client
+cliff
+climb
+clinic
+clip
+clock
+clog
+close
+cloth
+cloud
+clown
+club
+clump
+cluster
+clutch
+coach
+coast
+coconut
+code
+coffee
+coil
+coin
+collect
+color
+column
+combine
+come
+comfort
+comic
+common
+company
+concert
+conduct
+confirm
+congress
+connect
+consider
+control
+convince
+cook
+cool
+copper
+copy
+coral
+core
+corn
+correct
+cost
+cotton
+couch
+country
+couple
+course
+cousin
+cover
+coyote
+crack
+cradle
+craft
+cram
+crane
+crash
+crater
+crawl
+crazy
+cream
+credit
+creek
+crew
+cricket
+crime
+crisp
+critic
+crop
+cross
+crouch
+crowd
+crucial
+cruel
+cruise
+crumble
+crunch
+crush
+cry
+crystal
+cube
+culture
+cup
+cupboard
+curious
+current
+curtain
+curve
+cushion
+custom
+cute
+cycle
+dad
+damage
+damp
+dance
+danger
+daring
+dash
+daughter
+dawn
+day
+deal
+debate
+debris
+decade
+december
+decide
+decline
+decorate
+decrease
+deer
+defense
+define
+defy
+degree
+delay
+deliver
+demand
+demise
+denial
+dentist
+deny
+depart
+depend
+deposit
+depth
+deputy
+derive
+describe
+desert
+design
+desk
+despair
+destroy
+detail
+detect
+develop
+device
+devote
+diagram
+dial
+diamond
+diary
+dice
+diesel
+diet
+differ
+digital
+dignity
+dilemma
+dinner
+dinosaur
+direct
+dirt
+disagree
+discover
+disease
+dish
+dismiss
+disorder
+display
+distance
+divert
+divide
+divorce
+dizzy
+doctor
+document
+dog
+doll
+dolphin
+domain
+donate
+donkey
+donor
+door
+dose
+double
+dove
+draft
+dragon
+drama
+drastic
+draw
+dream
+dress
+drift
+drill
+drink
+drip
+drive
+drop
+drum
+dry
+duck
+dumb
+dune
+during
+dust
+dutch
+duty
+dwarf
+dynamic
+eager
+eagle
+early
+earn
+earth
+easily
+east
+easy
+echo
+ecology
+economy
+edge
+edit
+educate
+effort
+egg
+eight
+either
+elbow
+elder
+electric
+elegant
+element
+elephant
+elevator
+elite
+else
+embark
+embody
+embrace
+emerge
+emotion
+employ
+empower
+empty
+enable
+enact
+end
+endless
+endorse
+enemy
+energy
+enforce
+engage
+engine
+enhance
+enjoy
+enlist
+enough
+enrich
+enroll
+ensure
+enter
+entire
+entry
+envelope
+episode
+equal
+equip
+era
+erase
+erode
+erosion
+error
+erupt
+escape
+essay
+essence
+estate
+eternal
+ethics
+evidence
+evil
+evoke
+evolve
+exact
+example
+excess
+exchange
+excite
+exclude
+excuse
+execute
+exercise
+exhaust
+exhibit
+exile
+exist
+exit
+exotic
+expand
+expect
+expire
+explain
+expose
+express
+extend
+extra
+eye
+eyebrow
+fabric
+face
+faculty
+fade
+faint
+faith
+fall
+false
+fame
+family
+famous
+fan
+fancy
+fantasy
+farm
+fashion
+fat
+fatal
+father
+fatigue
+fault
+favorite
+feature
+february
+federal
+fee
+feed
+feel
+female
+fence
+festival
+fetch
+fever
+few
+fiber
+fiction
+field
+figure
+file
+film
+filter
+final
+find
+fine
+finger
+finish
+fire
+firm
+first
+fiscal
+fish
+fit
+fitness
+fix
+flag
+flame
+flash
+flat
+flavor
+flee
+flight
+flip
+float
+flock
+floor
+flower
+fluid
+flush
+fly
+foam
+focus
+fog
+foil
+fold
+follow
+food
+foot
+force
+forest
+forget
+fork
+fortune
+forum
+forward
+fossil
+foster
+found
+fox
+fragile
+frame
+frequent
+fresh
+friend
+fringe
+frog
+front
+frost
+frown
+frozen
+fruit
+fuel
+fun
+funny
+furnace
+fury
+future
+gadget
+gain
+galaxy
+gallery
+game
+gap
+garage
+garbage
+garden
+garlic
+garment
+gas
+gasp
+gate
+gather
+gauge
+gaze
+general
+genius
+genre
+gentle
+genuine
+gesture
+ghost
+giant
+gift
+giggle
+ginger
+giraffe
+girl
+give
+glad
+glance
+glare
+glass
+glide
+glimpse
+globe
+gloom
+glory
+glove
+glow
+glue
+goat
+goddess
+gold
+good
+goose
+gorilla
+gospel
+gossip
+govern
+gown
+grab
+grace
+grain
+grant
+grape
+grass
+gravity
+great
+green
+grid
+grief
+grit
+grocery
+group
+grow
+grunt
+guard
+guess
+guide
+guilt
+guitar
+gun
+gym
+habit
+hair
+half
+hammer
+hamster
+hand
+happy
+harbor
+hard
+harsh
+harvest
+hat
+have
+hawk
+hazard
+head
+health
+heart
+heavy
+hedgehog
+height
+hello
+helmet
+help
+hen
+hero
+hidden
+high
+hill
+hint
+hip
+hire
+history
+hobby
+hockey
+hold
+hole
+holiday
+hollow
+home
+honey
+hood
+hope
+horn
+horror
+horse
+hospital
+host
+hotel
+hour
+hover
+hub
+huge
+human
+humble
+humor
+hundred
+hungry
+hunt
+hurdle
+hurry
+hurt
+husband
+hybrid
+ice
+icon
+idea
+identify
+idle
+ignore
+ill
+illegal
+illness
+image
+imitate
+immense
+immune
+impact
+impose
+improve
+impulse
+inch
+include
+income
+increase
+index
+indicate
+indoor
+industry
+infant
+inflict
+inform
+inhale
+inherit
+initial
+inject
+injury
+inmate
+inner
+innocent
+input
+inquiry
+insane
+insect
+inside
+inspire
+install
+intact
+interest
+into
+invest
+invite
+involve
+iron
+island
+isolate
+issue
+item
+ivory
+jacket
+jaguar
+jar
+jazz
+jealous
+jeans
+jelly
+jewel
+job
+join
+joke
+journey
+joy
+judge
+juice
+jump
+jungle
+junior
+junk
+just
+kangaroo
+keen
+keep
+ketchup
+key
+kick
+kid
+kidney
+kind
+kingdom
+kiss
+kit
+kitchen
+kite
+kitten
+kiwi
+knee
+knife
+knock
+know
+lab
+label
+labor
+ladder
+lady
+lake
+lamp
+language
+laptop
+large
+later
+latin
+laugh
+laundry
+lava
+law
+lawn
+lawsuit
+layer
+lazy
+leader
+leaf
+learn
+leave
+lecture
+left
+leg
+legal
+legend
+leisure
+lemon
+lend
+length
+lens
+leopard
+lesson
+letter
+level
+liar
+liberty
+library
+license
+life
+lift
+light
+like
+limb
+limit
+link
+lion
+liquid
+list
+little
+live
+lizard
+load
+loan
+lobster
+local
+lock
+logic
+lonely
+long
+loop
+lottery
+loud
+lounge
+love
+loyal
+lucky
+luggage
+lumber
+lunar
+lunch
+luxury
+lyrics
+machine
+mad
+magic
+magnet
+maid
+mail
+main
+major
+make
+mammal
+man
+manage
+mandate
+mango
+mansion
+manual
+maple
+marble
+march
+margin
+marine
+market
+marriage
+mask
+mass
+master
+match
+material
+math
+matrix
+matter
+maximum
+maze
+meadow
+mean
+measure
+meat
+mechanic
+medal
+media
+melody
+melt
+member
+memory
+mention
+menu
+mercy
+merge
+merit
+merry
+mesh
+message
+metal
+method
+middle
+midnight
+milk
+million
+mimic
+mind
+minimum
+minor
+minute
+miracle
+mirror
+misery
+miss
+mistake
+mix
+mixed
+mixture
+mobile
+model
+modify
+mom
+moment
+monitor
+monkey
+monster
+month
+moon
+moral
+more
+morning
+mosquito
+mother
+motion
+motor
+mountain
+mouse
+move
+movie
+much
+muffin
+mule
+multiply
+muscle
+museum
+mushroom
+music
+must
+mutual
+myself
+mystery
+myth
+naive
+name
+napkin
+narrow
+nasty
+nation
+nature
+near
+neck
+need
+negative
+neglect
+neither
+nephew
+nerve
+nest
+net
+network
+neutral
+never
+news
+next
+nice
+night
+noble
+noise
+nominee
+noodle
+normal
+north
+nose
+notable
+note
+nothing
+notice
+novel
+now
+nuclear
+number
+nurse
+nut
+oak
+obey
+object
+oblige
+obscure
+observe
+obtain
+obvious
+occur
+ocean
+october
+odor
+off
+offer
+office
+often
+oil
+okay
+old
+olive
+olympic
+omit
+once
+one
+onion
+online
+only
+open
+opera
+opinion
+oppose
+option
+orange
+orbit
+orchard
+order
+ordinary
+organ
+orient
+original
+orphan
+ostrich
+other
+outdoor
+outer
+output
+outside
+oval
+oven
+over
+own
+owner
+oxygen
+oyster
+ozone
+pact
+paddle
+page
+pair
+palace
+palm
+panda
+panel
+panic
+panther
+paper
+parade
+parent
+park
+parrot
+party
+pass
+patch
+path
+patient
+patrol
+pattern
+pause
+pave
+payment
+peace
+peanut
+pear
+peasant
+pelican
+pen
+penalty
+pencil
+people
+pepper
+perfect
+permit
+person
+pet
+phone
+photo
+phrase
+physical
+piano
+picnic
+picture
+piece
+pig
+pigeon
+pill
+pilot
+pink
+pioneer
+pipe
+pistol
+pitch
+pizza
+place
+planet
+plastic
+plate
+play
+please
+pledge
+pluck
+plug
+plunge
+poem
+poet
+point
+polar
+pole
+police
+pond
+pony
+pool
+popular
+portion
+position
+possible
+post
+potato
+pottery
+poverty
+powder
+power
+practice
+praise
+predict
+prefer
+prepare
+present
+pretty
+prevent
+price
+pride
+primary
+print
+priority
+prison
+private
+prize
+problem
+process
+produce
+profit
+program
+project
+promote
+proof
+property
+prosper
+protect
+proud
+provide
+public
+pudding
+pull
+pulp
+pulse
+pumpkin
+punch
+pupil
+puppy
+purchase
+purity
+purpose
+purse
+push
+put
+puzzle
+pyramid
+quality
+quantum
+quarter
+question
+quick
+quit
+quiz
+quote
+rabbit
+raccoon
+race
+rack
+radar
+radio
+rail
+rain
+raise
+rally
+ramp
+ranch
+random
+range
+rapid
+rare
+rate
+rather
+raven
+raw
+razor
+ready
+real
+reason
+rebel
+rebuild
+recall
+receive
+recipe
+record
+recycle
+reduce
+reflect
+reform
+refuse
+region
+regret
+regular
+reject
+relax
+release
+relief
+rely
+remain
+remember
+remind
+remove
+render
+renew
+rent
+reopen
+repair
+repeat
+replace
+report
+require
+rescue
+resemble
+resist
+resource
+response
+result
+retire
+retreat
+return
+reunion
+reveal
+review
+reward
+rhythm
+rib
+ribbon
+rice
+rich
+ride
+ridge
+rifle
+right
+rigid
+ring
+riot
+ripple
+risk
+ritual
+rival
+river
+road
+roast
+robot
+robust
+rocket
+romance
+roof
+rookie
+room
+rose
+rotate
+rough
+round
+route
+royal
+rubber
+rude
+rug
+rule
+run
+runway
+rural
+sad
+saddle
+sadness
+safe
+sail
+salad
+salmon
+salon
+salt
+salute
+same
+sample
+sand
+satisfy
+satoshi
+sauce
+sausage
+save
+say
+scale
+scan
+scare
+scatter
+scene
+scheme
+school
+science
+scissors
+scorpion
+scout
+scrap
+screen
+script
+scrub
+sea
+search
+season
+seat
+second
+secret
+section
+security
+seed
+seek
+segment
+select
+sell
+seminar
+senior
+sense
+sentence
+series
+service
+session
+settle
+setup
+seven
+shadow
+shaft
+shallow
+share
+shed
+shell
+sheriff
+shield
+shift
+shine
+ship
+shiver
+shock
+shoe
+shoot
+shop
+short
+shoulder
+shove
+shrimp
+shrug
+shuffle
+shy
+sibling
+sick
+side
+siege
+sight
+sign
+silent
+silk
+silly
+silver
+similar
+simple
+since
+sing
+siren
+sister
+situate
+six
+size
+skate
+sketch
+ski
+skill
+skin
+skirt
+skull
+slab
+slam
+sleep
+slender
+slice
+slide
+slight
+slim
+slogan
+slot
+slow
+slush
+small
+smart
+smile
+smoke
+smooth
+snack
+snake
+snap
+sniff
+snow
+soap
+soccer
+social
+sock
+soda
+soft
+solar
+soldier
+solid
+solution
+solve
+someone
+song
+soon
+sorry
+sort
+soul
+sound
+soup
+source
+south
+space
+spare
+spatial
+spawn
+speak
+special
+speed
+spell
+spend
+sphere
+spice
+spider
+spike
+spin
+spirit
+split
+spoil
+sponsor
+spoon
+sport
+spot
+spray
+spread
+spring
+spy
+square
+squeeze
+squirrel
+stable
+stadium
+staff
+stage
+stairs
+stamp
+stand
+start
+state
+stay
+steak
+steel
+stem
+step
+stereo
+stick
+still
+sting
+stock
+stomach
+stone
+stool
+story
+stove
+strategy
+street
+strike
+strong
+struggle
+student
+stuff
+stumble
+style
+subject
+submit
+subway
+success
+such
+sudden
+suffer
+sugar
+suggest
+suit
+summer
+sun
+sunny
+sunset
+super
+supply
+supreme
+sure
+surface
+surge
+surprise
+surround
+survey
+suspect
+sustain
+swallow
+swamp
+swap
+swarm
+swear
+sweet
+swift
+swim
+swing
+switch
+sword
+symbol
+symptom
+syrup
+system
+table
+tackle
+tag
+tail
+talent
+talk
+tank
+tape
+target
+task
+taste
+tattoo
+taxi
+teach
+team
+tell
+ten
+tenant
+tennis
+tent
+term
+test
+text
+thank
+that
+theme
+then
+theory
+there
+they
+thing
+this
+thought
+three
+thrive
+throw
+thumb
+thunder
+ticket
+tide
+tiger
+tilt
+timber
+time
+tiny
+tip
+tired
+tissue
+title
+toast
+tobacco
+today
+toddler
+toe
+together
+toilet
+token
+tomato
+tomorrow
+tone
+tongue
+tonight
+tool
+tooth
+top
+topic
+topple
+torch
+tornado
+tortoise
+toss
+total
+tourist
+toward
+tower
+town
+toy
+track
+trade
+traffic
+tragic
+train
+transfer
+trap
+trash
+travel
+tray
+treat
+tree
+trend
+trial
+tribe
+trick
+trigger
+trim
+trip
+trophy
+trouble
+truck
+true
+truly
+trumpet
+trust
+truth
+try
+tube
+tuition
+tumble
+tuna
+tunnel
+turkey
+turn
+turtle
+twelve
+twenty
+twice
+twin
+twist
+two
+type
+typical
+ugly
+umbrella
+unable
+unaware
+uncle
+uncover
+under
+undo
+unfair
+unfold
+unhappy
+uniform
+unique
+unit
+universe
+unknown
+unlock
+until
+unusual
+unveil
+update
+upgrade
+uphold
+upon
+upper
+upset
+urban
+urge
+usage
+use
+used
+useful
+useless
+usual
+utility
+vacant
+vacuum
+vague
+valid
+valley
+valve
+van
+vanish
+vapor
+various
+vast
+vault
+vehicle
+velvet
+vendor
+venture
+venue
+verb
+verify
+version
+very
+vessel
+veteran
+viable
+vibrant
+vicious
+victory
+video
+view
+village
+vintage
+violin
+virtual
+virus
+visa
+visit
+visual
+vital
+vivid
+vocal
+voice
+void
+volcano
+volume
+vote
+voyage
+wage
+wagon
+wait
+walk
+wall
+walnut
+want
+warfare
+warm
+warrior
+wash
+wasp
+waste
+water
+wave
+way
+wealth
+weapon
+wear
+weasel
+weather
+web
+wedding
+weekend
+weird
+welcome
+west
+wet
+whale
+what
+wheat
+wheel
+when
+where
+whip
+whisper
+wide
+width
+wife
+wild
+will
+win
+window
+wine
+wing
+wink
+winner
+winter
+wire
+wisdom
+wise
+wish
+witness
+wolf
+woman
+wonder
+wood
+wool
+word
+work
+world
+worry
+worth
+wrap
+wreck
+wrestle
+wrist
+write
+wrong
+yard
+year
+yellow
+you
+young
+youth
+zebra
+zero
+zone
+zoo`.split(`
+`)});var En=ie(ce=>{"use strict";Object.defineProperty(ce,"__esModule",{value:!0});ce.output=ce.exists=ce.hash=ce.bytes=ce.bool=ce.number=void 0;function ur(t){if(!Number.isSafeInteger(t)||t<0)throw new Error(`Wrong positive integer: ${t}`)}ce.number=ur;function Zi(t){if(typeof t!="boolean")throw new Error(`Expected boolean, not ${t}`)}ce.bool=Zi;function Bo(t,...e){if(!(t instanceof Uint8Array))throw new TypeError("Expected Uint8Array");if(e.length>0&&!e.includes(t.length))throw new TypeError(`Expected Uint8Array of length ${e}, not of length=${t.length}`)}ce.bytes=Bo;function Yi(t){if(typeof t!="function"||typeof t.create!="function")throw new Error("Hash should be wrapped by utils.wrapConstructor");ur(t.outputLen),ur(t.blockLen)}ce.hash=Yi;function Xi(t,e=!0){if(t.destroyed)throw new Error("Hash instance has been destroyed");if(e&&t.finished)throw new Error("Hash#digest() has already been called")}ce.exists=Xi;function Ji(t,e){Bo(t);let n=e.outputLen;if(t.length<n)throw new Error(`digestInto() expects output buffer of length at least ${n}`)}ce.output=Ji;var ql={number:ur,bool:Zi,bytes:Bo,hash:Yi,exists:Xi,output:Ji};ce.default=ql});var Qi=ie(dr=>{"use strict";Object.defineProperty(dr,"__esModule",{value:!0});dr.crypto=void 0;dr.crypto={node:void 0,web:typeof self=="object"&&"crypto"in self?self.crypto:void 0}});var Bt=ie(U=>{"use strict";Object.defineProperty(U,"__esModule",{value:!0});U.randomBytes=U.wrapConstructorWithOpts=U.wrapConstructor=U.checkOpts=U.Hash=U.concatBytes=U.toBytes=U.utf8ToBytes=U.asyncLoop=U.nextTick=U.hexToBytes=U.bytesToHex=U.isLE=U.rotr=U.createView=U.u32=U.u8=void 0;var fr=Qi(),Vl=t=>new Uint8Array(t.buffer,t.byteOffset,t.byteLength);U.u8=Vl;var Zl=t=>new Uint32Array(t.buffer,t.byteOffset,Math.floor(t.byteLength/4));U.u32=Zl;var Yl=t=>new DataView(t.buffer,t.byteOffset,t.byteLength);U.createView=Yl;var Xl=(t,e)=>t<<32-e|t>>>e;U.rotr=Xl;U.isLE=new Uint8Array(new Uint32Array([287454020]).buffer)[0]===68;if(!U.isLE)throw new Error("Non little-endian hardware is not supported");var Jl=Array.from({length:256},(t,e)=>e.toString(16).padStart(2,"0"));function Ql(t){if(!(t instanceof Uint8Array))throw new Error("Uint8Array expected");let e="";for(let n=0;n<t.length;n++)e+=Jl[t[n]];return e}U.bytesToHex=Ql;function eu(t){if(typeof t!="string")throw new TypeError("hexToBytes: expected string, got "+typeof t);if(t.length%2)throw new Error("hexToBytes: received invalid unpadded hex");let e=new Uint8Array(t.length/2);for(let n=0;n<e.length;n++){let r=n*2,o=t.slice(r,r+2),s=Number.parseInt(o,16);if(Number.isNaN(s)||s<0)throw new Error("Invalid byte sequence");e[n]=s}return e}U.hexToBytes=eu;var tu=async()=>{};U.nextTick=tu;async function nu(t,e,n){let r=Date.now();for(let o=0;o<t;o++){n(o);let s=Date.now()-r;s>=0&&s<e||(await(0,U.nextTick)(),r+=s)}}U.asyncLoop=nu;function ea(t){if(typeof t!="string")throw new TypeError(`utf8ToBytes expected string, got ${typeof t}`);return new TextEncoder().encode(t)}U.utf8ToBytes=ea;function Mo(t){if(typeof t=="string"&&(t=ea(t)),!(t instanceof Uint8Array))throw new TypeError(`Expected input type is Uint8Array (got ${typeof t})`);return t}U.toBytes=Mo;function ru(...t){if(!t.every(r=>r instanceof Uint8Array))throw new Error("Uint8Array list expected");if(t.length===1)return t[0];let e=t.reduce((r,o)=>r+o.length,0),n=new Uint8Array(e);for(let r=0,o=0;r<t.length;r++){let s=t[r];n.set(s,o),o+=s.length}return n}U.concatBytes=ru;var Io=class{clone(){return this._cloneInto()}};U.Hash=Io;var ou=t=>Object.prototype.toString.call(t)==="[object Object]"&&t.constructor===Object;function su(t,e){if(e!==void 0&&(typeof e!="object"||!ou(e)))throw new TypeError("Options should be object or undefined");return Object.assign(t,e)}U.checkOpts=su;function iu(t){let e=r=>t().update(Mo(r)).digest(),n=t();return e.outputLen=n.outputLen,e.blockLen=n.blockLen,e.create=()=>t(),e}U.wrapConstructor=iu;function au(t){let e=(r,o)=>t(o).update(Mo(r)).digest(),n=t({});return e.outputLen=n.outputLen,e.blockLen=n.blockLen,e.create=r=>t(r),e}U.wrapConstructorWithOpts=au;function cu(t=32){if(fr.crypto.web)return fr.crypto.web.getRandomValues(new Uint8Array(t));if(fr.crypto.node)return new Uint8Array(fr.crypto.node.randomBytes(t).buffer);throw new Error("The environment doesn't have randomBytes function")}U.randomBytes=cu});var na=ie(vn=>{"use strict";Object.defineProperty(vn,"__esModule",{value:!0});vn.hmac=void 0;var hr=En(),ta=Bt(),pr=class extends ta.Hash{constructor(e,n){super(),this.finished=!1,this.destroyed=!1,hr.default.hash(e);let r=(0,ta.toBytes)(n);if(this.iHash=e.create(),typeof this.iHash.update!="function")throw new TypeError("Expected instance of class which extends utils.Hash");this.blockLen=this.iHash.blockLen,this.outputLen=this.iHash.outputLen;let o=this.blockLen,s=new Uint8Array(o);s.set(r.length>o?e.create().update(r).digest():r);for(let i=0;i<s.length;i++)s[i]^=54;this.iHash.update(s),this.oHash=e.create();for(let i=0;i<s.length;i++)s[i]^=106;this.oHash.update(s),s.fill(0)}update(e){return hr.default.exists(this),this.iHash.update(e),this}digestInto(e){hr.default.exists(this),hr.default.bytes(e,this.outputLen),this.finished=!0,this.iHash.digestInto(e),this.oHash.update(e),this.oHash.digestInto(e),this.destroy()}digest(){let e=new Uint8Array(this.oHash.outputLen);return this.digestInto(e),e}_cloneInto(e){e||(e=Object.create(Object.getPrototypeOf(this),{}));let{oHash:n,iHash:r,finished:o,destroyed:s,blockLen:i,outputLen:a}=this;return e=e,e.finished=o,e.destroyed=s,e.blockLen=i,e.outputLen=a,e.oHash=n._cloneInto(e.oHash),e.iHash=r._cloneInto(e.iHash),e}destroy(){this.destroyed=!0,this.oHash.destroy(),this.iHash.destroy()}},lu=(t,e,n)=>new pr(t,e).update(n).digest();vn.hmac=lu;vn.hmac.create=(t,e)=>new pr(t,e)});var sa=ie(en=>{"use strict";Object.defineProperty(en,"__esModule",{value:!0});en.pbkdf2Async=en.pbkdf2=void 0;var mr=En(),uu=na(),Qt=Bt();function ra(t,e,n,r){mr.default.hash(t);let o=(0,Qt.checkOpts)({dkLen:32,asyncTick:10},r),{c:s,dkLen:i,asyncTick:a}=o;if(mr.default.number(s),mr.default.number(i),mr.default.number(a),s<1)throw new Error("PBKDF2: iterations (c) should be >= 1");let c=(0,Qt.toBytes)(e),d=(0,Qt.toBytes)(n),u=new Uint8Array(i),l=uu.hmac.create(t,c),h=l._cloneInto().update(d);return{c:s,dkLen:i,asyncTick:a,DK:u,PRF:l,PRFSalt:h}}function oa(t,e,n,r,o){return t.destroy(),e.destroy(),r&&r.destroy(),o.fill(0),n}function du(t,e,n,r){let{c:o,dkLen:s,DK:i,PRF:a,PRFSalt:c}=ra(t,e,n,r),d,u=new Uint8Array(4),l=(0,Qt.createView)(u),h=new Uint8Array(a.outputLen);for(let p=1,m=0;m<s;p++,m+=a.outputLen){let y=i.subarray(m,m+a.outputLen);l.setInt32(0,p,!1),(d=c._cloneInto(d)).update(u).digestInto(h),y.set(h.subarray(0,y.length));for(let w=1;w<o;w++){a._cloneInto(d).update(h).digestInto(h);for(let T=0;T<y.length;T++)y[T]^=h[T]}}return oa(a,c,i,d,h)}en.pbkdf2=du;async function fu(t,e,n,r){let{c:o,dkLen:s,asyncTick:i,DK:a,PRF:c,PRFSalt:d}=ra(t,e,n,r),u,l=new Uint8Array(4),h=(0,Qt.createView)(l),p=new Uint8Array(c.outputLen);for(let m=1,y=0;y<s;m++,y+=c.outputLen){let w=a.subarray(y,y+c.outputLen);h.setInt32(0,m,!1),(u=d._cloneInto(u)).update(l).digestInto(p),w.set(p.subarray(0,w.length)),await(0,Qt.asyncLoop)(o-1,i,T=>{c._cloneInto(u).update(p).digestInto(p);for(let L=0;L<w.length;L++)w[L]^=p[L]})}return oa(c,d,a,u,p)}en.pbkdf2Async=fu});var Ro=ie(gr=>{"use strict";Object.defineProperty(gr,"__esModule",{value:!0});gr.SHA2=void 0;var Co=En(),kn=Bt();function hu(t,e,n,r){if(typeof t.setBigUint64=="function")return t.setBigUint64(e,n,r);let o=BigInt(32),s=BigInt(4294967295),i=Number(n>>o&s),a=Number(n&s),c=r?4:0,d=r?0:4;t.setUint32(e+c,i,r),t.setUint32(e+d,a,r)}var Uo=class extends kn.Hash{constructor(e,n,r,o){super(),this.blockLen=e,this.outputLen=n,this.padOffset=r,this.isLE=o,this.finished=!1,this.length=0,this.pos=0,this.destroyed=!1,this.buffer=new Uint8Array(e),this.view=(0,kn.createView)(this.buffer)}update(e){Co.default.exists(this);let{view:n,buffer:r,blockLen:o}=this;e=(0,kn.toBytes)(e);let s=e.length;for(let i=0;i<s;){let a=Math.min(o-this.pos,s-i);if(a===o){let c=(0,kn.createView)(e);for(;o<=s-i;i+=o)this.process(c,i);continue}r.set(e.subarray(i,i+a),this.pos),this.pos+=a,i+=a,this.pos===o&&(this.process(n,0),this.pos=0)}return this.length+=e.length,this.roundClean(),this}digestInto(e){Co.default.exists(this),Co.default.output(e,this),this.finished=!0;let{buffer:n,view:r,blockLen:o,isLE:s}=this,{pos:i}=this;n[i++]=128,this.buffer.subarray(i).fill(0),this.padOffset>o-i&&(this.process(r,0),i=0);for(let l=i;l<o;l++)n[l]=0;hu(r,o-8,BigInt(this.length*8),s),this.process(r,0);let a=(0,kn.createView)(e),c=this.outputLen;if(c%4)throw new Error("_sha2: outputLen should be aligned to 32bit");let d=c/4,u=this.get();if(d>u.length)throw new Error("_sha2: outputLen bigger than state");for(let l=0;l<d;l++)a.setUint32(4*l,u[l],s)}digest(){let{buffer:e,outputLen:n}=this;this.digestInto(e);let r=e.slice(0,n);return this.destroy(),r}_cloneInto(e){e||(e=new this.constructor),e.set(...this.get());let{blockLen:n,buffer:r,length:o,finished:s,destroyed:i,pos:a}=this;return e.length=o,e.pos=a,e.finished=s,e.destroyed=i,o%n&&e.buffer.set(r),e}};gr.SHA2=Uo});var ia=ie(tn=>{"use strict";Object.defineProperty(tn,"__esModule",{value:!0});tn.sha224=tn.sha256=void 0;var pu=Ro(),ye=Bt(),mu=(t,e,n)=>t&e^~t&n,gu=(t,e,n)=>t&e^t&n^e&n,yu=new Uint32Array([1116352408,1899447441,3049323471,3921009573,961987163,1508970993,2453635748,2870763221,3624381080,310598401,607225278,1426881987,1925078388,2162078206,2614888103,3248222580,3835390401,4022224774,264347078,604807628,770255983,1249150122,1555081692,1996064986,2554220882,2821834349,2952996808,3210313671,3336571891,3584528711,113926993,338241895,666307205,773529912,1294757372,1396182291,1695183700,1986661051,2177026350,2456956037,2730485921,2820302411,3259730800,3345764771,3516065817,3600352804,4094571909,275423344,430227734,506948616,659060556,883997877,958139571,1322822218,1537002063,1747873779,1955562222,2024104815,2227730452,2361852424,2428436474,2756734187,3204031479,3329325298]),st=new Uint32Array([1779033703,3144134277,1013904242,2773480762,1359893119,2600822924,528734635,1541459225]),it=new Uint32Array(64),yr=class extends pu.SHA2{constructor(){super(64,32,8,!1),this.A=st[0]|0,this.B=st[1]|0,this.C=st[2]|0,this.D=st[3]|0,this.E=st[4]|0,this.F=st[5]|0,this.G=st[6]|0,this.H=st[7]|0}get(){let{A:e,B:n,C:r,D:o,E:s,F:i,G:a,H:c}=this;return[e,n,r,o,s,i,a,c]}set(e,n,r,o,s,i,a,c){this.A=e|0,this.B=n|0,this.C=r|0,this.D=o|0,this.E=s|0,this.F=i|0,this.G=a|0,this.H=c|0}process(e,n){for(let l=0;l<16;l++,n+=4)it[l]=e.getUint32(n,!1);for(let l=16;l<64;l++){let h=it[l-15],p=it[l-2],m=(0,ye.rotr)(h,7)^(0,ye.rotr)(h,18)^h>>>3,y=(0,ye.rotr)(p,17)^(0,ye.rotr)(p,19)^p>>>10;it[l]=y+it[l-7]+m+it[l-16]|0}let{A:r,B:o,C:s,D:i,E:a,F:c,G:d,H:u}=this;for(let l=0;l<64;l++){let h=(0,ye.rotr)(a,6)^(0,ye.rotr)(a,11)^(0,ye.rotr)(a,25),p=u+h+mu(a,c,d)+yu[l]+it[l]|0,y=((0,ye.rotr)(r,2)^(0,ye.rotr)(r,13)^(0,ye.rotr)(r,22))+gu(r,o,s)|0;u=d,d=c,c=a,a=i+p|0,i=s,s=o,o=r,r=p+y|0}r=r+this.A|0,o=o+this.B|0,s=s+this.C|0,i=i+this.D|0,a=a+this.E|0,c=c+this.F|0,d=d+this.G|0,u=u+this.H|0,this.set(r,o,s,i,a,c,d,u)}roundClean(){it.fill(0)}destroy(){this.set(0,0,0,0,0,0,0,0),this.buffer.fill(0)}},$o=class extends yr{constructor(){super(),this.A=-1056596264,this.B=914150663,this.C=812702999,this.D=-150054599,this.E=-4191439,this.F=1750603025,this.G=1694076839,this.H=-1090891868,this.outputLen=28}};tn.sha256=(0,ye.wrapConstructor)(()=>new yr);tn.sha224=(0,ye.wrapConstructor)(()=>new $o)});var la=ie(be=>{"use strict";Object.defineProperty(be,"__esModule",{value:!0});be.add=be.toBig=be.split=be.fromBig=void 0;var br=BigInt(2**32-1),Oo=BigInt(32);function Do(t,e=!1){return e?{h:Number(t&br),l:Number(t>>Oo&br)}:{h:Number(t>>Oo&br)|0,l:Number(t&br)|0}}be.fromBig=Do;function aa(t,e=!1){let n=new Uint32Array(t.length),r=new Uint32Array(t.length);for(let o=0;o<t.length;o++){let{h:s,l:i}=Do(t[o],e);[n[o],r[o]]=[s,i]}return[n,r]}be.split=aa;var bu=(t,e)=>BigInt(t>>>0)<<Oo|BigInt(e>>>0);be.toBig=bu;var wu=(t,e,n)=>t>>>n,xu=(t,e,n)=>t<<32-n|e>>>n,Eu=(t,e,n)=>t>>>n|e<<32-n,vu=(t,e,n)=>t<<32-n|e>>>n,ku=(t,e,n)=>t<<64-n|e>>>n-32,Tu=(t,e,n)=>t>>>n-32|e<<64-n,Au=(t,e)=>e,Su=(t,e)=>t,Lu=(t,e,n)=>t<<n|e>>>32-n,_u=(t,e,n)=>e<<n|t>>>32-n,Hu=(t,e,n)=>e<<n-32|t>>>64-n,Bu=(t,e,n)=>t<<n-32|e>>>64-n;function ca(t,e,n,r){let o=(e>>>0)+(r>>>0);return{h:t+n+(o/2**32|0)|0,l:o|0}}be.add=ca;var Iu=(t,e,n)=>(t>>>0)+(e>>>0)+(n>>>0),Mu=(t,e,n,r)=>e+n+r+(t/2**32|0)|0,Cu=(t,e,n,r)=>(t>>>0)+(e>>>0)+(n>>>0)+(r>>>0),Uu=(t,e,n,r,o)=>e+n+r+o+(t/2**32|0)|0,Ru=(t,e,n,r,o)=>(t>>>0)+(e>>>0)+(n>>>0)+(r>>>0)+(o>>>0),$u=(t,e,n,r,o,s)=>e+n+r+o+s+(t/2**32|0)|0,Ou={fromBig:Do,split:aa,toBig:be.toBig,shrSH:wu,shrSL:xu,rotrSH:Eu,rotrSL:vu,rotrBH:ku,rotrBL:Tu,rotr32H:Au,rotr32L:Su,rotlSH:Lu,rotlSL:_u,rotlBH:Hu,rotlBL:Bu,add:ca,add3L:Iu,add3H:Mu,add4L:Cu,add4H:Uu,add5H:$u,add5L:Ru};be.default=Ou});var ua=ie(we=>{"use strict";Object.defineProperty(we,"__esModule",{value:!0});we.sha384=we.sha512_256=we.sha512_224=we.sha512=we.SHA512=void 0;var Du=Ro(),M=la(),wr=Bt(),[Nu,Pu]=M.default.split(["0x428a2f98d728ae22","0x7137449123ef65cd","0xb5c0fbcfec4d3b2f","0xe9b5dba58189dbbc","0x3956c25bf348b538","0x59f111f1b605d019","0x923f82a4af194f9b","0xab1c5ed5da6d8118","0xd807aa98a3030242","0x12835b0145706fbe","0x243185be4ee4b28c","0x550c7dc3d5ffb4e2","0x72be5d74f27b896f","0x80deb1fe3b1696b1","0x9bdc06a725c71235","0xc19bf174cf692694","0xe49b69c19ef14ad2","0xefbe4786384f25e3","0x0fc19dc68b8cd5b5","0x240ca1cc77ac9c65","0x2de92c6f592b0275","0x4a7484aa6ea6e483","0x5cb0a9dcbd41fbd4","0x76f988da831153b5","0x983e5152ee66dfab","0xa831c66d2db43210","0xb00327c898fb213f","0xbf597fc7beef0ee4","0xc6e00bf33da88fc2","0xd5a79147930aa725","0x06ca6351e003826f","0x142929670a0e6e70","0x27b70a8546d22ffc","0x2e1b21385c26c926","0x4d2c6dfc5ac42aed","0x53380d139d95b3df","0x650a73548baf63de","0x766a0abb3c77b2a8","0x81c2c92e47edaee6","0x92722c851482353b","0xa2bfe8a14cf10364","0xa81a664bbc423001","0xc24b8b70d0f89791","0xc76c51a30654be30","0xd192e819d6ef5218","0xd69906245565a910","0xf40e35855771202a","0x106aa07032bbd1b8","0x19a4c116b8d2d0c8","0x1e376c085141ab53","0x2748774cdf8eeb99","0x34b0bcb5e19b48a8","0x391c0cb3c5c95a63","0x4ed8aa4ae3418acb","0x5b9cca4f7763e373","0x682e6ff3d6b2b8a3","0x748f82ee5defb2fc","0x78a5636f43172f60","0x84c87814a1f0ab72","0x8cc702081a6439ec","0x90befffa23631e28","0xa4506cebde82bde9","0xbef9a3f7b2c67915","0xc67178f2e372532b","0xca273eceea26619c","0xd186b8c721c0c207","0xeada7dd6cde0eb1e","0xf57d4f7fee6ed178","0x06f067aa72176fba","0x0a637dc5a2c898a6","0x113f9804bef90dae","0x1b710b35131c471b","0x28db77f523047d84","0x32caab7b40c72493","0x3c9ebe0a15c9bebc","0x431d67c49c100d4c","0x4cc5d4becb3e42b6","0x597f299cfc657e2a","0x5fcb6fab3ad6faec","0x6c44198c4a475817"].map(t=>BigInt(t))),at=new Uint32Array(80),ct=new Uint32Array(80),It=class extends Du.SHA2{constructor(){super(128,64,16,!1),this.Ah=1779033703,this.Al=-205731576,this.Bh=-1150833019,this.Bl=-2067093701,this.Ch=1013904242,this.Cl=-23791573,this.Dh=-1521486534,this.Dl=1595750129,this.Eh=1359893119,this.El=-1377402159,this.Fh=-1694144372,this.Fl=725511199,this.Gh=528734635,this.Gl=-79577749,this.Hh=1541459225,this.Hl=327033209}get(){let{Ah:e,Al:n,Bh:r,Bl:o,Ch:s,Cl:i,Dh:a,Dl:c,Eh:d,El:u,Fh:l,Fl:h,Gh:p,Gl:m,Hh:y,Hl:w}=this;return[e,n,r,o,s,i,a,c,d,u,l,h,p,m,y,w]}set(e,n,r,o,s,i,a,c,d,u,l,h,p,m,y,w){this.Ah=e|0,this.Al=n|0,this.Bh=r|0,this.Bl=o|0,this.Ch=s|0,this.Cl=i|0,this.Dh=a|0,this.Dl=c|0,this.Eh=d|0,this.El=u|0,this.Fh=l|0,this.Fl=h|0,this.Gh=p|0,this.Gl=m|0,this.Hh=y|0,this.Hl=w|0}process(e,n){for(let g=0;g<16;g++,n+=4)at[g]=e.getUint32(n),ct[g]=e.getUint32(n+=4);for(let g=16;g<80;g++){let B=at[g-15]|0,v=ct[g-15]|0,V=M.default.rotrSH(B,v,1)^M.default.rotrSH(B,v,8)^M.default.shrSH(B,v,7),S=M.default.rotrSL(B,v,1)^M.default.rotrSL(B,v,8)^M.default.shrSL(B,v,7),j=at[g-2]|0,C=ct[g-2]|0,se=M.default.rotrSH(j,C,19)^M.default.rotrBH(j,C,61)^M.default.shrSH(j,C,6),de=M.default.rotrSL(j,C,19)^M.default.rotrBL(j,C,61)^M.default.shrSL(j,C,6),oe=M.default.add4L(S,de,ct[g-7],ct[g-16]),$e=M.default.add4H(oe,V,se,at[g-7],at[g-16]);at[g]=$e|0,ct[g]=oe|0}let{Ah:r,Al:o,Bh:s,Bl:i,Ch:a,Cl:c,Dh:d,Dl:u,Eh:l,El:h,Fh:p,Fl:m,Gh:y,Gl:w,Hh:T,Hl:L}=this;for(let g=0;g<80;g++){let B=M.default.rotrSH(l,h,14)^M.default.rotrSH(l,h,18)^M.default.rotrBH(l,h,41),v=M.default.rotrSL(l,h,14)^M.default.rotrSL(l,h,18)^M.default.rotrBL(l,h,41),V=l&p^~l&y,S=h&m^~h&w,j=M.default.add5L(L,v,S,Pu[g],ct[g]),C=M.default.add5H(j,T,B,V,Nu[g],at[g]),se=j|0,de=M.default.rotrSH(r,o,28)^M.default.rotrBH(r,o,34)^M.default.rotrBH(r,o,39),oe=M.default.rotrSL(r,o,28)^M.default.rotrBL(r,o,34)^M.default.rotrBL(r,o,39),$e=r&s^r&a^s&a,xt=o&i^o&c^i&c;T=y|0,L=w|0,y=p|0,w=m|0,p=l|0,m=h|0,{h:l,l:h}=M.default.add(d|0,u|0,C|0,se|0),d=a|0,u=c|0,a=s|0,c=i|0,s=r|0,i=o|0;let Et=M.default.add3L(se,oe,xt);r=M.default.add3H(Et,C,de,$e),o=Et|0}({h:r,l:o}=M.default.add(this.Ah|0,this.Al|0,r|0,o|0)),{h:s,l:i}=M.default.add(this.Bh|0,this.Bl|0,s|0,i|0),{h:a,l:c}=M.default.add(this.Ch|0,this.Cl|0,a|0,c|0),{h:d,l:u}=M.default.add(this.Dh|0,this.Dl|0,d|0,u|0),{h:l,l:h}=M.default.add(this.Eh|0,this.El|0,l|0,h|0),{h:p,l:m}=M.default.add(this.Fh|0,this.Fl|0,p|0,m|0),{h:y,l:w}=M.default.add(this.Gh|0,this.Gl|0,y|0,w|0),{h:T,l:L}=M.default.add(this.Hh|0,this.Hl|0,T|0,L|0),this.set(r,o,s,i,a,c,d,u,l,h,p,m,y,w,T,L)}roundClean(){at.fill(0),ct.fill(0)}destroy(){this.buffer.fill(0),this.set(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)}};we.SHA512=It;var No=class extends It{constructor(){super(),this.Ah=-1942145080,this.Al=424955298,this.Bh=1944164710,this.Bl=-1982016298,this.Ch=502970286,this.Cl=855612546,this.Dh=1738396948,this.Dl=1479516111,this.Eh=258812777,this.El=2077511080,this.Fh=2011393907,this.Fl=79989058,this.Gh=1067287976,this.Gl=1780299464,this.Hh=286451373,this.Hl=-1848208735,this.outputLen=28}},Po=class extends It{constructor(){super(),this.Ah=573645204,this.Al=-64227540,this.Bh=-1621794909,this.Bl=-934517566,this.Ch=596883563,this.Cl=1867755857,this.Dh=-1774684391,this.Dl=1497426621,this.Eh=-1775747358,this.El=-1467023389,this.Fh=-1101128155,this.Fl=1401305490,this.Gh=721525244,this.Gl=746961066,this.Hh=246885852,this.Hl=-2117784414,this.outputLen=32}},Fo=class extends It{constructor(){super(),this.Ah=-876896931,this.Al=-1056596264,this.Bh=1654270250,this.Bl=914150663,this.Ch=-1856437926,this.Cl=812702999,this.Dh=355462360,this.Dl=-150054599,this.Eh=1731405415,this.El=-4191439,this.Fh=-1900787065,this.Fl=1750603025,this.Gh=-619958771,this.Gl=1694076839,this.Hh=1203062813,this.Hl=-1090891868,this.outputLen=48}};we.sha512=(0,wr.wrapConstructor)(()=>new It);we.sha512_224=(0,wr.wrapConstructor)(()=>new No);we.sha512_256=(0,wr.wrapConstructor)(()=>new Po);we.sha384=(0,wr.wrapConstructor)(()=>new Fo)});var va=ie(k=>{"use strict";Object.defineProperty(k,"__esModule",{value:!0});k.bytes=k.stringToBytes=k.str=k.bytesToString=k.hex=k.utf8=k.bech32m=k.bech32=k.base58check=k.base58xmr=k.base58xrp=k.base58flickr=k.base58=k.base64url=k.base64=k.base32crockford=k.base32hex=k.base32=k.base16=k.utils=k.assertNumber=void 0;function lt(t){if(!Number.isSafeInteger(t))throw new Error(`Wrong integer: ${t}`)}k.assertNumber=lt;function Te(...t){let e=(o,s)=>i=>o(s(i)),n=Array.from(t).reverse().reduce((o,s)=>o?e(o,s.encode):s.encode,void 0),r=t.reduce((o,s)=>o?e(o,s.decode):s.decode,void 0);return{encode:n,decode:r}}function Ie(t){return{encode:e=>{if(!Array.isArray(e)||e.length&&typeof e[0]!="number")throw new Error("alphabet.encode input should be an array of numbers");return e.map(n=>{if(lt(n),n<0||n>=t.length)throw new Error(`Digit index outside alphabet: ${n} (alphabet: ${t.length})`);return t[n]})},decode:e=>{if(!Array.isArray(e)||e.length&&typeof e[0]!="string")throw new Error("alphabet.decode input should be array of strings");return e.map(n=>{if(typeof n!="string")throw new Error(`alphabet.decode: not string element=${n}`);let r=t.indexOf(n);if(r===-1)throw new Error(`Unknown letter: "${n}". Allowed: ${t}`);return r})}}}function Me(t=""){if(typeof t!="string")throw new Error("join separator should be string");return{encode:e=>{if(!Array.isArray(e)||e.length&&typeof e[0]!="string")throw new Error("join.encode input should be array of strings");for(let n of e)if(typeof n!="string")throw new Error(`join.encode: non-string input=${n}`);return e.join(t)},decode:e=>{if(typeof e!="string")throw new Error("join.decode input should be string");return e.split(t)}}}function Sn(t,e="="){if(lt(t),typeof e!="string")throw new Error("padding chr should be string");return{encode(n){if(!Array.isArray(n)||n.length&&typeof n[0]!="string")throw new Error("padding.encode input should be array of strings");for(let r of n)if(typeof r!="string")throw new Error(`padding.encode: non-string input=${r}`);for(;n.length*t%8;)n.push(e);return n},decode(n){if(!Array.isArray(n)||n.length&&typeof n[0]!="string")throw new Error("padding.encode input should be array of strings");for(let o of n)if(typeof o!="string")throw new Error(`padding.decode: non-string input=${o}`);let r=n.length;if(r*t%8)throw new Error("Invalid padding: string should have whole number of bytes");for(;r>0&&n[r-1]===e;r--)if(!((r-1)*t%8))throw new Error("Invalid padding: string has too much padding");return n.slice(0,r)}}}function ga(t){if(typeof t!="function")throw new Error("normalize fn should be function");return{encode:e=>e,decode:e=>t(e)}}function da(t,e,n){if(e<2)throw new Error(`convertRadix: wrong from=${e}, base cannot be less than 2`);if(n<2)throw new Error(`convertRadix: wrong to=${n}, base cannot be less than 2`);if(!Array.isArray(t))throw new Error("convertRadix: data should be array");if(!t.length)return[];let r=0,o=[],s=Array.from(t);for(s.forEach(i=>{if(lt(i),i<0||i>=e)throw new Error(`Wrong integer: ${i}`)});;){let i=0,a=!0;for(let c=r;c<s.length;c++){let d=s[c],u=e*i+d;if(!Number.isSafeInteger(u)||e*i/e!==i||u-d!==e*i)throw new Error("convertRadix: carry overflow");if(i=u%n,s[c]=Math.floor(u/n),!Number.isSafeInteger(s[c])||s[c]*n+i!==u)throw new Error("convertRadix: carry overflow");if(a)s[c]?a=!1:r=c;else continue}if(o.push(i),a)break}for(let i=0;i<t.length-1&&t[i]===0;i++)o.push(0);return o.reverse()}var ya=(t,e)=>e?ya(e,t%e):t,xr=(t,e)=>t+(e-ya(t,e));function jo(t,e,n,r){if(!Array.isArray(t))throw new Error("convertRadix2: data should be array");if(e<=0||e>32)throw new Error(`convertRadix2: wrong from=${e}`);if(n<=0||n>32)throw new Error(`convertRadix2: wrong to=${n}`);if(xr(e,n)>32)throw new Error(`convertRadix2: carry overflow from=${e} to=${n} carryBits=${xr(e,n)}`);let o=0,s=0,i=2**n-1,a=[];for(let c of t){if(lt(c),c>=2**e)throw new Error(`convertRadix2: invalid data word=${c} from=${e}`);if(o=o<<e|c,s+e>32)throw new Error(`convertRadix2: carry overflow pos=${s} from=${e}`);for(s+=e;s>=n;s-=n)a.push((o>>s-n&i)>>>0);o&=2**s-1}if(o=o<<n-s&i,!r&&s>=e)throw new Error("Excess padding");if(!r&&o)throw new Error(`Non-zero padding: ${o}`);return r&&s>0&&a.push(o>>>0),a}function ba(t){return lt(t),{encode:e=>{if(!(e instanceof Uint8Array))throw new Error("radix.encode input should be Uint8Array");return da(Array.from(e),2**8,t)},decode:e=>{if(!Array.isArray(e)||e.length&&typeof e[0]!="number")throw new Error("radix.decode input should be array of strings");return Uint8Array.from(da(e,t,2**8))}}}function je(t,e=!1){if(lt(t),t<=0||t>32)throw new Error("radix2: bits should be in (0..32]");if(xr(8,t)>32||xr(t,8)>32)throw new Error("radix2: carry overflow");return{encode:n=>{if(!(n instanceof Uint8Array))throw new Error("radix2.encode input should be Uint8Array");return jo(Array.from(n),8,t,!e)},decode:n=>{if(!Array.isArray(n)||n.length&&typeof n[0]!="number")throw new Error("radix2.decode input should be array of strings");return Uint8Array.from(jo(n,t,8,e))}}}function fa(t){if(typeof t!="function")throw new Error("unsafeWrapper fn should be function");return function(...e){try{return t.apply(null,e)}catch{}}}function wa(t,e){if(lt(t),typeof e!="function")throw new Error("checksum fn should be function");return{encode(n){if(!(n instanceof Uint8Array))throw new Error("checksum.encode: input should be Uint8Array");let r=e(n).slice(0,t),o=new Uint8Array(n.length+t);return o.set(n),o.set(r,n.length),o},decode(n){if(!(n instanceof Uint8Array))throw new Error("checksum.decode: input should be Uint8Array");let r=n.slice(0,-t),o=e(r).slice(0,t),s=n.slice(-t);for(let i=0;i<t;i++)if(o[i]!==s[i])throw new Error("Invalid checksum");return r}}}k.utils={alphabet:Ie,chain:Te,checksum:wa,radix:ba,radix2:je,join:Me,padding:Sn};k.base16=Te(je(4),Ie("0123456789ABCDEF"),Me(""));k.base32=Te(je(5),Ie("ABCDEFGHIJKLMNOPQRSTUVWXYZ234567"),Sn(5),Me(""));k.base32hex=Te(je(5),Ie("0123456789ABCDEFGHIJKLMNOPQRSTUV"),Sn(5),Me(""));k.base32crockford=Te(je(5),Ie("0123456789ABCDEFGHJKMNPQRSTVWXYZ"),Me(""),ga(t=>t.toUpperCase().replace(/O/g,"0").replace(/[IL]/g,"1")));k.base64=Te(je(6),Ie("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"),Sn(6),Me(""));k.base64url=Te(je(6),Ie("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_"),Sn(6),Me(""));var Wo=t=>Te(ba(58),Ie(t),Me(""));k.base58=Wo("123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz");k.base58flickr=Wo("123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ");k.base58xrp=Wo("rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz");var ha=[0,2,3,5,6,7,9,10,11];k.base58xmr={encode(t){let e="";for(let n=0;n<t.length;n+=8){let r=t.subarray(n,n+8);e+=k.base58.encode(r).padStart(ha[r.length],"1")}return e},decode(t){let e=[];for(let n=0;n<t.length;n+=11){let r=t.slice(n,n+11),o=ha.indexOf(r.length),s=k.base58.decode(r);for(let i=0;i<s.length-o;i++)if(s[i]!==0)throw new Error("base58xmr: wrong padding");e=e.concat(Array.from(s.slice(s.length-o)))}return Uint8Array.from(e)}};var Fu=t=>Te(wa(4,e=>t(t(e))),k.base58);k.base58check=Fu;var zo=Te(Ie("qpzry9x8gf2tvdw0s3jn54khce6mua7l"),Me("")),pa=[996825010,642813549,513874426,1027748829,705979059];function Tn(t){let e=t>>25,n=(t&33554431)<<5;for(let r=0;r<pa.length;r++)(e>>r&1)===1&&(n^=pa[r]);return n}function ma(t,e,n=1){let r=t.length,o=1;for(let s=0;s<r;s++){let i=t.charCodeAt(s);if(i<33||i>126)throw new Error(`Invalid prefix (${t})`);o=Tn(o)^i>>5}o=Tn(o);for(let s=0;s<r;s++)o=Tn(o)^t.charCodeAt(s)&31;for(let s of e)o=Tn(o)^s;for(let s=0;s<6;s++)o=Tn(o);return o^=n,zo.encode(jo([o%2**30],30,5,!1))}function xa(t){let e=t==="bech32"?1:734539939,n=je(5),r=n.decode,o=n.encode,s=fa(r);function i(u,l,h=90){if(typeof u!="string")throw new Error(`bech32.encode prefix should be string, not ${typeof u}`);if(!Array.isArray(l)||l.length&&typeof l[0]!="number")throw new Error(`bech32.encode words should be array of numbers, not ${typeof l}`);let p=u.length+7+l.length;if(h!==!1&&p>h)throw new TypeError(`Length ${p} exceeds limit ${h}`);return u=u.toLowerCase(),`${u}1${zo.encode(l)}${ma(u,l,e)}`}function a(u,l=90){if(typeof u!="string")throw new Error(`bech32.decode input should be string, not ${typeof u}`);if(u.length<8||l!==!1&&u.length>l)throw new TypeError(`Wrong string length: ${u.length} (${u}). Expected (8..${l})`);let h=u.toLowerCase();if(u!==h&&u!==u.toUpperCase())throw new Error("String must be lowercase or uppercase");u=h;let p=u.lastIndexOf("1");if(p===0||p===-1)throw new Error('Letter "1" must be present between prefix and data only');let m=u.slice(0,p),y=u.slice(p+1);if(y.length<6)throw new Error("Data must be at least 6 characters long");let w=zo.decode(y).slice(0,-6),T=ma(m,w,e);if(!y.endsWith(T))throw new Error(`Invalid checksum in ${u}: expected "${T}"`);return{prefix:m,words:w}}let c=fa(a);function d(u){let{prefix:l,words:h}=a(u,!1);return{prefix:l,words:h,bytes:r(h)}}return{encode:i,decode:a,decodeToBytes:d,decodeUnsafe:c,fromWords:r,fromWordsUnsafe:s,toWords:o}}k.bech32=xa("bech32");k.bech32m=xa("bech32m");k.utf8={encode:t=>new TextDecoder().decode(t),decode:t=>new TextEncoder().encode(t)};k.hex=Te(je(4),Ie("0123456789abcdef"),Me(""),ga(t=>{if(typeof t!="string"||t.length%2)throw new TypeError(`hex.decode: expected string, got ${typeof t} with length ${t.length}`);return t.toLowerCase()}));var An={utf8:k.utf8,hex:k.hex,base16:k.base16,base32:k.base32,base64:k.base64,base64url:k.base64url,base58:k.base58,base58xmr:k.base58xmr},Ea=`Invalid encoding type. Available types: ${Object.keys(An).join(", ")}`,ju=(t,e)=>{if(typeof t!="string"||!An.hasOwnProperty(t))throw new TypeError(Ea);if(!(e instanceof Uint8Array))throw new TypeError("bytesToString() expects Uint8Array");return An[t].encode(e)};k.bytesToString=ju;k.str=k.bytesToString;var zu=(t,e)=>{if(!An.hasOwnProperty(t))throw new TypeError(Ea);if(typeof e!="string")throw new TypeError("stringToBytes() expects string");return An[t].decode(e)};k.stringToBytes=zu;k.bytes=k.stringToBytes});var Ma=ie(ue=>{"use strict";Object.defineProperty(ue,"__esModule",{value:!0});ue.mnemonicToSeedSync=ue.mnemonicToSeed=ue.validateMnemonic=ue.entropyToMnemonic=ue.mnemonicToEntropy=ue.generateMnemonic=void 0;var ka=En(),Ta=sa(),Wu=ia(),Aa=ua(),Gu=Bt(),Er=va(),Ku=t=>t[0]==="\u3042\u3044\u3053\u304F\u3057\u3093";function Sa(t){if(typeof t!="string")throw new TypeError(`Invalid mnemonic type: ${typeof t}`);return t.normalize("NFKD")}function Go(t){let e=Sa(t),n=e.split(" ");if(![12,15,18,21,24].includes(n.length))throw new Error("Invalid mnemonic");return{nfkd:e,words:n}}function La(t){ka.default.bytes(t,16,20,24,28,32)}function qu(t,e=128){if(ka.default.number(e),e%32!==0||e>256)throw new TypeError("Invalid entropy");return Ba((0,Gu.randomBytes)(e/8),t)}ue.generateMnemonic=qu;var Vu=t=>{let e=8-t.length/4;return new Uint8Array([(0,Wu.sha256)(t)[0]>>e<<e])};function _a(t){if(!Array.isArray(t)||t.length!==2048||typeof t[0]!="string")throw new Error("Worlist: expected array of 2048 strings");return t.forEach(e=>{if(typeof e!="string")throw new Error(`Wordlist: non-string element: ${e}`)}),Er.utils.chain(Er.utils.checksum(1,Vu),Er.utils.radix2(11,!0),Er.utils.alphabet(t))}function Ha(t,e){let{words:n}=Go(t),r=_a(e).decode(n);return La(r),r}ue.mnemonicToEntropy=Ha;function Ba(t,e){return La(t),_a(e).encode(t).join(Ku(e)?"\u3000":" ")}ue.entropyToMnemonic=Ba;function Zu(t,e){try{Ha(t,e)}catch{return!1}return!0}ue.validateMnemonic=Zu;var Ia=t=>Sa(`mnemonic${t}`);function Yu(t,e=""){return(0,Ta.pbkdf2Async)(Aa.sha512,Go(t).nfkd,Ia(e),{c:2048,dkLen:64})}ue.mnemonicToSeed=Yu;function Xu(t,e=""){return(0,Ta.pbkdf2)(Aa.sha512,Go(t).nfkd,Ia(e),{c:2048,dkLen:64})}ue.mnemonicToSeedSync=Xu});function Ko(t){if(!Number.isSafeInteger(t)||t<0)throw new Error(`Wrong positive integer: ${t}`)}function Ju(t){if(typeof t!="boolean")throw new Error(`Expected boolean, not ${t}`)}function ut(t,...e){if(!(t instanceof Uint8Array))throw new TypeError("Expected Uint8Array");if(e.length>0&&!e.includes(t.length))throw new TypeError(`Expected Uint8Array of length ${e}, not of length=${t.length}`)}function Qu(t){if(typeof t!="function"||typeof t.create!="function")throw new Error("Hash should be wrapped by utils.wrapConstructor");Ko(t.outputLen),Ko(t.blockLen)}function ed(t,e=!0){if(t.destroyed)throw new Error("Hash instance has been destroyed");if(e&&t.finished)throw new Error("Hash#digest() has already been called")}function td(t,e){ut(t);let n=e.outputLen;if(t.length<n)throw new Error(`digestInto() expects output buffer of length at least ${n}`)}var nd,ze,vr=$(()=>{nd={number:Ko,bool:Ju,bytes:ut,hash:Qu,exists:ed,output:td},ze=nd});var rd,Ca=$(()=>{rd={node:void 0,web:typeof self=="object"&&"crypto"in self?self.crypto:void 0}});function Ua(t){if(!(t instanceof Uint8Array))throw new Error("Uint8Array expected");let e="";for(let n=0;n<t.length;n++)e+=sd[t[n]];return e}function Ra(t){if(typeof t!="string")throw new TypeError("hexToBytes: expected string, got "+typeof t);if(t.length%2)throw new Error("hexToBytes: received invalid unpadded hex");let e=new Uint8Array(t.length/2);for(let n=0;n<e.length;n++){let r=n*2,o=t.slice(r,r+2),s=Number.parseInt(o,16);if(Number.isNaN(s)||s<0)throw new Error("Invalid byte sequence");e[n]=s}return e}function qo(t){if(typeof t!="string")throw new TypeError(`utf8ToBytes expected string, got ${typeof t}`);return new TextEncoder().encode(t)}function Ln(t){if(typeof t=="string"&&(t=qo(t)),!(t instanceof Uint8Array))throw new TypeError(`Expected input type is Uint8Array (got ${typeof t})`);return t}function _n(...t){if(!t.every(r=>r instanceof Uint8Array))throw new Error("Uint8Array list expected");if(t.length===1)return t[0];let e=t.reduce((r,o)=>r+o.length,0),n=new Uint8Array(e);for(let r=0,o=0;r<t.length;r++){let s=t[r];n.set(s,o),o+=s.length}return n}function Ce(t){let e=r=>t().update(Ln(r)).digest(),n=t();return e.outputLen=n.outputLen,e.blockLen=n.blockLen,e.create=()=>t(),e}var dt,Ae,od,sd,nn,Mt=$(()=>{Ca();dt=t=>new DataView(t.buffer,t.byteOffset,t.byteLength),Ae=(t,e)=>t<<32-e|t>>>e,od=new Uint8Array(new Uint32Array([287454020]).buffer)[0]===68;if(!od)throw new Error("Non little-endian hardware is not supported");sd=Array.from({length:256},(t,e)=>e.toString(16).padStart(2,"0"));nn=class{clone(){return this._cloneInto()}}});var kr,Hn,$a=$(()=>{vr();Mt();kr=class extends nn{constructor(e,n){super(),this.finished=!1,this.destroyed=!1,ze.hash(e);let r=Ln(n);if(this.iHash=e.create(),typeof this.iHash.update!="function")throw new TypeError("Expected instance of class which extends utils.Hash");this.blockLen=this.iHash.blockLen,this.outputLen=this.iHash.outputLen;let o=this.blockLen,s=new Uint8Array(o);s.set(r.length>o?e.create().update(r).digest():r);for(let i=0;i<s.length;i++)s[i]^=54;this.iHash.update(s),this.oHash=e.create();for(let i=0;i<s.length;i++)s[i]^=106;this.oHash.update(s),s.fill(0)}update(e){return ze.exists(this),this.iHash.update(e),this}digestInto(e){ze.exists(this),ze.bytes(e,this.outputLen),this.finished=!0,this.iHash.digestInto(e),this.oHash.update(e),this.oHash.digestInto(e),this.destroy()}digest(){let e=new Uint8Array(this.oHash.outputLen);return this.digestInto(e),e}_cloneInto(e){e||(e=Object.create(Object.getPrototypeOf(this),{}));let{oHash:n,iHash:r,finished:o,destroyed:s,blockLen:i,outputLen:a}=this;return e=e,e.finished=o,e.destroyed=s,e.blockLen=i,e.outputLen=a,e.oHash=n._cloneInto(e.oHash),e.iHash=r._cloneInto(e.iHash),e}destroy(){this.destroyed=!0,this.oHash.destroy(),this.iHash.destroy()}},Hn=(t,e,n)=>new kr(t,e).update(n).digest();Hn.create=(t,e)=>new kr(t,e)});function id(t,e,n,r){if(typeof t.setBigUint64=="function")return t.setBigUint64(e,n,r);let o=BigInt(32),s=BigInt(4294967295),i=Number(n>>o&s),a=Number(n&s),c=r?4:0,d=r?0:4;t.setUint32(e+c,i,r),t.setUint32(e+d,a,r)}var ft,Tr=$(()=>{vr();Mt();ft=class extends nn{constructor(e,n,r,o){super(),this.blockLen=e,this.outputLen=n,this.padOffset=r,this.isLE=o,this.finished=!1,this.length=0,this.pos=0,this.destroyed=!1,this.buffer=new Uint8Array(e),this.view=dt(this.buffer)}update(e){ze.exists(this);let{view:n,buffer:r,blockLen:o}=this;e=Ln(e);let s=e.length;for(let i=0;i<s;){let a=Math.min(o-this.pos,s-i);if(a===o){let c=dt(e);for(;o<=s-i;i+=o)this.process(c,i);continue}r.set(e.subarray(i,i+a),this.pos),this.pos+=a,i+=a,this.pos===o&&(this.process(n,0),this.pos=0)}return this.length+=e.length,this.roundClean(),this}digestInto(e){ze.exists(this),ze.output(e,this),this.finished=!0;let{buffer:n,view:r,blockLen:o,isLE:s}=this,{pos:i}=this;n[i++]=128,this.buffer.subarray(i).fill(0),this.padOffset>o-i&&(this.process(r,0),i=0);for(let l=i;l<o;l++)n[l]=0;id(r,o-8,BigInt(this.length*8),s),this.process(r,0);let a=dt(e),c=this.outputLen;if(c%4)throw new Error("_sha2: outputLen should be aligned to 32bit");let d=c/4,u=this.get();if(d>u.length)throw new Error("_sha2: outputLen bigger than state");for(let l=0;l<d;l++)a.setUint32(4*l,u[l],s)}digest(){let{buffer:e,outputLen:n}=this;this.digestInto(e);let r=e.slice(0,n);return this.destroy(),r}_cloneInto(e){e||(e=new this.constructor),e.set(...this.get());let{blockLen:n,buffer:r,length:o,finished:s,destroyed:i,pos:a}=this;return e.length=o,e.pos=a,e.finished=s,e.destroyed=i,o%n&&e.buffer.set(r),e}}});function Oa(t,e,n,r){return t===0?e^n^r:t===1?e&n|~e&r:t===2?(e|~n)^r:t===3?e&r|n&~r:e^(n|~r)}var ad,Da,cd,Zo,Yo,Na,ld,ud,dd,fd,Ar,Sr,Vo,Pa,Fa=$(()=>{Tr();Mt();ad=new Uint8Array([7,4,13,1,10,6,15,3,12,0,9,5,2,14,11,8]),Da=Uint8Array.from({length:16},(t,e)=>e),cd=Da.map(t=>(9*t+5)%16),Zo=[Da],Yo=[cd];for(let t=0;t<4;t++)for(let e of[Zo,Yo])e.push(e[t].map(n=>ad[n]));Na=[[11,14,15,12,5,8,7,9,11,13,14,15,6,7,9,8],[12,13,11,15,6,9,9,7,12,15,11,13,7,8,7,7],[13,15,14,11,7,7,6,8,13,14,13,12,5,5,6,9],[14,11,12,14,8,6,5,5,15,12,15,14,9,9,8,6],[15,12,13,13,9,5,8,6,14,11,12,11,8,6,5,5]].map(t=>new Uint8Array(t)),ld=Zo.map((t,e)=>t.map(n=>Na[e][n])),ud=Yo.map((t,e)=>t.map(n=>Na[e][n])),dd=new Uint32Array([0,1518500249,1859775393,2400959708,2840853838]),fd=new Uint32Array([1352829926,1548603684,1836072691,2053994217,0]),Ar=(t,e)=>t<<e|t>>>32-e;Sr=new Uint32Array(16),Vo=class extends ft{constructor(){super(64,20,8,!0),this.h0=1732584193,this.h1=-271733879,this.h2=-1732584194,this.h3=271733878,this.h4=-1009589776}get(){let{h0:e,h1:n,h2:r,h3:o,h4:s}=this;return[e,n,r,o,s]}set(e,n,r,o,s){this.h0=e|0,this.h1=n|0,this.h2=r|0,this.h3=o|0,this.h4=s|0}process(e,n){for(let p=0;p<16;p++,n+=4)Sr[p]=e.getUint32(n,!0);let r=this.h0|0,o=r,s=this.h1|0,i=s,a=this.h2|0,c=a,d=this.h3|0,u=d,l=this.h4|0,h=l;for(let p=0;p<5;p++){let m=4-p,y=dd[p],w=fd[p],T=Zo[p],L=Yo[p],g=ld[p],B=ud[p];for(let v=0;v<16;v++){let V=Ar(r+Oa(p,s,a,d)+Sr[T[v]]+y,g[v])+l|0;r=l,l=d,d=Ar(a,10)|0,a=s,s=V}for(let v=0;v<16;v++){let V=Ar(o+Oa(m,i,c,u)+Sr[L[v]]+w,B[v])+h|0;o=h,h=u,u=Ar(c,10)|0,c=i,i=V}}this.set(this.h1+a+u|0,this.h2+d+h|0,this.h3+l+o|0,this.h4+r+i|0,this.h0+s+c|0)}roundClean(){Sr.fill(0)}destroy(){this.destroyed=!0,this.buffer.fill(0),this.set(0,0,0,0,0)}},Pa=Ce(()=>new Vo)});var hd,pd,md,ht,pt,Lr,Xo,_r,w0,ja=$(()=>{Tr();Mt();hd=(t,e,n)=>t&e^~t&n,pd=(t,e,n)=>t&e^t&n^e&n,md=new Uint32Array([1116352408,1899447441,3049323471,3921009573,961987163,1508970993,2453635748,2870763221,3624381080,310598401,607225278,1426881987,1925078388,2162078206,2614888103,3248222580,3835390401,4022224774,264347078,604807628,770255983,1249150122,1555081692,1996064986,2554220882,2821834349,2952996808,3210313671,3336571891,3584528711,113926993,338241895,666307205,773529912,1294757372,1396182291,1695183700,1986661051,2177026350,2456956037,2730485921,2820302411,3259730800,3345764771,3516065817,3600352804,4094571909,275423344,430227734,506948616,659060556,883997877,958139571,1322822218,1537002063,1747873779,1955562222,2024104815,2227730452,2361852424,2428436474,2756734187,3204031479,3329325298]),ht=new Uint32Array([1779033703,3144134277,1013904242,2773480762,1359893119,2600822924,528734635,1541459225]),pt=new Uint32Array(64),Lr=class extends ft{constructor(){super(64,32,8,!1),this.A=ht[0]|0,this.B=ht[1]|0,this.C=ht[2]|0,this.D=ht[3]|0,this.E=ht[4]|0,this.F=ht[5]|0,this.G=ht[6]|0,this.H=ht[7]|0}get(){let{A:e,B:n,C:r,D:o,E:s,F:i,G:a,H:c}=this;return[e,n,r,o,s,i,a,c]}set(e,n,r,o,s,i,a,c){this.A=e|0,this.B=n|0,this.C=r|0,this.D=o|0,this.E=s|0,this.F=i|0,this.G=a|0,this.H=c|0}process(e,n){for(let l=0;l<16;l++,n+=4)pt[l]=e.getUint32(n,!1);for(let l=16;l<64;l++){let h=pt[l-15],p=pt[l-2],m=Ae(h,7)^Ae(h,18)^h>>>3,y=Ae(p,17)^Ae(p,19)^p>>>10;pt[l]=y+pt[l-7]+m+pt[l-16]|0}let{A:r,B:o,C:s,D:i,E:a,F:c,G:d,H:u}=this;for(let l=0;l<64;l++){let h=Ae(a,6)^Ae(a,11)^Ae(a,25),p=u+h+hd(a,c,d)+md[l]+pt[l]|0,y=(Ae(r,2)^Ae(r,13)^Ae(r,22))+pd(r,o,s)|0;u=d,d=c,c=a,a=i+p|0,i=s,s=o,o=r,r=p+y|0}r=r+this.A|0,o=o+this.B|0,s=s+this.C|0,i=i+this.D|0,a=a+this.E|0,c=c+this.F|0,d=d+this.G|0,u=u+this.H|0,this.set(r,o,s,i,a,c,d,u)}roundClean(){pt.fill(0)}destroy(){this.set(0,0,0,0,0,0,0,0),this.buffer.fill(0)}},Xo=class extends Lr{constructor(){super(),this.A=-1056596264,this.B=914150663,this.C=812702999,this.D=-150054599,this.E=-4191439,this.F=1750603025,this.G=1694076839,this.H=-1090891868,this.outputLen=28}},_r=Ce(()=>new Lr),w0=Ce(()=>new Xo)});function za(t,e=!1){return e?{h:Number(t&Hr),l:Number(t>>Jo&Hr)}:{h:Number(t>>Jo&Hr)|0,l:Number(t&Hr)|0}}function gd(t,e=!1){let n=new Uint32Array(t.length),r=new Uint32Array(t.length);for(let o=0;o<t.length;o++){let{h:s,l:i}=za(t[o],e);[n[o],r[o]]=[s,i]}return[n,r]}function Bd(t,e,n,r){let o=(e>>>0)+(r>>>0);return{h:t+n+(o/2**32|0)|0,l:o|0}}var Hr,Jo,yd,bd,wd,xd,Ed,vd,kd,Td,Ad,Sd,Ld,_d,Hd,Id,Md,Cd,Ud,Rd,$d,Od,I,Wa=$(()=>{Hr=BigInt(4294967295),Jo=BigInt(32);yd=(t,e)=>BigInt(t>>>0)<<Jo|BigInt(e>>>0),bd=(t,e,n)=>t>>>n,wd=(t,e,n)=>t<<32-n|e>>>n,xd=(t,e,n)=>t>>>n|e<<32-n,Ed=(t,e,n)=>t<<32-n|e>>>n,vd=(t,e,n)=>t<<64-n|e>>>n-32,kd=(t,e,n)=>t>>>n-32|e<<64-n,Td=(t,e)=>e,Ad=(t,e)=>t,Sd=(t,e,n)=>t<<n|e>>>32-n,Ld=(t,e,n)=>e<<n|t>>>32-n,_d=(t,e,n)=>e<<n-32|t>>>64-n,Hd=(t,e,n)=>t<<n-32|e>>>64-n;Id=(t,e,n)=>(t>>>0)+(e>>>0)+(n>>>0),Md=(t,e,n,r)=>e+n+r+(t/2**32|0)|0,Cd=(t,e,n,r)=>(t>>>0)+(e>>>0)+(n>>>0)+(r>>>0),Ud=(t,e,n,r,o)=>e+n+r+o+(t/2**32|0)|0,Rd=(t,e,n,r,o)=>(t>>>0)+(e>>>0)+(n>>>0)+(r>>>0)+(o>>>0),$d=(t,e,n,r,o,s)=>e+n+r+o+s+(t/2**32|0)|0,Od={fromBig:za,split:gd,toBig:yd,shrSH:bd,shrSL:wd,rotrSH:xd,rotrSL:Ed,rotrBH:vd,rotrBL:kd,rotr32H:Td,rotr32L:Ad,rotlSH:Sd,rotlSL:Ld,rotlBH:_d,rotlBL:Hd,add:Bd,add3L:Id,add3H:Md,add4L:Cd,add4H:Ud,add5H:$d,add5L:Rd},I=Od});var Dd,Nd,mt,gt,rn,Qo,es,ts,ns,A0,S0,L0,Ga=$(()=>{Tr();Wa();Mt();[Dd,Nd]=I.split(["0x428a2f98d728ae22","0x7137449123ef65cd","0xb5c0fbcfec4d3b2f","0xe9b5dba58189dbbc","0x3956c25bf348b538","0x59f111f1b605d019","0x923f82a4af194f9b","0xab1c5ed5da6d8118","0xd807aa98a3030242","0x12835b0145706fbe","0x243185be4ee4b28c","0x550c7dc3d5ffb4e2","0x72be5d74f27b896f","0x80deb1fe3b1696b1","0x9bdc06a725c71235","0xc19bf174cf692694","0xe49b69c19ef14ad2","0xefbe4786384f25e3","0x0fc19dc68b8cd5b5","0x240ca1cc77ac9c65","0x2de92c6f592b0275","0x4a7484aa6ea6e483","0x5cb0a9dcbd41fbd4","0x76f988da831153b5","0x983e5152ee66dfab","0xa831c66d2db43210","0xb00327c898fb213f","0xbf597fc7beef0ee4","0xc6e00bf33da88fc2","0xd5a79147930aa725","0x06ca6351e003826f","0x142929670a0e6e70","0x27b70a8546d22ffc","0x2e1b21385c26c926","0x4d2c6dfc5ac42aed","0x53380d139d95b3df","0x650a73548baf63de","0x766a0abb3c77b2a8","0x81c2c92e47edaee6","0x92722c851482353b","0xa2bfe8a14cf10364","0xa81a664bbc423001","0xc24b8b70d0f89791","0xc76c51a30654be30","0xd192e819d6ef5218","0xd69906245565a910","0xf40e35855771202a","0x106aa07032bbd1b8","0x19a4c116b8d2d0c8","0x1e376c085141ab53","0x2748774cdf8eeb99","0x34b0bcb5e19b48a8","0x391c0cb3c5c95a63","0x4ed8aa4ae3418acb","0x5b9cca4f7763e373","0x682e6ff3d6b2b8a3","0x748f82ee5defb2fc","0x78a5636f43172f60","0x84c87814a1f0ab72","0x8cc702081a6439ec","0x90befffa23631e28","0xa4506cebde82bde9","0xbef9a3f7b2c67915","0xc67178f2e372532b","0xca273eceea26619c","0xd186b8c721c0c207","0xeada7dd6cde0eb1e","0xf57d4f7fee6ed178","0x06f067aa72176fba","0x0a637dc5a2c898a6","0x113f9804bef90dae","0x1b710b35131c471b","0x28db77f523047d84","0x32caab7b40c72493","0x3c9ebe0a15c9bebc","0x431d67c49c100d4c","0x4cc5d4becb3e42b6","0x597f299cfc657e2a","0x5fcb6fab3ad6faec","0x6c44198c4a475817"].map(t=>BigInt(t))),mt=new Uint32Array(80),gt=new Uint32Array(80),rn=class extends ft{constructor(){super(128,64,16,!1),this.Ah=1779033703,this.Al=-205731576,this.Bh=-1150833019,this.Bl=-2067093701,this.Ch=1013904242,this.Cl=-23791573,this.Dh=-1521486534,this.Dl=1595750129,this.Eh=1359893119,this.El=-1377402159,this.Fh=-1694144372,this.Fl=725511199,this.Gh=528734635,this.Gl=-79577749,this.Hh=1541459225,this.Hl=327033209}get(){let{Ah:e,Al:n,Bh:r,Bl:o,Ch:s,Cl:i,Dh:a,Dl:c,Eh:d,El:u,Fh:l,Fl:h,Gh:p,Gl:m,Hh:y,Hl:w}=this;return[e,n,r,o,s,i,a,c,d,u,l,h,p,m,y,w]}set(e,n,r,o,s,i,a,c,d,u,l,h,p,m,y,w){this.Ah=e|0,this.Al=n|0,this.Bh=r|0,this.Bl=o|0,this.Ch=s|0,this.Cl=i|0,this.Dh=a|0,this.Dl=c|0,this.Eh=d|0,this.El=u|0,this.Fh=l|0,this.Fl=h|0,this.Gh=p|0,this.Gl=m|0,this.Hh=y|0,this.Hl=w|0}process(e,n){for(let g=0;g<16;g++,n+=4)mt[g]=e.getUint32(n),gt[g]=e.getUint32(n+=4);for(let g=16;g<80;g++){let B=mt[g-15]|0,v=gt[g-15]|0,V=I.rotrSH(B,v,1)^I.rotrSH(B,v,8)^I.shrSH(B,v,7),S=I.rotrSL(B,v,1)^I.rotrSL(B,v,8)^I.shrSL(B,v,7),j=mt[g-2]|0,C=gt[g-2]|0,se=I.rotrSH(j,C,19)^I.rotrBH(j,C,61)^I.shrSH(j,C,6),de=I.rotrSL(j,C,19)^I.rotrBL(j,C,61)^I.shrSL(j,C,6),oe=I.add4L(S,de,gt[g-7],gt[g-16]),$e=I.add4H(oe,V,se,mt[g-7],mt[g-16]);mt[g]=$e|0,gt[g]=oe|0}let{Ah:r,Al:o,Bh:s,Bl:i,Ch:a,Cl:c,Dh:d,Dl:u,Eh:l,El:h,Fh:p,Fl:m,Gh:y,Gl:w,Hh:T,Hl:L}=this;for(let g=0;g<80;g++){let B=I.rotrSH(l,h,14)^I.rotrSH(l,h,18)^I.rotrBH(l,h,41),v=I.rotrSL(l,h,14)^I.rotrSL(l,h,18)^I.rotrBL(l,h,41),V=l&p^~l&y,S=h&m^~h&w,j=I.add5L(L,v,S,Nd[g],gt[g]),C=I.add5H(j,T,B,V,Dd[g],mt[g]),se=j|0,de=I.rotrSH(r,o,28)^I.rotrBH(r,o,34)^I.rotrBH(r,o,39),oe=I.rotrSL(r,o,28)^I.rotrBL(r,o,34)^I.rotrBL(r,o,39),$e=r&s^r&a^s&a,xt=o&i^o&c^i&c;T=y|0,L=w|0,y=p|0,w=m|0,p=l|0,m=h|0,{h:l,l:h}=I.add(d|0,u|0,C|0,se|0),d=a|0,u=c|0,a=s|0,c=i|0,s=r|0,i=o|0;let Et=I.add3L(se,oe,xt);r=I.add3H(Et,C,de,$e),o=Et|0}({h:r,l:o}=I.add(this.Ah|0,this.Al|0,r|0,o|0)),{h:s,l:i}=I.add(this.Bh|0,this.Bl|0,s|0,i|0),{h:a,l:c}=I.add(this.Ch|0,this.Cl|0,a|0,c|0),{h:d,l:u}=I.add(this.Dh|0,this.Dl|0,d|0,u|0),{h:l,l:h}=I.add(this.Eh|0,this.El|0,l|0,h|0),{h:p,l:m}=I.add(this.Fh|0,this.Fl|0,p|0,m|0),{h:y,l:w}=I.add(this.Gh|0,this.Gl|0,y|0,w|0),{h:T,l:L}=I.add(this.Hh|0,this.Hl|0,T|0,L|0),this.set(r,o,s,i,a,c,d,u,l,h,p,m,y,w,T,L)}roundClean(){mt.fill(0),gt.fill(0)}destroy(){this.buffer.fill(0),this.set(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)}},Qo=class extends rn{constructor(){super(),this.Ah=-1942145080,this.Al=424955298,this.Bh=1944164710,this.Bl=-1982016298,this.Ch=502970286,this.Cl=855612546,this.Dh=1738396948,this.Dl=1479516111,this.Eh=258812777,this.El=2077511080,this.Fh=2011393907,this.Fl=79989058,this.Gh=1067287976,this.Gl=1780299464,this.Hh=286451373,this.Hl=-1848208735,this.outputLen=28}},es=class extends rn{constructor(){super(),this.Ah=573645204,this.Al=-64227540,this.Bh=-1621794909,this.Bl=-934517566,this.Ch=596883563,this.Cl=1867755857,this.Dh=-1774684391,this.Dl=1497426621,this.Eh=-1775747358,this.El=-1467023389,this.Fh=-1101128155,this.Fl=1401305490,this.Gh=721525244,this.Gl=746961066,this.Hh=246885852,this.Hl=-2117784414,this.outputLen=32}},ts=class extends rn{constructor(){super(),this.Ah=-876896931,this.Al=-1056596264,this.Bh=1654270250,this.Bl=914150663,this.Ch=-1856437926,this.Cl=812702999,this.Dh=355462360,this.Dl=-150054599,this.Eh=1731405415,this.El=-4191439,this.Fh=-1900787065,this.Fl=1750603025,this.Gh=-619958771,this.Gl=1694076839,this.Hh=1203062813,this.Hl=-1090891868,this.outputLen=48}},ns=Ce(()=>new rn),A0=Ce(()=>new Qo),S0=Ce(()=>new es),L0=Ce(()=>new ts)});function Ka(t){return BigInt(`0x${Ua(t)}`)}function Pd(t){return Ra(t.toString(16).padStart(64,"0"))}var rs,Fd,os,ss,jd,zd,Br,Ue,qa=$(()=>{$a();Fa();ja();Ga();vr();Mt();Ne();xn();H.hmacSha256Sync=(t,...e)=>Hn(_r,t,H.concatBytes(...e));rs=Ki(_r);Fd=qo("Bitcoin seed"),os={private:76066276,public:76067358},ss=2147483648,jd=t=>Pa(_r(t)),zd=t=>dt(t).getUint32(0,!1),Br=t=>{if(!Number.isSafeInteger(t)||t<0||t>2**32-1)throw new Error(`Invalid number=${t}. Should be from 0 to 2 ** 32 - 1`);let e=new Uint8Array(4);return dt(e).setUint32(0,t,!1),e},Ue=class{constructor(e){if(this.depth=0,this.index=0,this.chainCode=null,this.parentFingerprint=0,!e||typeof e!="object")throw new Error("HDKey.constructor must not be called directly");if(this.versions=e.versions||os,this.depth=e.depth||0,this.chainCode=e.chainCode,this.index=e.index||0,this.parentFingerprint=e.parentFingerprint||0,!this.depth&&(this.parentFingerprint||this.index))throw new Error("HDKey: zero depth with non-zero index/parent fingerprint");if(e.publicKey&&e.privateKey)throw new Error("HDKey: publicKey and privateKey at same time.");if(e.privateKey){if(!H.isValidPrivateKey(e.privateKey))throw new Error("Invalid private key");this.privKey=typeof e.privateKey=="bigint"?e.privateKey:Ka(e.privateKey),this.privKeyBytes=Pd(this.privKey),this.pubKey=Ti(e.privateKey,!0)}else if(e.publicKey)this.pubKey=R.fromHex(e.publicKey).toRawBytes(!0);else throw new Error("HDKey: no public or private key provided");this.pubHash=jd(this.pubKey)}get fingerprint(){if(!this.pubHash)throw new Error("No publicKey set!");return zd(this.pubHash)}get identifier(){return this.pubHash}get pubKeyHash(){return this.pubHash}get privateKey(){return this.privKeyBytes||null}get publicKey(){return this.pubKey||null}get privateExtendedKey(){let e=this.privateKey;if(!e)throw new Error("No private key");return rs.encode(this.serialize(this.versions.private,_n(new Uint8Array([0]),e)))}get publicExtendedKey(){if(!this.pubKey)throw new Error("No public key");return rs.encode(this.serialize(this.versions.public,this.pubKey))}static fromMasterSeed(e,n=os){if(ut(e),8*e.length<128||8*e.length>512)throw new Error(`HDKey: wrong seed length=${e.length}. Should be between 128 and 512 bits; 256 bits is advised)`);let r=Hn(ns,Fd,e);return new Ue({versions:n,chainCode:r.slice(32),privateKey:r.slice(0,32)})}static fromExtendedKey(e,n=os){let r=rs.decode(e),o=dt(r),s=o.getUint32(0,!1),i={versions:n,depth:r[4],parentFingerprint:o.getUint32(5,!1),index:o.getUint32(9,!1),chainCode:r.slice(13,45)},a=r.slice(45),c=a[0]===0;if(s!==n[c?"private":"public"])throw new Error("Version mismatch");return c?new Ue({...i,privateKey:a.slice(1)}):new Ue({...i,publicKey:a})}static fromJSON(e){return Ue.fromExtendedKey(e.xpriv)}derive(e){if(!/^[mM]'?/.test(e))throw new Error('Path must start with "m" or "M"');if(/^[mM]'?$/.test(e))return this;let n=e.replace(/^[mM]'?\//,"").split("/"),r=this;for(let o of n){let s=/^(\d+)('?)$/.exec(o);if(!s||s.length!==3)throw new Error(`Invalid child index: ${o}`);let i=+s[1];if(!Number.isSafeInteger(i)||i>=ss)throw new Error("Invalid index");s[2]==="'"&&(i+=ss),r=r.deriveChild(i)}return r}deriveChild(e){if(!this.pubKey||!this.chainCode)throw new Error("No publicKey or chainCode set");let n=Br(e);if(e>=ss){let a=this.privateKey;if(!a)throw new Error("Could not derive hardened child key");n=_n(new Uint8Array([0]),a,n)}else n=_n(this.pubKey,n);let r=Hn(ns,this.chainCode,n),o=Ka(r.slice(0,32)),s=r.slice(32);if(!H.isValidPrivateKey(o))throw new Error("Tweak bigger than curve order");let i={versions:this.versions,chainCode:s,depth:this.depth+1,parentFingerprint:this.fingerprint,index:e};try{if(this.privateKey){let a=H.mod(this.privKey+o,F.n);if(!H.isValidPrivateKey(a))throw new Error("The tweak was out of range or the resulted private key is invalid");i.privateKey=a}else{let a=R.fromHex(this.pubKey).add(R.fromPrivateKey(o));if(a.equals(R.ZERO))throw new Error("The tweak was equal to negative P, which made the result key invalid");i.publicKey=a.toRawBytes(!0)}return new Ue(i)}catch{return this.deriveChild(e+1)}}sign(e){if(!this.privateKey)throw new Error("No privateKey set!");return ut(e,32),Li(e,this.privKey,{canonical:!0,der:!1})}verify(e,n){if(ut(e,32),ut(n,64),!this.publicKey)throw new Error("No publicKey set!");let r;try{r=ge.fromCompact(n)}catch{return!1}return _i(r,e,this.publicKey)}wipePrivateData(){return this.privKey=void 0,this.privKeyBytes&&(this.privKeyBytes.fill(0),this.privKeyBytes=void 0),this}toJSON(){return{xpriv:this.privateExtendedKey,xpub:this.publicExtendedKey}}serialize(e,n){if(!this.chainCode)throw new Error("No chainCode set");return ut(n,33),_n(Br(e),new Uint8Array([this.depth]),Br(this.parentFingerprint),Br(this.index),this.chainCode,n)}}});var Ir,is,Va=$(()=>{bn();Ir=class extends _t{constructor(e,n){super(),this.finished=!1,this.destroyed=!1,Ri(e);let r=yn(n);if(this.iHash=e.create(),!(this.iHash instanceof _t))throw new TypeError("Expected instance of class which extends utils.Hash");let o=this.blockLen=this.iHash.blockLen;this.outputLen=this.iHash.outputLen;let s=new Uint8Array(o);s.set(r.length>this.iHash.blockLen?e.create().update(r).digest():r);for(let i=0;i<s.length;i++)s[i]^=54;this.iHash.update(s),this.oHash=e.create();for(let i=0;i<s.length;i++)s[i]^=106;this.oHash.update(s),s.fill(0)}update(e){if(this.destroyed)throw new Error("instance is destroyed");return this.iHash.update(e),this}digestInto(e){if(this.destroyed)throw new Error("instance is destroyed");if(!(e instanceof Uint8Array)||e.length!==this.outputLen)throw new Error("HMAC: Invalid output buffer");if(this.finished)throw new Error("digest() was already called");this.finished=!0,this.iHash.digestInto(e),this.oHash.update(e),this.oHash.digestInto(e),this.destroy()}digest(){let e=new Uint8Array(this.oHash.outputLen);return this.digestInto(e),e}_cloneInto(e){e||(e=Object.create(Object.getPrototypeOf(this),{}));let{oHash:n,iHash:r,finished:o,destroyed:s,blockLen:i,outputLen:a}=this;return e=e,e.finished=o,e.destroyed=s,e.blockLen=i,e.outputLen=a,e.oHash=n._cloneInto(e.oHash),e.iHash=r._cloneInto(e.iHash),e}destroy(){this.destroyed=!0,this.oHash.destroy(),this.iHash.destroy()}},is=(t,e,n)=>new Ir(t,e).update(n).digest();is.create=(t,e)=>new Ir(t,e)});function Gd(t){return H.bytesToHex(Lt.getPublicKey(t))}function Mr(t){let e=new URL(t);return e.pathname=e.pathname.replace(/\/+/g,"/"),e.pathname.endsWith("/")&&(e.pathname=e.pathname.slice(0,-1)),(e.port==="80"&&e.protocol==="ws:"||e.port==="443"&&e.protocol==="wss:")&&(e.port=""),e.searchParams.sort(),e.hash="",e.toString()}function qd(t,e){let n=0,r=t.length-1,o,s=n;if(r<0)s=0;else if(e.created_at<t[r].created_at)s=r+1;else if(e.created_at>=t[n].created_at)s=n;else for(;;){if(r<=n+1){s=r;break}if(o=Math.floor(n+(r-n)/2),t[o].created_at>e.created_at)n=o;else if(t[o].created_at<e.created_at)r=o;else{s=o;break}}return t[s]?.id!==e.id?[...t.slice(0,s),e,...t.slice(s)]:t}function Vd(t,e){let n=0,r=t.length-1,o,s=n;if(r<0)s=0;else if(e.created_at>t[r].created_at)s=r+1;else if(e.created_at<=t[n].created_at)s=n;else for(;;){if(r<=n+1){s=r;break}if(o=Math.floor(n+(r-n)/2),t[o].created_at<e.created_at)n=o;else if(t[o].created_at>e.created_at)r=o;else{s=o;break}}return t[s]?.id!==e.id?[...t.slice(0,s),e,...t.slice(s)]:t}function Zd(t){if(!cs(t))throw new Error("can't serialize event with wrong or missing properties");return JSON.stringify([0,t.pubkey,t.created_at,t.kind,t.tags,t.content])}function Yd(t){let e=rt(We.encode(Zd(t)));return H.bytesToHex(e)}function cs(t){if(typeof t!="object"||typeof t.kind!="number"||typeof t.content!="string"||typeof t.created_at!="number"||typeof t.pubkey!="string"||!t.pubkey.match(/^[a-f0-9]{64}$/)||!Array.isArray(t.tags))return!1;for(let e=0;e<t.tags.length;e++){let n=t.tags[e];if(!Array.isArray(n))return!1;for(let r=0;r<n.length;r++)if(typeof n[r]=="object")return!1}return!0}function Za(t){return Lt.verifySync(t.sig,Yd(t),t.pubkey)}function Xd(t,e){if(t.ids&&t.ids.indexOf(e.id)===-1||t.kinds&&t.kinds.indexOf(e.kind)===-1||t.authors&&t.authors.indexOf(e.pubkey)===-1)return!1;for(let n in t)if(n[0]==="#"){let r=n.slice(1),o=t[`#${r}`];if(o&&!e.tags.find(([s,i])=>s===n.slice(1)&&o.indexOf(i)!==-1))return!1}return!(t.since&&e.created_at<t.since||t.until&&e.created_at>=t.until)}function Jd(t,e){for(let n=0;n<t.length;n++)if(Xd(t[n],e))return!0;return!1}function Cr(t,e){let n=e.length+3,r=t.indexOf(`"${e}":`)+n,o=t.slice(r).indexOf('"')+r+1;return t.slice(o,o+64)}function Ya(t,e){let n=e.length,r=t.indexOf(`"${e}":`)+n+3,o=t.slice(r),s=Math.min(o.indexOf(","),o.indexOf("}"));return parseInt(o.slice(0,s),10)}function Xa(t){let e=t.slice(0,22).indexOf('"EVENT"');if(e===-1)return null;let n=t.slice(e+7+1).indexOf('"');if(n===-1)return null;let r=e+7+1+n,o=t.slice(r+1,80).indexOf('"');if(o===-1)return null;let s=r+1+o;return t.slice(r+1,s)}function ef(t,e){return e===Cr(t,"id")}function tf(t,e){return e===Cr(t,"pubkey")}function nf(t,e){return e===Ya(t,"kind")}function rf(t,e={}){let{listTimeout:n=3e3,getTimeout:r=3e3}=e;var o,s={},i={connect:[],disconnect:[],error:[],notice:[]},a={},c={};async function d(){return new Promise((m,y)=>{o=new WebSocket(t),o.onopen=()=>{i.connect.forEach(g=>g()),m()},o.onerror=()=>{i.error.forEach(g=>g()),y()},o.onclose=async()=>{i.disconnect.forEach(g=>g())};let w=[],T;o.onmessage=g=>{w.push(g.data),T||(T=setInterval(L,0))};function L(){if(w.length===0){clearInterval(T),T=null;return}var g=w.shift();if(!g)return;let B=Xa(g);if(B){let v=s[B];if(v&&v.alreadyHaveEvent&&v.alreadyHaveEvent(Cr(g,"id"),t))return}try{let v=JSON.parse(g);switch(v[0]){case"EVENT":let V=v[1],S=v[2];cs(S)&&s[V]&&(s[V].skipVerification||Za(S))&&Jd(s[V].filters,S)&&(s[V],(a[V]?.event||[]).forEach(C=>C(S)));return;case"EOSE":{let C=v[1];C in a&&(a[C].eose.forEach(se=>se()),a[C].eose=[]);return}case"OK":{let C=v[1],se=v[2],de=v[3]||"";C in c&&(se?c[C].ok.forEach(oe=>oe()):c[C].failed.forEach(oe=>oe(de)),c[C].ok=[],c[C].failed=[]);return}case"NOTICE":let j=v[1];i.notice.forEach(C=>C(j));return}}catch{return}}})}function u(){return o?.readyState===1}async function l(){u()||await d()}async function h(m){let y=JSON.stringify(m);if(!(!u()&&(await new Promise(w=>setTimeout(w,1e3)),!u())))try{o.send(y)}catch(w){console.log(w)}}let p=(m,{skipVerification:y=!1,alreadyHaveEvent:w=null,id:T=Math.random().toString().slice(2)}={})=>{let L=T;return s[L]={id:L,filters:m,skipVerification:y,alreadyHaveEvent:w},h(["REQ",L,...m]),{sub:(g,B={})=>p(g||m,{skipVerification:B.skipVerification||y,alreadyHaveEvent:B.alreadyHaveEvent||w,id:L}),unsub:()=>{delete s[L],delete a[L],h(["CLOSE",L])},on:(g,B)=>{a[L]=a[L]||{event:[],eose:[]},a[L][g].push(B)},off:(g,B)=>{let v=a[L],V=v[g].indexOf(B);V>=0&&v[g].splice(V,1)}}};return{url:t,sub:p,on:(m,y)=>{i[m].push(y),m==="connect"&&o?.readyState===1&&y()},off:(m,y)=>{let w=i[m].indexOf(y);w!==-1&&i[m].splice(w,1)},list:(m,y)=>new Promise(w=>{let T=p(m,y),L=[],g=setTimeout(()=>{T.unsub(),w(L)},n);T.on("eose",()=>{T.unsub(),clearTimeout(g),w(L)}),T.on("event",B=>{L.push(B)})}),get:(m,y)=>new Promise(w=>{let T=p([m],y),L=setTimeout(()=>{T.unsub(),w(null)},r);T.on("event",g=>{T.unsub(),clearTimeout(L),w(g)})}),publish(m){if(!m.id)throw new Error(`event ${m} has no id`);let y=m.id;return h(["EVENT",m]),{on:(w,T)=>{c[y]=c[y]||{ok:[],failed:[]},c[y][w].push(T)},off:(w,T)=>{let L=c[y];if(!L)return;let g=L[w].indexOf(T);g>=0&&L[w].splice(g,1)}}},connect:l,close(){i={connect:[],disconnect:[],error:[],notice:[]},a={},c={},o?.close()},get status(){return o?.readyState??3}}}function of(t){return{on(e,n){e==="failed"&&n(`relay ${t} not connected`)},off(){}}}async function af(t,e,n){let r=Ao(t,"02"+e),o=Qa(r),s=Uint8Array.from(Oi(16)),i=We.encode(n),a=await crypto.subtle.importKey("raw",o,{name:"AES-CBC"},!1,["encrypt"]),c=await crypto.subtle.encrypt({name:"AES-CBC",iv:s},a,i),d=Jt.encode(new Uint8Array(c)),u=Jt.encode(new Uint8Array(s.buffer));return`${d}?iv=${u}`}async function cf(t,e,n){let[r,o]=n.split("?iv="),s=Ao(t,"02"+e),i=Qa(s),a=await crypto.subtle.importKey("raw",i,{name:"AES-CBC"},!1,["decrypt"]),c=Jt.decode(r),d=Jt.decode(o),u=await crypto.subtle.decrypt({name:"AES-CBC",iv:d},a,c);return Ct.decode(u)}function Qa(t){return t.slice(1,33)}function lf(t){Ur=t}async function uf(t,e=""){try{return(await(await Ur(`https://${t}/.well-known/nostr.json?name=${e}`)).json()).names}catch{return{}}}async function df(t){let[e,n]=t.split("@");if(n||(n=e,e="_"),!e.match(/^[A-Za-z0-9-_]+$/))return null;let r;try{r=await(await Ur(`https://${n}/.well-known/nostr.json?name=${e}`)).json()}catch{return null}if(!r?.names?.[e])return null;let o=r.names[e],s=r.relays?.[o]||[];return{pubkey:o,relays:s}}function hf(t,e){let r=Ue.fromMasterSeed((0,sn.mnemonicToSeedSync)(t,e)).derive("m/44'/1237'/0'/0/0").privateKey;if(!r)throw new Error("could not derive private key");return H.bytesToHex(r)}function pf(){return(0,sn.generateMnemonic)(ls.wordlist)}function mf(t){return(0,sn.validateMnemonic)(t,ls.wordlist)}function gf(t){let{prefix:e,words:n}=le.decode(t,Bn),r=new Uint8Array(le.fromWords(n));switch(e){case"nprofile":{let o=as(r);if(!o[0]?.[0])throw new Error("missing TLV 0 for nprofile");if(o[0][0].length!==32)throw new Error("TLV 0 should be 32 bytes");return{type:"nprofile",data:{pubkey:H.bytesToHex(o[0][0]),relays:o[1]?o[1].map(s=>Ct.decode(s)):[]}}}case"nevent":{let o=as(r);if(!o[0]?.[0])throw new Error("missing TLV 0 for nevent");if(o[0][0].length!==32)throw new Error("TLV 0 should be 32 bytes");return{type:"nevent",data:{id:H.bytesToHex(o[0][0]),relays:o[1]?o[1].map(s=>Ct.decode(s)):[]}}}case"naddr":{let o=as(r);if(!o[0]?.[0])throw new Error("missing TLV 0 for naddr");if(!o[2]?.[0])throw new Error("missing TLV 2 for naddr");if(o[2][0].length!==32)throw new Error("TLV 2 should be 32 bytes");if(!o[3]?.[0])throw new Error("missing TLV 3 for naddr");if(o[3][0].length!==4)throw new Error("TLV 3 should be 4 bytes");return{type:"naddr",data:{identifier:Ct.decode(o[0][0]),pubkey:H.bytesToHex(o[2][0]),kind:parseInt(H.bytesToHex(o[3][0]),16),relays:o[1]?o[1].map(s=>Ct.decode(s)):[]}}}case"nsec":case"npub":case"note":return{type:e,data:H.bytesToHex(r)};default:throw new Error(`unknown prefix ${e}`)}}function as(t){let e={},n=t;for(;n.length>0;){let r=n[0],o=n[1],s=n.slice(2,2+o);n=n.slice(2+o),!(s.length<o)&&(e[r]=e[r]||[],e[r].push(s))}return e}function yf(t){return ds("nsec",t)}function bf(t){return ds("npub",t)}function wf(t){return ds("note",t)}function ds(t,e){let n=H.hexToBytes(e),r=le.toWords(n);return le.encode(t,r,Bn)}function xf(t){let e=fs({0:[H.hexToBytes(t.pubkey)],1:(t.relays||[]).map(r=>We.encode(r))}),n=le.toWords(e);return le.encode("nprofile",n,Bn)}function Ef(t){let e=fs({0:[H.hexToBytes(t.id)],1:(t.relays||[]).map(r=>We.encode(r))}),n=le.toWords(e);return le.encode("nevent",n,Bn)}function vf(t){let e=new ArrayBuffer(4);new DataView(e).setUint32(0,t.kind,!1);let n=fs({0:[We.encode(t.identifier)],1:(t.relays||[]).map(o=>We.encode(o)),2:[H.hexToBytes(t.pubkey)],3:[new Uint8Array(e)]}),r=le.toWords(n);return le.encode("naddr",r,Bn)}function fs(t){let e=[];return Object.entries(t).forEach(([n,r])=>{r.forEach(o=>{let s=new Uint8Array(o.length+2);s.set([parseInt(n)],0),s.set([o.length],1),s.set(o,2),e.push(s)})}),H.concatBytes(...e)}function Tf(t,e){let n=[];(e.kind||-1)>=0&&n.push(`kind=${e.kind}`),e.until&&n.push(`created_at<${e.until}`),e.since&&n.push(`created_at>${e.since}`);let r=n.join("&");if(r==="")throw new Error("refusing to create a delegation without any conditions");let o=rt(We.encode(`nostr:delegation:${e.pubkey}:${r}`)),s=H.bytesToHex(Lt.signSync(o,t));return{from:Gd(t),to:e.pubkey,cond:r,sig:s}}function Af(t){let e=t.tags.find(a=>a[0]==="delegation"&&a.length>=4);if(!e)return null;let n=e[1],r=e[2],o=e[3],s=r.split("&");for(let a=0;a<s.length;a++){let[c,d,u]=s[a].split(/\b/);if(!(c==="kind"&&d==="="&&t.kind===parseInt(u))){if(c==="created_at"&&d==="<"&&t.created_at<parseInt(u))continue;if(c==="created_at"&&d===">"&&t.created_at>parseInt(u))continue;return null}}let i=rt(We.encode(`nostr:delegation:${t.pubkey}:${r}`));return Lt.verifySync(o,i,n)?n:null}function Lf(t){hs=t}async function _f(t){try{let e="",{lud06:n,lud16:r}=JSON.parse(t.content);if(n){let{words:i}=le.decode(n,1e3),a=le.fromWords(i);e=Ct.decode(a)}else if(r){let[i,a]=r.split("@");e=`https://${a}/.well-known/lnurlp/${i}`}else return null;let s=await(await hs(e)).json();if(s.allowsNostr&&s.nostrPubkey)return s.callback}catch{}return null}function Hf({profile:t,event:e,amount:n,relays:r,comment:o=""}){if(!n)throw new Error("amount not given");if(!t)throw new Error("profile not given");let s={kind:9734,created_at:Math.round(Date.now()/1e3),content:o,tags:[["p",t],["amount",n.toString()],["relays",...r]]};return e&&s.tags.push(["e",e]),s}function Bf(t){let e;try{e=JSON.parse(t)}catch{return"Invalid zap request JSON."}if(!cs(e))return"Zap request is not a valid Nostr event.";if(!Za(e))return"Invalid signature on zap request.";let n=e.tags.find(([s,i])=>s==="p"&&i);if(!n)return"Zap request doesn't have a 'p' tag.";if(!n[1].match(/^[a-f0-9]{64}$/))return"Zap request 'p' tag is not valid hex.";let r=e.tags.find(([s,i])=>s==="e"&&i);return r&&!r[1].match(/^[a-f0-9]{64}$/)?"Zap request 'e' tag is not valid hex.":e.tags.find(([s,i])=>s==="relays"&&i)?null:"Zap request doesn't have a 'relays' tag."}function If({zapRequest:t,preimage:e,bolt11:n,paidAt:r}){let s=JSON.parse(t).tags.filter(([a])=>a==="e"||a==="p"||a==="a"),i={kind:9735,created_at:Math.round(r.getTime()/1e3),content:"",tags:[...s,["bolt11",n],["description",t]]};return e&&i.tags.push(["preimage",e]),i}var ls,sn,Wd,yt,Kd,Ct,We,Qd,Ja,sf,on,Ur,ff,us,Bn,kf,Sf,hs,Rr=$(()=>{Ne();Ne();sr();bn();Ne();xn();Ne();ls=Ke(Vi(),1),sn=Ke(Ma(),1);qa();Ne();xn();Ne();sr();xn();Ne();Va();sr();Wd=Object.defineProperty,yt=(t,e)=>{for(var n in e)Wd(t,n,{get:e[n],enumerable:!0})};Kd={};yt(Kd,{insertEventIntoAscendingList:()=>Vd,insertEventIntoDescendingList:()=>qd,normalizeURL:()=>Mr,utf8Decoder:()=>Ct,utf8Encoder:()=>We});Ct=new TextDecoder("utf-8"),We=new TextEncoder;Qd={};yt(Qd,{getHex64:()=>Cr,getInt:()=>Ya,getSubscriptionId:()=>Xa,matchEventId:()=>ef,matchEventKind:()=>nf,matchEventPubkey:()=>tf});Ja=class{_conn;_seenOn={};eoseSubTimeout;getTimeout;constructor(t={}){this._conn={},this.eoseSubTimeout=t.eoseSubTimeout||3400,this.getTimeout=t.getTimeout||3400}close(t){t.forEach(e=>{let n=this._conn[Mr(e)];n&&n.close()})}async ensureRelay(t){let e=Mr(t),n=this._conn[e];if(n)return n;let r=rf(e,{getTimeout:this.getTimeout*.9,listTimeout:this.getTimeout*.9});return this._conn[e]=r,await r.connect(),r}sub(t,e,n){let r=new Set,o=n||{};o.alreadyHaveEvent=(h,p)=>{let m=this._seenOn[h]||new Set;return m.add(p),this._seenOn[h]=m,r.has(h)};let s=[],i=new Set,a=new Set,c=t.length,d=!1,u=setTimeout(()=>{d=!0;for(let h of a.values())h()},this.eoseSubTimeout);t.forEach(async h=>{let p;try{p=await this.ensureRelay(h)}catch{y();return}if(!p)return;let m=p.sub(e,o);m.on("event",w=>{r.add(w.id);for(let T of i.values())T(w)}),m.on("eose",()=>{d||y()}),s.push(m);function y(){if(c--,c===0){clearTimeout(u);for(let w of a.values())w()}}});let l={sub(h,p){return s.forEach(m=>m.sub(h,p)),l},unsub(){s.forEach(h=>h.unsub())},on(h,p){switch(h){case"event":i.add(p);break;case"eose":a.add(p);break}},off(h,p){h==="event"?i.delete(p):h==="eose"&&a.delete(p)}};return l}get(t,e,n){return new Promise(r=>{let o=this.sub(t,[e],n),s=setTimeout(()=>{o.unsub(),r(null)},this.getTimeout);o.on("event",i=>{r(i),clearTimeout(s),o.unsub()})})}list(t,e,n){return new Promise(r=>{let o=[],s=this.sub(t,e,n);s.on("event",i=>{o.push(i)}),s.on("eose",()=>{s.unsub(),r(o)})})}publish(t,e){let n=t.map(r=>{let o=this._conn[Mr(r)];return o?o.publish(e):of(r)});return{on(r,o){n.forEach((s,i)=>{s.on(r,()=>o(t[i]))})},off(){}}}seenOn(t){return Array.from(this._seenOn[t]?.values?.()||[])}};sf={};yt(sf,{decrypt:()=>cf,encrypt:()=>af});on={};yt(on,{queryProfile:()=>df,searchDomain:()=>uf,useFetchImplementation:()=>lf});try{Ur=fetch}catch{}ff={};yt(ff,{generateSeedWords:()=>pf,privateKeyFromSeedWords:()=>hf,validateWords:()=>mf});us={};yt(us,{decode:()=>gf,naddrEncode:()=>vf,neventEncode:()=>Ef,noteEncode:()=>wf,nprofileEncode:()=>xf,npubEncode:()=>bf,nsecEncode:()=>yf});Bn=5e3;kf={};yt(kf,{createDelegation:()=>Tf,getDelegator:()=>Af});Sf={};yt(Sf,{getZapEndpoint:()=>_f,makeZapReceipt:()=>If,makeZapRequest:()=>Hf,useFetchImplementation:()=>Lf,validateZapRequest:()=>Bf});try{hs=fetch}catch{}H.hmacSha256Sync=(t,...e)=>is(rt,t,H.concatBytes(...e));H.sha256Sync=(...t)=>rt(H.concatBytes(...t))});var ec,$r,tc,nc=$(()=>{"use strict";Rr();ec=new Ja,$r=(t,e,n,r)=>N(void 0,null,function*(){let o=ec.sub(n,[{kinds:r,authors:t}]);return new Promise(s=>{o.on("event",i=>{t.indexOf(i.pubkey)!==-1&&r.indexOf(i.kind)!==-1&&e(i)}),o.on("eose",()=>{s()})})}),tc=(t,e)=>N(void 0,null,function*(){let n=ec.publish(e,t);return new Promise(r=>{n.on("ok",()=>r(!0)),n.on("failed",()=>r(!1))})})});var Ut,Mf,rc,Cf,Uf,Rf,Or,oc,sc,xe,G,Dr,In,re,ic,ac,Rt,cc,$f,lc,ps,ms,uc,gs,$t,Of,Re,bt=$(()=>{"use strict";Ut=Ke(Gt());qe();nc();Mf=()=>{let t=Y("my-profile-last-fetch-date");return t===null?null:Number(t)},rc=!1,Cf=()=>{rc=!0,At("my-profile-last-fetch-date",Date.now().toString())},Uf=()=>{let t=Y("my-profile-last-update-date");return t===null?null:Number(t)},Rf=()=>{At("my-profile-last-update-date",Date.now().toString())},Or=()=>rc,oc=()=>{if(!Or())return!1;let t=Mf(),e=Uf();return!(e===null||t===null||e>t-1e4)},sc=t=>{if(Y("pubkey")===null)throw new Error("storeMyProfileEvent no pubkey in localStorage");if(!(t.kind===0||t.kind===2||t.kind===10002||t.kind===3)||t.pubkey!==Y("pubkey"))return!1;let e=`my-profile-event-${t.kind}`,n=Y(e);if(n===null)At(e,JSON.stringify([t]));else{let r=JSON.parse(n);if(r.some(o=>o.id===t.id))return!1;r.push(t),At(e,JSON.stringify(r))}return Rf(),!0},xe=t=>{let e=`my-profile-event-${t}`,n=Y(e);return n===null?null:JSON.parse(n).sort((o,s)=>s.created_at-o.created_at)},G=t=>{let e=xe(t);return e===null?null:e[0]},Dr=()=>{let t=G(10002),e=t?t.tags.map(n=>n[1]):[];return e.length>3?e:[...new Set([...e,"wss://hist.nostr.land","wss://relay.damus.io","wss://nostr-pub.wellorder.net","wss://purplepag.es","wss://relay.nos.social","wss://relay.nostr.band","wss://relay.snort.social"])].slice(0,3)},In=(t,e)=>N(void 0,null,function*(){var n;if(Or())[0,2,10002,3].forEach(r=>{let o=G(r);o!==null&&e(o)});else{let r=Dr();yield $r([t],o=>{sc(o),e(o)},r,[0,2,10002,3]),(n=G(10002))!=null&&n.tags.some(o=>r.indexOf(o[1])===-1&&(!o[2]||o[2]==="write"))&&(yield In(t,e)),Cf()}}),re={},ic=t=>{re[t.pubkey]||(re[t.pubkey]={}),(!re[t.pubkey][t.kind]||re[t.pubkey][t.kind].created_at<t.created_at)&&(re[t.pubkey][t.kind]=t)},ac=()=>N(void 0,null,function*(){let t=G(3);if(!t||t.tags.length===0)return;let e=t.tags.filter(n=>!re[n[1]]);e.length>0&&(yield $r(e.map(n=>n[1]),ic,Dr(),[0,10002,3]))}),Rt=(t,e)=>Y("pubkey")===t?G(e):!re[t]||!re[t][e]?null:re[t][e],cc=t=>Object.keys(re).filter(e=>!!re[e][t]).map(e=>re[e][t]),$f=(t,e,n)=>N(void 0,null,function*(){let r=t.filter(o=>!Rt(o,e));return r.length>0&&(yield $r(r,ic,n||Dr(),[0,10002,3])),t.map(o=>Rt(o,e))}),lc=(t,e,n)=>N(void 0,null,function*(){return(yield $f([t],e,n))[0]}),ps=t=>{let e=Object.keys(re).map(n=>{if(!re[n][3])return null;let r=re[n][3].tags.find(o=>o[1]===t&&o[3]);return r?(0,Ut.sanitize)(r[3]):null}).reduce((n,r)=>r?n[r]?yo(go({},n),{[r]:n[r]+1}):yo(go({},n),{[r]:1}):n,{});return e.length===0?null:(0,Ut.sanitize)(Object.keys(e).sort((n,r)=>e[r]-e[n])[0])},ms=t=>{let e=G(3);if(e){let n=e.tags.find(r=>r[1]===t&&r[3]);if(n)return(0,Ut.sanitize)(n[3])}return null},uc=t=>{let e=G(3);if(e){let n=e.tags.find(r=>r[1]===t&&r[2]&&r[2]!=="");if(n)return n[2]}return null},gs=t=>{let e=G(3);return e?!!e.tags.some(n=>n[1]===t):null},$t=t=>{if(Y("pubkey")===t){let n=G(0);if(n){let{name:r}=JSON.parse(n.content);if(r)return(0,Ut.sanitize)(r)}}else{let n=ms(t);if(n)return n;if(re[t]&&re[t][0]){let{name:r,display_name:o}=JSON.parse(re[t][0].content);if(r)return(0,Ut.sanitize)(r);if(o)return(0,Ut.sanitize)(o)}}let e=ps(t);return e?`${e} (?)`:`${t.substring(0,10)}...`},Of=t=>N(void 0,null,function*(){return sc(t),yield tc(t,[...Dr(),"wss://nostr.mutinywallet.com","wss://purplepag.es","wss://relay.nos.social","wss://relay.nostr.band","wss://relay.snort.social"])}),Re=(t,e,n="Update")=>N(void 0,null,function*(){let r=document.getElementById(e);if(r.setAttribute("disabled",""),r.setAttribute("aria-busy","true"),r.innerHTML="Signing...",!window.nostr)return new Promise(i=>{i(!1)});let o=yield window.nostr.signEvent(t);r.innerHTML="Sending...";let s=yield Of(o);return r.removeAttribute("aria-busy"),r.innerHTML="Recieved by Relays!",setTimeout(()=>{r.innerHTML=n,r.removeAttribute("disabled")},1e3),s})});function dc(t,e){if(e===0)return["just now","right now"];var n=Df[Math.floor(e/2)];return t>1&&(n+="s"),[t+" "+n+" ago","in "+t+" "+n]}var Df,fc=$(()=>{Df=["second","minute","hour","day","week","month","year"]});function hc(t,e){if(e===0)return["\u521A\u521A","\u7247\u523B\u540E"];var n=Nf[~~(e/2)];return[t+" "+n+"\u524D",t+" "+n+"\u540E"]}var Nf,pc=$(()=>{Nf=["\u79D2","\u5206\u949F","\u5C0F\u65F6","\u5929","\u5468","\u4E2A\u6708","\u5E74"]});var ys,bs,ws,Nr=$(()=>{ys={},bs=function(t,e){ys[t]=e},ws=function(t){return ys[t]||ys.en_US}});function mc(t){return t instanceof Date?t:!isNaN(t)||/^\d+$/.test(t)?new Date(parseInt(t)):(t=(t||"").trim().replace(/\.\d+/,"").replace(/-/,"/").replace(/-/,"/").replace(/(\d)T(\d)/,"$1 $2").replace(/Z/," UTC").replace(/([+-]\d\d):?(\d\d)/," $1$2"),new Date(t))}function Es(t,e){var n=t<0?1:0;t=Math.abs(t);for(var r=t,o=0;t>=xs[o]&&o<xs.length;o++)t/=xs[o];return t=Math.floor(t),o*=2,t>(o===0?9:1)&&(o+=1),e(t,o,r)[n].replace("%s",t.toString())}function vs(t,e){var n=e?mc(e):new Date;return(+n-+mc(t))/1e3}var xs,ks=$(()=>{xs=[60,60,24,7,4.345238095238096,12]});var Mn,gc=$(()=>{ks();Nr();Mn=function(t,e,n){var r=vs(t,n&&n.relativeDate);return Es(r,ws(e))}});var yc=$(()=>{});var bc=$(()=>{yc();ks();Nr()});var Ts=$(()=>{fc();pc();Nr();gc();bc();bs("en_US",dc);bs("zh_CN",hc)});var Ec,Pf,Ff,xc,wt,jf,zf,Wf,Gf,Kf,Ge,Pr=$(()=>{"use strict";Ts();Ec=Ke(Gt());bt();Pf=t=>`
+    <table role="grid" class="historytable">
+        <tbody>${t.map(e=>`
+            <tr>
+                <td><small>${Mn(e.ago*1e3)}</small></td>
+                <td><ul>${e.changes.map(n=>`<li>${n}</li>`).join("")}</ul></td>
+                <td>${e.option}</td>
+            </tr>
+        `).join("")}
+        </tbody>
+    </table>
+`,Ff=t=>t.map((e,n,r)=>{let o=[],s=JSON.parse(e.content),i=a=>(0,Ec.sanitize)(typeof a=="string"?a.replace(/(\r\n|\n|\r)/gm," "):a.toString());if(n===r.length-1)Object.keys(s).forEach(a=>o.push(`${a}: ${i(s[a])}`));else{let a=JSON.parse(r[n+1].content);Object.keys(s).filter(c=>!Object.keys(a).some(d=>d===c)).forEach(c=>{o.push(`added ${c}: ${i(s[c])}`)}),Object.keys(s).filter(c=>Object.keys(a).some(d=>d===c&&a[c]!==s[c])).forEach(c=>{o.push(`modified ${c}: ${i(s[c])}`)}),Object.keys(a).filter(c=>!Object.keys(s).some(d=>d===c)).forEach(c=>{o.push(`removed ${i(a[c]).length===0?`blank ${c}`:`${c}: ${i(a[c])}`}`)})}return{ago:e.created_at,changes:o,option:n===0?"<ins>Backup Complete<ins>":`<a href="#" id="restore-${e.kind}-${n}" class="secondary" onclick="event.preventDefault();alert('feature coming soon...');">Restore</a>`}}),xc=(t,e)=>!!(t[1]===e[1]||t[3]&&e[3]&&t[3]===e[3]),wt=t=>t[3]&&t[3].length>0?`<mark>${t[3]}</mark>`:`<mark title="${t[1]}">${$t(t[1])}</mark>`,jf=t=>t.map((e,n,r)=>{let o=[],s=e.tags.filter(i=>i[0]==="p");if(n===r.length-1)o.push(s.map(wt).join(", "));else{let i=r[n+1].tags.filter(u=>u[0]==="p"),a=s.filter(u=>!i.some(l=>xc(u,l)));a.length>0&&o.push(`<div class="added">added ${a.map(wt).join(", ")}</div>`),s.filter(u=>i.filter(l=>l[1]===u[1]).some(l=>u[3]!==l[3])).forEach(u=>{let l=i.find(h=>h[1]===u[1]);return!l||!u[3]&&!l[3]?null:u[3]&&!l[3]?o.push(`added petname for ${wt(u)}`):!u[3]&&l[3]?o.push(`removed petname for ${wt(u)}, previously ${wt(l)}`):o.push(`modified petname for ${wt(u)}, previously ${wt(l)}`)});let d=i.filter(u=>!s.some(l=>xc(u,l)));d.length>0&&o.push(`<div class="removed">removed ${d.map(wt).join(", ")}</div>`)}return{ago:e.created_at,changes:o,option:n===0?"<ins>Backup Complete<ins>":`<a href="#" id="restore-${e.kind}-${n}" class="secondary" onclick="event.preventDefault()">Restore</a>`}}),zf=t=>t[1]+(t[2]?` ${t[2]} only`:""),Wf=t=>t.map((e,n,r)=>{let o=[],s=e.tags.filter(i=>i[0]==="r");if(n===r.length-1)e.tags.forEach(i=>o.push(zf(i)));else{let i=r[n+1].tags,a=(l,h)=>{let p=`<mark class="${h}">write</mark>`,m=`<mark class="${h}">read</mark>`,y=`${m} and ${p}`;return l[2]?l[2]==="write"?`${p} only`:`${m} only`:y},c=s.filter(l=>!i.some(h=>h[1]===l[1]));c.length>0&&c.forEach(l=>o.push(`<div>added <mark>${l[1]}</mark> as ${a(l,"added")}</div>`)),s.filter(l=>i.filter(h=>h[1]===l[1]).some(h=>l[2]!==h[2])).forEach(l=>{let h=i.find(m=>m[1]===l[1]),p;l[2]?l[2]==="read"?h?p='<mark class="added">read</mark> instead of <mark class="removed">write</mark>':p='only read and no longer <mark class="removed">write</mark>':h?p='<mark class="added">write</mark> instead of <mark class="removed">read</mark>':p='only write and no longer <mark class="removed">read</mark>':h&&h[2]==="read"?p='<mark class="added">write</mark> as well as read':p='<mark class="added">read</mark> as well as write',o.push(`<div class="modified">modified <mark>${l[1]}</mark> to ${p}</div>`)});let u=i.filter(l=>!s.some(h=>h[1]===l[1]));u.length>0&&u.forEach(l=>o.push(`<div>removed <mark>${l[1]}</mark> which was ${a(l,"removed")}</div>`))}return{ago:e.created_at,changes:o,option:n===0?"<ins>Backup Complete<ins>":`<a href="#" id="restore-${e.kind}-${n}" class="secondary" onclick="event.preventDefault()">Restore</a>`}}),Gf=t=>{if(!t||t.length===0)return"<p>none</p>";let e;return t[0].kind===0?e=Ff(t):t[0].kind===3?e=jf(t):t[0].kind===10002?e=Wf(t):e=[],Pf(e)},Kf=(t,e)=>{t==null||t.forEach((n,r)=>{if(r===0)return;let o=`restore-${n.kind}-${r}`,s=document.getElementById(o),d=n,{id:i,sig:a}=d,c=di(d,["id","sig"]);c.created_at=Math.floor(Date.now()/1e3),s.onclick=u=>N(void 0,null,function*(){u.preventDefault(),(yield Re(c,o,"Restored!"))&&setTimeout(e,1e3)})})},Ge=(t,e)=>{let n=xe(e),r=Gf(n);document.getElementById(t).innerHTML=`<h4>Backup History</h4>${r}`,Kf(n,()=>Ge(t,e))}});var jr,an,qf,Vf,Zf,Un,Yf,Ot,Fr,Xf,Jf,Cn,Qf,eh,th,zr,As=$(()=>{"use strict";Rr();jr=Ke(Gt());bt();Pr();qe();an=t=>typeof t=="string"?t:t.pubkey,qf=t=>{let e=an(t);return`
+    <li>
+      <a
+        href="#"
+        onclick="return false;"
+        class="microcard ${typeof t=="string"?"nokind0":""}"
+        id="contact-microcard-${e}"
+      >
+        ${$t(e)}
+      </a>
+    </li>
+  `},Vf=t=>`<ul id="maincontactlist">${t.map(n=>qf(typeof n=="string"?n:n.pubkey)).join("")}</ul>`,Zf=t=>{let e=Rt(t,0);if(!e)return`
+      <article>
+        <strong>${$t(t)}</strong>
+        <p>loading users metadata...</p>
+      </article>
+    `;let n=JSON.parse(e.content),r=ps(t),o=gs(t);return`
+    <article>
+      <div>
+        ${n&&n.picture?`<img src="${(0,jr.sanitize)(n.picture)}" /> `:""}
+        <div class="contactdetailsmain">
+          <strong>${$t(t)}</strong>
+          ${n.nip05?`<small id="nip05-${t}">${(0,jr.sanitize)(n.nip05)} </small>`:""}<span id="nip05-${t}-verified"></span>
+          ${r&&r!==n.name?`<div>popular petname: ${r}</div>`:""}
+          <div><small>${n.about?(0,jr.sanitize)(n.about):""}</small></div>
+        </div>
+      </div>
+      <footer class="contactdetailsform">
+        <div class="grid">
+          <label for="mypetname">
+            petname
+            <input
+              type="text"
+              name="mypetname"
+              placeholder="petname"
+              value="${ms(t)||""}"
+              id="petname-contact-form-${t}"
+              onkeypress = "this.onchange();"
+              onpaste    = "this.onchange();"
+              oninput    = "this.onchange();"
+            >
+          </label>
+          <label for="myrelay">
+            relay
+            <input
+              type="text"
+              name="myrelay"
+              placeholder="relay"
+              value="${uc(t)||""}"
+              id="relay-contact-form-${t}"
+              onkeypress = "this.onchange();"
+              onpaste    = "this.onchange();"
+              oninput    = "this.onchange();"
+            >
+          </label>
+          <div class="contact-form-buttons">
+            <button id="add-contact-${t}" class="${o?"hide":""}">Add</button>
+            <button id="update-contact-${t}" class="hide">Update</button>
+            <button id="remove-contact-${t}" class="${o?"":"hide"}">Remove Contact</button>
+          </div>
+        </div>
+        <div class="grid">
+        </div>
+      </footer>
+    </article>
+  `},Un=t=>{document.getElementById("contactdetails").innerHTML=Zf(t),window.scrollTo(0,0);let e=()=>setTimeout(()=>Un(t),500);Rt(t,0)||e();let n=()=>{gs(t)&&(document.getElementById(`update-contact-${t}`).classList.remove("hide"),document.getElementById(`remove-contact-${t}`).classList.add("hide"))};document.getElementById(`relay-contact-form-${t}`).onchange=n,document.getElementById(`petname-contact-form-${t}`).onchange=n,(()=>N(void 0,null,function*(){let i=document.getElementById(`nip05-${t}`);if(i){let a=i.innerHTML.trim(),c=!1;try{let u=yield on.queryProfile(a);c=!!u&&u.pubkey===t}catch(u){}let d=document.getElementById(`nip05-${t}-verified`);c?d.innerHTML="<ins>&#10004; verified</ins>":d.innerHTML="<del>&#10004; verified</del>"}}))();let o=()=>["p",t,document.getElementById(`relay-contact-form-${t}`).value||"",document.getElementById(`petname-contact-form-${t}`).value||""],s=(i,a)=>N(void 0,null,function*(){yield Re({pubkey:Y("pubkey"),kind:3,created_at:Math.floor(Date.now()/1e3),content:"",tags:i},a),Un(t)});document.getElementById(`add-contact-${t}`).onclick=i=>{i.preventDefault();let a=G(3)||null,c=a?[...a.tags,o()]:[o()];s(c,`add-contact-${t}`)},document.getElementById(`update-contact-${t}`).onclick=i=>{i.preventDefault();let c=[...G(3).tags.map(d=>d[1]===t?o():d)];s(c,`update-contact-${t}`)},document.getElementById(`remove-contact-${t}`).onclick=i=>{i.preventDefault();let c=[...G(3).tags.filter(d=>d[1]!==t)];s(c,`remove-contact-${t}`)}},Yf=t=>{let e=null,n=null;if(/^[a-fA-F0-9]{64}$/i.test(t))return e=t,{pubkey:e,relays:n};try{let{data:o,type:s}=us.decode(t);if(typeof o=="string")if(s==="npub")e=o;else throw new Error("no pubkey");else o.pubkey&&(e=o.pubkey),o.relays&&(n=o.relays)}catch(o){}return{pubkey:e,relays:n}},Ot={},Fr="",Xf=t=>N(void 0,null,function*(){let e=t.value,n=document.getElementById("searchstatus"),r=()=>{n.innerHTML='<p aria-busy="true">Searching nip05...<p>'};return e||e.indexOf(".")===-1&&e.indexOf("@")===-1?null:Ot[e]?Ot[e]:Ot[e]===null?null:e===Fr?"searching":yield new Promise(s=>{setTimeout(()=>N(void 0,null,function*(){if(t.value===e){r(),Fr=e;try{let i=yield on.queryProfile(e);i&&i.pubkey?Ot[e]=i.pubkey:Ot[e]=null}catch(i){Ot[e]=null}e===Fr?s("searching"):(Fr="",s(Ot[e]))}}),500)})}),Jf=t=>`
+    <div id="contactdetails"></div>
+    <div id="mycontacts">
+      <h6>My Contacts</h6>
+      ${Vf(t)}
+    </div>
+    <div id="mycontactscontacts"></div>
+    <div id="otherusers"></div>
+  `,Cn=t=>{if(document.getElementById("searchstatus").innerHTML="",!t){let e=G(3);e&&Cn(e.tags.map(n=>n[1]));return}document.getElementById("searchresults").innerHTML=t.length===0?"no results":Jf(t),t.forEach(e=>{let n=document.getElementById(`contact-microcard-${an(e)}`);n.onclick=()=>(Un(an(e)),!1);let r=()=>{setTimeout(()=>{try{let o=Rt(an(e),0),s=$t(an(o||e));s!==n.innerHTML&&(n.innerHTML=s),o||r()}catch(o){}},750)};n.classList.contains("nokind0")&&r()}),t.length===1&&Un(an(t[0]))},Qf=()=>{let t=document.getElementById("searchinput"),e=document.getElementById("searchstatus");t.onchange=()=>N(void 0,null,function*(){let n=t.value,r=null,o=null;if(!n||n.trim().length===0){let s=G(3);s&&Cn(s.tags.map(i=>i[1]));return}if(n.length>60){if({pubkey:r,relays:o}=Yf(n),!r){e.innerHTML="invalid search input - try npub, nprofile, naddr or hex";return}e.innerHTML="extracted pubkey. searching for profile..."}else{let s=cc(0),i=n.split(" "),a=s.filter(c=>i.map(d=>c.content.indexOf(d)).some(d=>d>-1));if(Cn(a),n&&n.indexOf(".")>-1&&n.indexOf("@")>-1){let c=yield Xf(t);if(c==="searching")return;c?(e.innerHTML="<p>Verified nip05 address. loading profile...</p>",r=c):e.innerHTML="<p>not a verified nip05 address</p>"}}if(r){if(!Rt(r,0)&&!(yield lc(r,0,o))){e.innerHTML="extracted pubkey. but couldn't find profile.";return}Cn(),Un(r)}})},eh=t=>{document.getElementById(t).innerHTML=`
+    <div id="contactsearch">
+      <input
+        type="search"
+        id="searchinput"
+        placeholder="nip05, npub, nprofile or keywords for contacts of contacts"
+        onkeypress = "this.onchange();"
+        onpaste    = "this.onchange();"
+        oninput    = "this.onchange();"
+      >
+      <div id="searchstatus"></div>
+    </div>
+    <div id="searchresults"></div>
+  `,Qf(),Cn()},th=()=>{let t=document.getElementById("PM-container");t.innerHTML=`
+    <div id="contactspage" class="container">
+      <div id="viewcontacts"></div>
+      <div id="contactsbackuphistory"></div>
+    <div>
+  `,Ge("contactsbackuphistory",3),eh("viewcontacts")},zr=th});var Rn,Dt,nh,Ss,rh,oh,vc,Wr,Ls=$(()=>{"use strict";Rr();Rn=Ke(Gt());bt();Pr();qe();Dt=(t,e,n)=>`
+    <label for="PM-form-${t}">
+        ${n||t}
+        <input
+          type="text"
+          name="PM-form-${t}"
+          id="PM-form-${t}"
+          placeholder="${n||t}" ${e&&e[t]?`value="${(0,Rn.sanitize)(e[t])}"`:""}
+        />
+    </label>
+`,nh=(t,e,n)=>`
+    <label for="PM-form-${t}">
+      ${n||t}
+      <textarea
+        id="PM-form-${t}"
+        name="PM-form-${t}"
+        placeholder="${n||t}"
+      >${e&&e[t]?(0,Rn.sanitize)(e[t]):""}</textarea>
+    </label>
+`,Ss=["name","nip05","about","picture","banner","lud06","lud16"],rh=t=>{let e=t?Object.keys(t).filter(n=>!Ss.some(r=>r===n)):[];return`<form id="metadatapageform">
+    <div class="grid">
+      ${Dt("name",t)}
+      ${Dt("nip05",t)}
+    </div>
+    ${nh("about",t)}
+    <img id="metadata-form-picture" src="${t&&t.picture?(0,Rn.sanitize)(t.picture):""}">
+    ${Dt("picture",t)}
+    <img id="metadata-form-banner" src="${t&&t.banner?(0,Rn.sanitize)(t.banner):""}">
+    ${Dt("banner",t)}
+    ${Dt("lud06",t,"lud06 (LNURL)")}
+    ${Dt("lud16",t)}
+    ${e.map(n=>Dt(n,t)).join("")}
+    <button id="metadatasubmitbutton" type="submit">${t?"Update":"Save"}</button>
+    <button id="metadataresetbutton" class="secondary outline" type="reset">Reset Form</button>
+  </form>`},oh=()=>N(void 0,null,function*(){let t=new FormData(document.getElementById("metadatapageform")),e={},n=G(0);(n?[...Object.keys(JSON.parse(n.content)),...Ss]:Ss).forEach(o=>{let s=t.get(`PM-form-${o}`);s&&s!==""&&(e[o]=s)}),(yield Re({pubkey:Y("pubkey"),kind:0,created_at:Math.floor(Date.now()/1e3),content:JSON.stringify(e),tags:[]},"metadatasubmitbutton"))&&Ge("metadatahistory",0)}),vc=t=>{let e=G(0),n=e?JSON.parse(e.content):null;document.getElementById(t).innerHTML=`<div class="profileform">
+    <h3>Metadata</h3>
+    ${rh(n)}
+  </div>`,["picture","banner"].forEach(s=>{let i=document.getElementById(`PM-form-${s}`);i.onchange=()=>{document.getElementById(`metadata-form-${s}`).setAttribute("src",i.value)}});let r=document.getElementById("PM-form-nip05"),o=()=>N(void 0,null,function*(){if(r.value==="")r.removeAttribute("aria-invalid");else{let s=!1;try{let i=yield on.queryProfile(r.value);s=!!i&&i.pubkey===Y("pubkey")}catch(i){}r.setAttribute("aria-invalid",s?"false":"true")}});o(),r.onchange=o,document.getElementById("metadatasubmitbutton").onclick=s=>{oh(),s.preventDefault()},document.getElementById("metadataresetbutton").onclick=s=>{vc(t),s.preventDefault()}},Wr=()=>{let t=document.getElementById("PM-container");t.innerHTML=`
+    <div id="metadatapage" class="container">
+      <div id="metadataformcontainer"></div>
+      <div id="metadatahistory"></div>
+    <div>
+  `,vc("metadataformcontainer"),Ge("metadatahistory",0)}});var _s,sh,ih,kc,ah,Gr,Hs=$(()=>{"use strict";bt();Pr();qe();_s=(t,e)=>`
+  <tr id="PM-form-relay-${t}-row" class="relayformrow">
+    <td>
+      <input
+        type="text"
+        name="PM-form-relay-${t}-address"
+        id="PM-form-relay-${t}-address"
+        placeholder="Relay address: wss://..."
+        ${e?`value="${e[1]}"`:""}
+      />
+    </td>
+    <td>
+      <label for="PM-form-relay-${t}-read">
+        <input
+          type="checkbox"
+          id="PM-form-relay-${t}-read"
+          name="PM-form-relay-${t}-read"
+          ${!e||!e[2]||e[2]==="read"?'checked="checked"':""}
+        >
+        read
+      </label>
+      <label for="PM-form-relay-${t}-write">
+        <input
+          type="checkbox"
+          id="PM-form-relay-${t}-write"
+          name="PM-form-relay-${t}-write"
+          ${!e||!e[2]||e[2]==="write"?'checked="checked"':""}
+        >
+        write
+      </label>
+    </td>
+    <td><a
+      href="#"
+      onclick="this.parentNode.parentNode.remove();return false;"
+      class="button outline secondary"
+    >Remove</a></td>
+  </tr>
+`,sh=t=>`
+  <form id="relaysform">
+    <table role="grid">
+      <tbody id="relayformtbody">
+        ${t?t.tags.map((e,n)=>_s(n,e)).join(""):""}
+        ${_s(t?t.tags.length:0)}
+        <tr id="relaybuttons">
+          <td>
+            <button id="relayssubmitbutton" type="button">${t?"Update":"Save"}</button>
+          </td>
+          <td>
+            <button id="relaysresetbutton" class="secondary outline" type="reset">Reset Form</button>
+          </td>
+          <td>
+            <button id="relaysaddbutton" class="secondary" type="button">Add</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+`,ih=()=>N(void 0,null,function*(){let t=new FormData(document.getElementById("relaysform")),e=Array.from(Array(100)).map((n,r)=>{let o=t.get(`PM-form-relay-${r}-address`);if(!o||o==="")return null;let s=!!t.get(`PM-form-relay-${r}-write`),i=!!t.get(`PM-form-relay-${r}-read`),a=["r",o];return s&&i?a:["r",t.get(`PM-form-relay-${r}-address`),i?"read":"write"]}).filter(n=>n!==null);Re({pubkey:Y("pubkey"),kind:10002,created_at:Math.floor(Date.now()/1e3),content:"",tags:e},"relayssubmitbutton"),Ge("relaysbackuphistory",10002)}),kc=t=>{document.getElementById(t).innerHTML=`<div class="relayform">
+    <h3>Relays</h3>
+    ${sh(G(10002))}
+  </div>`,document.getElementById("relayssubmitbutton").onclick=e=>{ih(),e.preventDefault()},document.getElementById("relaysresetbutton").onclick=e=>{kc(t),e.preventDefault()},document.getElementById("relaysaddbutton").onclick=e=>{let n=document.getElementById("relayformtbody").childElementCount-1,r=document.createElement("tr");document.getElementById("relaybuttons").before(r),r.outerHTML=_s(n),e.preventDefault()}},ah=()=>{let t=document.getElementById("PM-container");t.innerHTML=`
+    <div id="relayspage" class="container">
+      <div id="relayforcontainer"></div>
+      <div id="relaysbackuphistory"></div>
+    <div>
+  `,kc("relayforcontainer"),Ge("relaysbackuphistory",10002)},Gr=ah});var Bs,cn,ch,lh,uh,dh,fh,$n,Tc=$(()=>{"use strict";bt();As();Ls();Hs();Bs=()=>'<div><img class="hero-logo" src="./img/nostr-profile-manage-logo.png"></div>',cn=(t=!0)=>`${t?'aria-busy="true"':""}`,ch=(t,e=!1)=>t==null?`<div>
+      <button ${cn(e)} class="outline contrast">No Metadata</button>
+    </div>`:`<div>
+    <button
+      ${cn(e)}
+      class="outline contrast"
+      id="metadatabutton"
+    >
+      ${Object.keys(JSON.parse(t.content)).length} Metadata Fields
+    </button>
+  </div>`,lh=(t,e=!1)=>t==null?`<div><button
+      ${cn(e)}
+      id="contactsbutton"
+    >No Contacts</button></div>`:`<div>
+    <button
+      ${cn(e)}
+      id="contactsbutton"
+    >${t.tags.length} Contacts</button>
+  </div>`,uh=(t,e=!1)=>{if(t==null)return`<div>
+      <button
+        ${cn(e)}
+        id="relaysbutton"
+        class="outline secondary"
+      >No Relays</button>
+    </div>`;let n=t.tags.filter(o=>typeof o[2]=="undefined"||o[2]==="read").length,r=t.tags.filter(o=>typeof o[2]=="undefined"||o[2]==="write").length;return`<div><button
+    ${cn(e)}
+    id="relaysbutton"
+    class="outline secondary"
+  >
+    ${t.tags.length} Relay${t.tags.length===1?"":"s"} (${n} read ${r} write)
+    </button></div>`},dh=t=>{let e=JSON.parse(t.content),n=e.about?e.about.replace(/\r?\n|\r/,""):"";return n.length>50&&(n=`${n.substring(0,47)}...`),`
+    <div>
+      <img src="${e.picture?e.picture:""}">
+      <strong>${e.name?e.name:""}</strong> <small>${e.nip05?e.nip05:""}</small>
+      <div><small>${n}</small></div>
+    </div>
+  `},fh=(t,e,n)=>{let r="";return t?e?r=`
+      <h1>No Profile Events Found</h1>
+      <p>We didn't find any profile info for you. Either wedidn't look on the right relays or you have just created a key pair.</p>
+      <p>Only proceed if you are setting your profile up for the first time.</p>
+    `:n?r=`
+      <h1>Backup is up to date!</h1>
+      <p>
+        We already had backed up your profile to your offline browser data.
+        <a href="#" class="secondary" onclick="event.preventDefault()">Download</a> for safe keeping.
+      </p>
+      <p>If your profile ever gets wiped by a nostr client, come back here on this device to restore. Come back from time to time to update your backup.</p>
+    `:r=`
+      <h1>Profile Backed Up!</h1>
+      <p>
+        We just backed up your latest profile to your offline browser data.
+        <a id="downloadprofile" href="#" class="secondary" onclick="event.preventDefault()">Download</a> for safe keeping.
+      </p>
+      <p>If your profile ever gets wiped by a nostr client, come back here on this device to restore. Come back from time to time to update your backup.</p>
+    `:e?r=`
+        <h1 aria-busy="true">Finding Profile...</h1>
+        <p>It's your first time here and we are backing up your metadata, contacts and relays to your offline browser data.</p>
+      `:r=`
+        <h1 aria-busy="true">Finding Latest Profile...</h1>
+        <p>We backing up your latest metadata, contacts and relays to your offline browser data.</p>
+      `,`<div>${r}</div<`},$n=()=>{let t=!G(0)&&!G(3),e=Or(),n=oc(),r=document.getElementById("PM-container");r.innerHTML=`
+    <div class="container">
+        <div class="hero grid">
+          ${t?Bs():`<div><article class="profile-summary-card">
+            ${dh(G(0))}
+            <div>
+              ${ch(G(0),!e)}
+              ${lh(G(3),!e)}
+              ${uh(G(10002),!e)}
+            </div>
+          </article></div>`}
+          <div>${fh(e,t,n)}</div>
+        </div>
+    </div>
+  `;let o=document.getElementById("metadatabutton");o&&(o.onclick=()=>Wr());let s=document.getElementById("contactsbutton");s&&(s.onclick=()=>zr());let i=document.getElementById("relaysbutton");i&&(i.onclick=()=>Gr());let a=document.getElementById("downloadprofile");a&&(a.onclick=c=>{c.preventDefault();let d=JSON.stringify([...xe(0)||[],...xe(2)||[],...xe(10002)||[],...xe(3)||[]]),u=document.createElement("a");u.setAttribute("href",`data:text/plain;charset=utf-8,${encodeURIComponent(d)}`),u.setAttribute("download",`my-nostr-profile-events-${Date.now()}.json`),u.style.display="none",document.body.appendChild(u),u.click(),document.body.removeChild(u)})}});var Is,hh,ph,mh,gh,yh,bh,wh,Ac,Sc=$(()=>{"use strict";Is=Ke(Gt());bt();qe();Ts();hh=t=>{let e;try{t.kind===0?e=`Profile: ${JSON.parse(t.content).name||"Unnamed"}`:t.kind===3?e=`Contacts: ${t.tags.length} connection${t.tags.length!==1?"s":""}`:t.kind===10002?e=`Relays: ${t.tags.length} relay${t.tags.length!==1?"s":""}`:t.content.length>0?e=t.content.length>50?`${(0,Is.sanitize)(t.content.substring(0,50))}...`:(0,Is.sanitize)(t.content):e=`Event (kind: ${t.kind})`}catch(n){e=`Event (kind: ${t.kind})`}return`
+    <div class="event-item" data-event-id="${t.id}">
+      <div class="event-header">
+        <span class="event-kind">Kind: ${t.kind}</span>
+        <span class="event-date">${Mn(t.created_at*1e3)}</span>
+      </div>
+      <div class="event-content">${e}</div>
+      <div class="event-actions">
+        <button id="delete-btn-${t.id}" class="secondary outline">Delete Event</button>
+      </div>
+    </div>
+  `},ph=t=>!t||t.length===0?"<p>No events found.</p>":`
+    <div class="event-list">
+      ${[...t].sort((n,r)=>r.created_at-n.created_at).map(hh).join("")}
+    </div>
+  `,mh=t=>`
+    <div class="container">
+      <h3>Delete Events</h3>
+      <p>Select events to delete. This will publish a deletion request (kind 5) to your relays, asking them to remove these events.</p>
+      <div id="delete-event-list">
+        ${ph(t)}
+      </div>
+      <div id="delete-status"></div>
+    </div>
+  `,gh=(t,e)=>N(void 0,null,function*(){let n={kind:5,pubkey:Y("pubkey"),created_at:Math.floor(Date.now()/1e3),content:"",tags:[["e",t]]};return yield Re(n,e,"Deleted")}),yh=t=>{t.forEach(e=>{let n=document.getElementById(`delete-btn-${e.id}`);n&&(n.onclick=()=>N(void 0,null,function*(){if(confirm("Are you sure you want to delete this event? This action cannot be undone.")&&(yield gh(e.id,`delete-btn-${e.id}`))){let o=document.getElementById("delete-status");o.innerHTML=`
+              <div class="success-message">
+                <p>Deletion event for event ${e.id.substring(0,8)}... has been published.</p>
+                <p>Note that it may take some time for relays to process the deletion request.</p>
+              </div>
+            `}}))})},bh=()=>{let t=xe(0)||[],e=xe(3)||[],n=xe(10002)||[];return[...t,...e,...n]},wh=()=>N(void 0,null,function*(){let t=document.getElementById("PM-container"),e=Y("pubkey");if(!e){t.innerHTML="<p>No public key found. Please log in first.</p>";return}t.innerHTML=`
+    <div class="container">
+      <h3>Delete Events</h3>
+      <p aria-busy="true">Loading your events...</p>
+    </div>
+  `,yield In(e,()=>{});let n=bh();t.innerHTML=mh(n),yh(n)}),Ac=wh});var xh,Lc,_c=$(()=>{"use strict";qe();xh=()=>{hi(),window.location.href="/"},Lc=xh});var vh=ie(Kr=>{Tc();bt();qe();Ls();As();Hs();Sc();_c();var Bc=()=>N(Kr,null,function*(){$n(),yield In(Y("pubkey"),$n),$n(),document.getElementById("mainnav").classList.remove("inactive"),document.getElementById("navhome").onclick=$n,document.getElementById("navmetadata").onclick=Wr,document.getElementById("navcontacts").onclick=zr,document.getElementById("navrelays").onclick=Gr,document.getElementById("navdelete").onclick=Ac,document.getElementById("navlogout").onclick=Lc,yield ac()}),Eh=()=>{let t=`
+    <div class="container">
+      <div class="hero grid">
+        ${Bs()}
+        <div id="herocontent">
+          <h1>Nostr Profile Manager</h1>
+          <p>Backup /&nbsp;Refine /&nbsp;Restore /&nbsp;Delete profile events</p>
+          <a id="loadextension" href="#" onclick="return false;" role="button" class="contrast">Load My Profile</a>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="grid">
+        <article>
+          <h5>Backup</h5>
+          <p>Save your profile in your offline browser data. Backup all your notes. Download in a zip.</p>
+        </article>
+        <article>
+          <h5>Refine</h5>
+          <p>Perfect your profile. Refine your relays. Clean up your contacts.</p>
+        </article>
+        <article>
+          <h5>Restore</h5>
+          <p>View profile backups and restore your favourate</p>
+        </article>
+        <article>
+          <h5>Delete</h5>
+          <p>Securely remove unwanted events. Publish deletion requests to your relays.</p>
+        </article>
+      </div>
+    </div>
+  `,e=document.getElementById("PM-container");e.innerHTML=t;let n=document.getElementById("loadextension");n&&(n.onclick=r=>N(Kr,null,function*(){if(r.preventDefault(),window.nostr){let o=yield window.nostr.getPublicKey();At("pubkey",o),Bc()}else n.outerHTML=`
+          <p>You need a NIP-07 browser extension like nos2x to use this webapp.</p>
+          <a href="https://github.com/nostr-protocol/nips/blob/master/07.md" role="button" class="contrast">Get Browser Extension</a>
+        `}))},Hc=()=>N(Kr,null,function*(){Y("pubkey")?Bc():Eh()});document.getElementById("PM-container")!==null?Hc():document.addEventListener("DOMContentLoaded",()=>Hc())});vh();})();
+/*! Bundled license information:
+
+dompurify/dist/purify.js:
+  (*! @license DOMPurify 3.0.3 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.0.3/LICENSE *)
+
+@noble/secp256k1/lib/esm/index.js:
+  (*! noble-secp256k1 - MIT License (c) 2019 Paul Miller (paulmillr.com) *)
+
+@noble/hashes/esm/utils.js:
+  (*! noble-hashes - MIT License (c) 2022 Paul Miller (paulmillr.com) *)
+
+@scure/base/lib/esm/index.js:
+  (*! scure-base - MIT License (c) 2022 Paul Miller (paulmillr.com) *)
+
+@noble/hashes/utils.js:
+  (*! noble-hashes - MIT License (c) 2022 Paul Miller (paulmillr.com) *)
+
+@scure/base/lib/index.js:
+  (*! scure-base - MIT License (c) 2022 Paul Miller (paulmillr.com) *)
+
+@scure/bip39/index.js:
+  (*! scure-bip39 - MIT License (c) 2022 Patricio Palladino, Paul Miller (paulmillr.com) *)
+
+@noble/hashes/esm/utils.js:
+  (*! noble-hashes - MIT License (c) 2022 Paul Miller (paulmillr.com) *)
+*/
