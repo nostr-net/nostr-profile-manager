@@ -311,12 +311,19 @@ const LoadContactsPage = (): void => {
   Object.keys(domCache).forEach(key => delete domCache[key]);
   
   container.innerHTML = `
-    <div id="contactspage" class="container">
-      <div id="contactdetails"></div>
-      <div id="contactsbackuphistory">
+    <div class="container">
+      <div class="profile-card">
+        <h3>Contacts</h3>
+        <p>View and manage your Nostr contacts.</p>
+        <div id="contactdetails"></div>
+      </div>
+      
+      <div class="section-card">
         <h3>Contact List History</h3>
         <p>View the history of changes to your contact list. Click on a contact name to view details.</p>
-        <div id="history-loading" aria-busy="true">Loading contact history...</div>
+        <div id="contactsbackuphistory">
+          <div id="history-loading" aria-busy="true">Loading contact history...</div>
+        </div>
       </div>
     </div>
   `;
@@ -326,7 +333,11 @@ const LoadContactsPage = (): void => {
     const loadingElement = getElement('history-loading');
     if (loadingElement) loadingElement.remove();
     
-    loadBackupHistory('contactsbackuphistory', 3);
+    loadBackupHistory('contactsbackuphistory', 3, (pubkey) => {
+      const history = getElement('contactsbackuphistory');
+      if (history) history.style.display = 'none';
+      loadContactDetails(pubkey);
+    });
     
     // Enhance history after a short delay to ensure it's loaded
     setTimeout(() => enhanceContactHistory(), 100);

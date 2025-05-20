@@ -7,8 +7,22 @@
   <link rel="stylesheet" href="style.css" />
   <title>Nostr Profile Manager</title>
   <script async src="https://unpkg.com/window.nostr.js@latest/dist/window.nostr.js"></script>
-  <!--<script async type="module" src="http://localhost:5173/src/main.ts"></script>-->
   <script async src="index.js"></script>
+  <script>
+    // Terminal-style typing effect
+    function typeWriter(element, text, speed = 30) {
+      let i = 0;
+      element.innerHTML = "";
+      function type() {
+        if (i < text.length) {
+          element.innerHTML += text.charAt(i);
+          i++;
+          setTimeout(type, speed);
+        }
+      }
+      type();
+    }
+  </script>
 </head>
 
 <body>
@@ -17,12 +31,7 @@
       <nav>
         <ul>
           <li>
-            <strong><a href="#" id="navhome" class="secondary">Nostr Profile Manager</a></strong>
-          </li>
-          <li>
-            <a href="https://github.com/DanConwayDev/nostr-profile-manager" target="_blank" title="source code">
-              <img src="./img/git.png" style="height: 1.3em">
-            </a>
+            <strong><a href="#" id="navhome" class="secondary">my.nostr.net</a></strong>
           </li>
         </ul>
         <ul id="mainnav" class="inactive">
