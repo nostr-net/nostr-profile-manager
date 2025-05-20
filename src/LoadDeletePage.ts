@@ -51,6 +51,7 @@ const generateEventListItem = (event: Event): string => {
         <span class="event-date">${timeago.format(event.created_at * 1000)}</span>
       </div>
       <div class="event-content">${displayContent}</div>
+      <div class="event-id"><small>ID: ${event.id}</small></div>
       <div class="event-actions">
         <button id="delete-btn-${event.id}" class="secondary outline">Delete Event</button>
       </div>
@@ -78,13 +79,32 @@ const generateDeletePage = (events: Event[]): string => {
   return `
     <div class="container">
       <h3>Delete Events</h3>
-      <p>Select events to delete. This will publish a deletion request (kind 5) to your relays, asking them to remove these events.</p>
+      <p>Select events to delete or enter an event ID to delete a specific event. This will publish a deletion request (kind 5) to your relays.</p>
+      
+      <!-- New section for deleting events by ID -->
+      <div class="delete-by-id-section">
+        <h4>Delete Event by ID</h4>
+        <div class="grid">
+          <input type="text" id="custom-event-id" placeholder="Enter the event ID (64 character hex)" />
+          <button id="delete-custom-event-btn" class="secondary">Delete by ID</button>
+        </div>
+        <small>Note: You can only delete events that you authored.</small>
+      </div>
+      
+      <h4>Your Known Events</h4>
       <div id="delete-event-list">
         ${generateEventList(events)}
       </div>
       <div id="delete-status"></div>
     </div>
   `;
+};
+
+/**
+ * Validates that an input string is a valid event ID (64 character hex)
+ */
+const isValidEventId = (eventId: string): boolean => {
+  return /^[0-9a-f]{64}$/i.test(eventId);
 };
 
 /**
@@ -113,9 +133,10 @@ const createAndSubmitDeletionEvent = async (eventId: string, elementId: string):
 };
 
 /**
- * Adds click event listeners to delete buttons
+ * Adds click event listeners to delete buttons and the custom delete button
  */
 const setupDeleteButtons = (events: Event[]): void => {
+  // Setup delete buttons for listed events
   events.forEach(event => {
     const deleteBtn = document.getElementById(`delete-btn-${event.id}`) as HTMLButtonElement;
     if (deleteBtn) {
@@ -138,6 +159,50 @@ const setupDeleteButtons = (events: Event[]): void => {
       };
     }
   });
+  
+  // Setup the custom delete button
+  const customDeleteBtn = document.getElementById('delete-custom-event-btn') as HTMLButtonElement;
+  if (customDeleteBtn) {
+    customDeleteBtn.onclick = async () => {
+      const eventIdInput = document.getElementById('custom-event-id') as HTMLInputElement;
+      const eventId = eventIdInput.value.trim();
+      const statusDiv = document.getElementById('delete-status') as HTMLDivElement;
+      
+      // Validate the event ID
+      if (!isValidEventId(eventId)) {
+        statusDiv.innerHTML = `
+          <div class="error-message">
+            <p>Invalid event ID format. Event IDs must be 64 hexadecimal characters.</p>
+          </div>
+        `;
+        return;
+      }
+      
+      // Display confirmation dialog
+      if (confirm(`Are you sure you want to delete event ${eventId.substring(0, 8)}...? This action cannot be undone.`)) {
+        const success = await createAndSubmitDeletionEvent(eventId, 'delete-custom-event-btn');
+        
+        if (success) {
+          // Show success message
+          statusDiv.innerHTML = `
+            <div class="success-message">
+              <p>Deletion event for event ${eventId.substring(0, 8)}... has been published.</p>
+              <p>Note that it may take some time for relays to process the deletion request.</p>
+            </div>
+          `;
+          // Clear the input field
+          eventIdInput.value = '';
+        } else {
+          // Show error message
+          statusDiv.innerHTML = `
+            <div class="error-message">
+              <p>Failed to publish deletion event. Please make sure you have permission to delete this event.</p>
+            </div>
+          `;
+        }
+      }
+    };
+  }
 };
 
 /**

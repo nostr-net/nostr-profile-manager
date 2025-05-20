@@ -132,10 +132,6 @@ mark.removed {
 }
 
 /* Delete page styles */
-.event-list {
-    margin-top: 1rem;
-}
-
 .event-item {
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -157,9 +153,24 @@ mark.removed {
     font-weight: bold;
 }
 
+.event-id {
+    margin-bottom: 0.8rem;
+    font-size: 0.8rem;
+    color: #666;
+    word-break: break-all;
+}
+
 .event-actions {
     display: flex;
     justify-content: flex-end;
+}
+
+.delete-by-id-section {
+    margin: 2rem 0;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f5f5f5;
 }
 
 #delete-status {
