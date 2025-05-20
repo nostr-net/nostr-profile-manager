@@ -7,7 +7,7 @@ import { LoadMetadataPage, MetadataFlex } from './LoadMetadataPage';
 import LoadRelaysPage from './LoadRelaysPage';
 
 export const generateLogoHero = () => (
-  '<div><img class="hero-logo" src="./img/nostr-profile-manage-logo.png"></div>'
+  '<div class="text-center"><img class="hero-logo" src="./img/nostr-profile-manage-logo.png"></div>'
 );
 
 const injectLoading = (loading: boolean = true) => `${loading ? 'aria-busy="true"' : ''}`;
@@ -21,7 +21,7 @@ const generateMetadataSummary = (e: Event | null, loading = false) => {
   return `<div>
     <button
       ${injectLoading(loading)}
-      class="outline contrast"
+      class="outline"
       id="metadatabutton"
     >
       ${Object.keys(JSON.parse(e.content)).length} Metadata Fields
@@ -71,10 +71,13 @@ const generateMetadataHeader = (e: Event) => {
   let about = c.about ? c.about.replace(/\r?\n|\r/, '') : '';
   if (about.length > 50) about = `${about.substring(0, 47)}...`;
   return `
-    <div>
-      <img src="${c.picture ? c.picture : ''}">
-      <strong>${c.name ? c.name : ''}</strong> <small>${c.nip05 ? c.nip05 : ''}</small>
-      <div><small>${about}</small></div>
+    <div class="profile-header">
+      <img src="${c.picture ? c.picture : './img/nostr-profile-manage-logo.png'}" alt="Profile picture">
+      <div class="profile-info">
+        <h2>${c.name ? c.name : 'Anonymous'}</h2>
+        ${c.nip05 ? `<p>${c.nip05}</p>` : ''}
+        ${about ? `<p>${about}</p>` : ''}
+      </div>
     </div>
   `;
 };
@@ -94,13 +97,13 @@ export const generateBackupHeroHeading = (
     } else {
       content = `
         <h1 aria-busy="true">Finding Latest Profile...</h1>
-        <p>We backing up your latest metadata, contacts and relays to your offline browser data.</p>
+        <p>We are backing up your latest metadata, contacts and relays to your offline browser data.</p>
       `;
     }
   } else if (noprofileinfo) {
     content = `
       <h1>No Profile Events Found</h1>
-      <p>We didn't find any profile info for you. Either wedidn't look on the right relays or you have just created a key pair.</p>
+      <p>We didn't find any profile info for you. Either we didn't look on the right relays or you have just created a key pair.</p>
       <p>Only proceed if you are setting your profile up for the first time.</p>
     `;
   } else if (hadlatest) {
@@ -108,7 +111,7 @@ export const generateBackupHeroHeading = (
       <h1>Backup is up to date!</h1>
       <p>
         We already had backed up your profile to your offline browser data.
-        <a href="#" class="secondary" onclick="event.preventDefault()">Download</a> for safe keeping.
+        <a href="#" class="secondary" id="downloadprofile">Download</a> for safe keeping.
       </p>
       <p>If your profile ever gets wiped by a nostr client, come back here on this device to restore. Come back from time to time to update your backup.</p>
     `;
@@ -117,12 +120,12 @@ export const generateBackupHeroHeading = (
       <h1>Profile Backed Up!</h1>
       <p>
         We just backed up your latest profile to your offline browser data.
-        <a id="downloadprofile" href="#" class="secondary" onclick="event.preventDefault()">Download</a> for safe keeping.
+        <a id="downloadprofile" href="#" class="secondary">Download</a> for safe keeping.
       </p>
       <p>If your profile ever gets wiped by a nostr client, come back here on this device to restore. Come back from time to time to update your backup.</p>
     `;
   }
-  return `<div>${content}</div<`;
+  return `<div class="backup-hero">${content}</div>`;
 };
 
 export const LoadProfileHome = () => {
@@ -130,21 +133,36 @@ export const LoadProfileHome = () => {
   const uptodate = isUptodate();
   const hadlatest = hadLatest();
   const o: HTMLElement = document.getElementById('PM-container') as HTMLElement;
-  o.innerHTML = `
-    <div class="container">
-        <div class="hero grid">
-          ${noprofileinfo ? generateLogoHero() : `<div><article class="profile-summary-card">
-            ${generateMetadataHeader(fetchCachedMyProfileEvent(0) as Event)}
-            <div>
-              ${generateMetadataSummary(fetchCachedMyProfileEvent(0), !uptodate)}
-              ${generateContactsSummary(fetchCachedMyProfileEvent(3), !uptodate)}
-              ${generateRelaysSummary(fetchCachedMyProfileEvent(10002), !uptodate)}
-            </div>
-          </article></div>`}
-          <div>${generateBackupHeroHeading(uptodate, noprofileinfo, hadlatest)}</div>
+  
+  if (noprofileinfo) {
+    o.innerHTML = `
+      <div class="container">
+        <div class="profile-card">
+          <div class="hero">
+            ${generateLogoHero()}
+            ${generateBackupHeroHeading(uptodate, noprofileinfo, hadlatest)}
+          </div>
         </div>
-    </div>
-  `;
+      </div>
+    `;
+  } else {
+    o.innerHTML = `
+      <div class="container">
+        <div class="profile-card">
+          ${generateMetadataHeader(fetchCachedMyProfileEvent(0) as Event)}
+          
+          <div class="profile-meta">
+            ${generateMetadataSummary(fetchCachedMyProfileEvent(0), !uptodate)}
+            ${generateContactsSummary(fetchCachedMyProfileEvent(3), !uptodate)}
+            ${generateRelaysSummary(fetchCachedMyProfileEvent(10002), !uptodate)}
+          </div>
+          
+          ${generateBackupHeroHeading(uptodate, noprofileinfo, hadlatest)}
+        </div>
+      </div>
+    `;
+  }
+  
   const mbutton = document.getElementById('metadatabutton');
   if (mbutton) mbutton.onclick = () => LoadMetadataPage();
   const cbutton = document.getElementById('contactsbutton');

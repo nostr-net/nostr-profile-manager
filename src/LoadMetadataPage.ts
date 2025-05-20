@@ -53,20 +53,49 @@ const standardkeys = [
 const generateForm = (c: MetadataFlex | null): string => {
   const customkeys = !c ? [] : Object.keys(c).filter(((k) => !standardkeys.some((s) => s === k)));
   return `<form id="metadatapageform">
-    <div class="grid">
-      ${toTextInput('name', c)}
-      ${toTextInput('nip05', c)}
+    <div class="section-card">
+      <div class="grid">
+        ${toTextInput('name', c)}
+        ${toTextInput('nip05', c)}
+      </div>
+      ${toTextarea('about', c)}
+      
+      <div class="profile-images mt-2">
+        <div class="mb-2">
+          <label>Profile Picture</label>
+          <img id="metadata-form-picture" src="${c && c.picture ? sanitize(c.picture) : ''}">
+          ${toTextInput('picture', c)}
+        </div>
+        
+        <div class="mb-2">
+          <label>Banner Image</label>
+          <img id="metadata-form-banner" src="${c && c.banner ? sanitize(c.banner) : ''}">
+          ${toTextInput('banner', c)}
+        </div>
+      </div>
+      
+      <div class="lightning-section mt-2">
+        <h4>Lightning Address</h4>
+        <div class="grid">
+          ${toTextInput('lud06', c, 'lud06 (LNURL)')}
+          ${toTextInput('lud16', c)}
+        </div>
+      </div>
+      
+      ${customkeys.length > 0 ? `
+        <div class="custom-fields mt-2">
+          <h4>Custom Fields</h4>
+          <div class="grid">
+            ${customkeys.map((k) => toTextInput(k, c)).join('')}
+          </div>
+        </div>
+      ` : ''}
+      
+      <div class="form-actions mt-3">
+        <button id="metadatasubmitbutton" type="submit">${c ? 'Update' : 'Save'}</button>
+        <button id="metadataresetbutton" class="secondary outline" type="reset">Reset Form</button>
+      </div>
     </div>
-    ${toTextarea('about', c)}
-    <img id="metadata-form-picture" src="${c && c.picture ? sanitize(c.picture) : ''}">
-    ${toTextInput('picture', c)}
-    <img id="metadata-form-banner" src="${c && c.banner ? sanitize(c.banner) : ''}">
-    ${toTextInput('banner', c)}
-    ${toTextInput('lud06', c, 'lud06 (LNURL)')}
-    ${toTextInput('lud16', c)}
-    ${customkeys.map((k) => toTextInput(k, c)).join('')}
-    <button id="metadatasubmitbutton" type="submit">${c ? 'Update' : 'Save'}</button>
-    <button id="metadataresetbutton" class="secondary outline" type="reset">Reset Form</button>
   </form>`;
 };
 
@@ -142,10 +171,19 @@ const loadMetadataForm = (RootElementID: string) => {
 export const LoadMetadataPage = () => {
   const o: HTMLElement = document.getElementById('PM-container') as HTMLElement;
   o.innerHTML = `
-    <div id="metadatapage" class="container">
-      <div id="metadataformcontainer"></div>
-      <div id="metadatahistory"></div>
-    <div>
+    <div class="container">
+      <div class="profile-card">
+        <h3>Metadata</h3>
+        <p>Edit your profile information and customize how others see you on Nostr.</p>
+        <div id="metadataformcontainer"></div>
+      </div>
+      
+      <div class="section-card">
+        <h3>Backup History</h3>
+        <p>View your profile's history and restore previous versions if needed.</p>
+        <div id="metadatahistory"></div>
+      </div>
+    </div>
   `;
   loadMetadataForm('metadataformcontainer');
   loadBackupHistory('metadatahistory', 0);

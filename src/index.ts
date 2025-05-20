@@ -117,40 +117,42 @@ const loadProfile = async () => {
     setPageLoading(false);
   }
 };
-
 /**
  * Load the landing page for new users
  */
 const LoadLandingPage = () => {
   const aboutcontent = `
     <div class="container">
-      <div class="hero grid">
-        ${generateLogoHero()}
-        <div id="herocontent">
-          <h1>Nostr Profile Manager</h1>
-          <p>Backup /&nbsp;Refine /&nbsp;Restore /&nbsp;Delete profile events</p>
-          <a id="loadextension" href="#" onclick="return false;" role="button" class="contrast">Load My Profile</a>
+      <div class="profile-card">
+        <div class="hero">
+          ${generateLogoHero()}
+          <div id="herocontent">
+            <h1 id="title-text">Nostr Profile Manager</h1>
+            <p id="subtitle-text">Secure / Backup / Refine / Delete</p>
+            <a id="loadextension" href="#" onclick="return false;" role="button" class="contrast">Initialize Connection</a>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="container">
-      <div class="grid">
-        <article>
-          <h5>Backup</h5>
-          <p>Save your profile in your offline browser data. Backup all your notes. Download in a zip.</p>
-        </article>
-        <article>
-          <h5>Refine</h5>
-          <p>Perfect your profile. Refine your relays. Clean up your contacts.</p>
-        </article>
-        <article>
-          <h5>Restore</h5>
-          <p>View profile backups and restore your favourate</p>
-        </article>
-        <article>
-          <h5>Delete</h5>
-          <p>Securely remove unwanted events. Publish deletion requests to your relays.</p>
-        </article>
+      
+      <div class="section-card">
+        <div class="grid">
+          <article>
+            <h4>> Backup</h4>
+            <p class="code-font">Store profile data in local storage. Protect against relay failures.</p>
+          </article>
+          <article>
+            <h4>> Refine</h4>
+            <p class="code-font">Optimize your profile. Configure relays. Manage contact list.</p>
+          </article>
+          <article>
+            <h4>> Restore</h4>
+            <p class="code-font">Recover previous profile states. View backup history.</p>
+          </article>
+          <article>
+            <h4>> Delete</h4>
+            <p class="code-font">Remove unwanted data. Broadcast deletion requests to the network.</p>
+          </article>
+        </div>
       </div>
     </div>
   `;
@@ -159,6 +161,22 @@ const LoadLandingPage = () => {
   if (!container) return;
   
   container.innerHTML = aboutcontent;
+  
+  // Apply typing effect to title and subtitle
+  setTimeout(() => {
+    const titleElement = document.getElementById('title-text');
+    const subtitleElement = document.getElementById('subtitle-text');
+    
+    if (titleElement) {
+      typeWriter(titleElement, "Nostr Profile Manager", 50);
+      
+      setTimeout(() => {
+        if (subtitleElement) {
+          typeWriter(subtitleElement, "Secure / Backup / Refine / Delete", 30);
+        }
+      }, 2000);
+    }
+  }, 500);
   
   const loadButton = document.getElementById('loadextension');
   if (loadButton) {
@@ -179,14 +197,17 @@ const LoadLandingPage = () => {
           console.error('Error connecting to Nostr extension:', error);
           
           loadButton.removeAttribute('aria-busy');
-          loadButton.textContent = 'Error connecting. Try again';
+          loadButton.textContent = 'Connection Failed. Retry';
         } finally {
           setPageLoading(false);
         }
       } else {
         loadButton.outerHTML = `
-          <p>You need a NIP-07 browser extension like nos2x to use this webapp.</p>
-          <a href="https://github.com/nostr-protocol/nips/blob/master/07.md" role="button" class="contrast">Get Browser Extension</a>
+          <div class="error-message">
+            <p class="code-font">NIP-07 browser extension not detected.</p>
+            <p class="code-font">Install an extension like nos2x to proceed.</p>
+            <a href="https://github.com/nostr-protocol/nips/blob/master/07.md" role="button" class="secondary code-font">Get Browser Extension</a>
+          </div>
         `;
       }
     };
