@@ -62,24 +62,24 @@ const SubmitRelayForm = async () => {
   // Collect data from form
   const relayRows = document.querySelectorAll('.relay-row');
   const tags: Kind10002Tag[] = [];
-  
+
   relayRows.forEach((row, i) => {
     let url: string | null = null;
     const urlElement = row.querySelector('.relay-url input') as HTMLInputElement;
-    
+
     // Get URL from input or text content
     if (urlElement) {
       url = urlElement.value.trim();
     } else {
       url = (row.querySelector('.relay-url') as HTMLElement).textContent?.trim() || null;
     }
-    
+
     if (!url || url === '') return;
-    
+
     // Get permissions
     const readChecked = (row.querySelector(`#PM-form-relay-${i}-read`) as HTMLInputElement)?.checked;
     const writeChecked = (row.querySelector(`#PM-form-relay-${i}-write`) as HTMLInputElement)?.checked;
-    
+
     // Create tag based on permissions
     const base: Kind10002Tag = ['r', url];
     if (readChecked && writeChecked) {
@@ -88,7 +88,7 @@ const SubmitRelayForm = async () => {
       tags.push(['r', url, readChecked ? 'read' : 'write'] as Kind10002Tag);
     }
   });
-  
+
   // Submit event
   await submitUnsignedEvent(
     {
@@ -100,7 +100,7 @@ const SubmitRelayForm = async () => {
     },
     'relayssubmitbutton',
   );
-  
+
   // Reload history
   loadBackupHistory('relaysbackuphistory', 10002);
 };
@@ -109,13 +109,13 @@ const SubmitRelayForm = async () => {
 const loadRelayForm = (RootElementID: string) => {
   const container = document.getElementById(RootElementID) as HTMLDivElement;
   if (!container) return;
-  
+
   // Insert form HTML
   container.innerHTML = `<div class="relayform">
     <h3>RELAYS_</h3>
     ${generateRelayForm(fetchCachedMyProfileEvent(10002) as Kind10002Event)}
   </div>`;
-  
+
   // Set up form submit event
   const submitBtn = document.getElementById('relayssubmitbutton') as HTMLButtonElement;
   if (submitBtn) {
@@ -124,7 +124,7 @@ const loadRelayForm = (RootElementID: string) => {
       event.preventDefault();
     };
   }
-  
+
   // Set up reset form
   const resetBtn = document.getElementById('relaysresetbutton') as HTMLButtonElement;
   if (resetBtn) {
@@ -133,7 +133,7 @@ const loadRelayForm = (RootElementID: string) => {
       event.preventDefault();
     };
   }
-  
+
   // Set up add relay button
   const addBtn = document.getElementById('relaysaddbutton') as HTMLButtonElement;
   if (addBtn) {
@@ -155,7 +155,7 @@ const loadRelayForm = (RootElementID: string) => {
 const LoadRelaysPage = () => {
   const container = document.getElementById('PM-container') as HTMLElement;
   if (!container) return;
-  
+
   container.innerHTML = `
     <div class="container">
       <div id="relayforcontainer"></div>
@@ -165,7 +165,7 @@ const LoadRelaysPage = () => {
       <div>
     </div>
   `;
-  
+
   loadRelayForm('relayforcontainer');
   loadBackupHistory('relaysbackuphistory', 10002);
 };

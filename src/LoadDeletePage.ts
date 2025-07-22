@@ -1,13 +1,13 @@
 import { Event } from 'nostr-tools';
 import { sanitize } from 'isomorphic-dompurify';
+import * as timeago from 'timeago.js';
 import {
   fetchCachedMyProfileEventHistory,
   fetchMyProfileEvents,
   publishEvent,
-  submitUnsignedEvent
+  submitUnsignedEvent,
 } from './fetchEvents';
 import { localStorageGetItem } from './LocalStorage';
-import * as timeago from 'timeago.js';
 
 /**
  * LoadDeletePage handles the UI and functionality for deleting Nostr events
@@ -17,7 +17,7 @@ import * as timeago from 'timeago.js';
 const generateEventListItem = (event: Event): string => {
   // Format the event content for display
   let displayContent: string;
-  
+
   try {
     // For kind 0 events, display the name field from content JSON
     if (event.kind === 0) {
@@ -31,8 +31,8 @@ const generateEventListItem = (event: Event): string => {
       displayContent = `Relays: ${event.tags.length} relay${event.tags.length !== 1 ? 's' : ''}`;
     } else if (event.content.length > 0) {
       // For other events with content, show a snippet
-      displayContent = event.content.length > 50 
-        ? `${sanitize(event.content.substring(0, 50))}...` 
+      displayContent = event.content.length > 50
+        ? `${sanitize(event.content.substring(0, 50))}...`
         : sanitize(event.content);
     } else {
       // For events without content, show a generic label
@@ -66,7 +66,7 @@ const generateEventList = (events: Event[]): string => {
 
   // Sort events by created_at timestamp in descending order (newest first)
   const sortedEvents = [...events].sort((a, b) => b.created_at - a.created_at);
-  
+
   // Generate the list of events
   return `
     <div class="event-list">
@@ -75,8 +75,7 @@ const generateEventList = (events: Event[]): string => {
   `;
 };
 
-const generateDeletePage = (events: Event[]): string => {
-  return `
+const generateDeletePage = (events: Event[]): string => `
     <div class="container">
       <h3>Delete Events</h3>
       <p>Select events to delete or enter an event ID to delete a specific event. This will publish a deletion request (kind 5) to your relays.</p>
@@ -98,14 +97,11 @@ const generateDeletePage = (events: Event[]): string => {
       <div id="delete-status"></div>
     </div>
   `;
-};
 
 /**
  * Validates that an input string is a valid event ID (64 character hex)
  */
-const isValidEventId = (eventId: string): boolean => {
-  return /^[0-9a-f]{64}$/i.test(eventId);
-};
+const isValidEventId = (eventId: string): boolean => /^[0-9a-f]{64}$/i.test(eventId);
 
 /**
  * Creates and submits a Nostr deletion event (kind 5)
@@ -120,15 +116,15 @@ const createAndSubmitDeletionEvent = async (eventId: string, elementId: string):
     created_at: Math.floor(Date.now() / 1000),
     content: '', // Optional deletion reason could be added here
     tags: [
-      ['e', eventId] // The event to delete
-    ]
+      ['e', eventId], // The event to delete
+    ],
   };
 
   // Use the existing submitUnsignedEvent function to sign and publish
-  return await submitUnsignedEvent(
+  return submitUnsignedEvent(
     unsignedEvent,
     elementId,
-    'Deleted'
+    'Deleted',
   );
 };
 
@@ -137,14 +133,14 @@ const createAndSubmitDeletionEvent = async (eventId: string, elementId: string):
  */
 const setupDeleteButtons = (events: Event[]): void => {
   // Setup delete buttons for listed events
-  events.forEach(event => {
+  events.forEach((event) => {
     const deleteBtn = document.getElementById(`delete-btn-${event.id}`) as HTMLButtonElement;
     if (deleteBtn) {
       deleteBtn.onclick = async () => {
         // Display confirmation dialog
-        if (confirm(`Are you sure you want to delete this event? This action cannot be undone.`)) {
+        if (confirm('Are you sure you want to delete this event? This action cannot be undone.')) {
           const success = await createAndSubmitDeletionEvent(event.id, `delete-btn-${event.id}`);
-          
+
           if (success) {
             // Update the status area with success message
             const statusDiv = document.getElementById('delete-status') as HTMLDivElement;
@@ -159,7 +155,7 @@ const setupDeleteButtons = (events: Event[]): void => {
       };
     }
   });
-  
+
   // Setup the custom delete button
   const customDeleteBtn = document.getElementById('delete-custom-event-btn') as HTMLButtonElement;
   if (customDeleteBtn) {
@@ -167,7 +163,7 @@ const setupDeleteButtons = (events: Event[]): void => {
       const eventIdInput = document.getElementById('custom-event-id') as HTMLInputElement;
       const eventId = eventIdInput.value.trim();
       const statusDiv = document.getElementById('delete-status') as HTMLDivElement;
-      
+
       // Validate the event ID
       if (!isValidEventId(eventId)) {
         statusDiv.innerHTML = `
@@ -177,11 +173,11 @@ const setupDeleteButtons = (events: Event[]): void => {
         `;
         return;
       }
-      
+
       // Display confirmation dialog
       if (confirm(`Are you sure you want to delete event ${eventId.substring(0, 8)}...? This action cannot be undone.`)) {
         const success = await createAndSubmitDeletionEvent(eventId, 'delete-custom-event-btn');
-        
+
         if (success) {
           // Show success message
           statusDiv.innerHTML = `
@@ -213,7 +209,7 @@ const getAllUserEvents = (): Event[] => {
   const kind0Events = fetchCachedMyProfileEventHistory(0) || [];
   const kind3Events = fetchCachedMyProfileEventHistory(3) || [];
   const kind10002Events = fetchCachedMyProfileEventHistory(10002) || [];
-  
+
   // Combine all events
   return [...kind0Events, ...kind3Events, ...kind10002Events];
 };
@@ -223,14 +219,14 @@ const getAllUserEvents = (): Event[] => {
  */
 const LoadDeletePage = async (): Promise<void> => {
   const container = document.getElementById('PM-container') as HTMLElement;
-  
+
   // First, ensure we've fetched the latest events
   const pubkey = localStorageGetItem('pubkey');
   if (!pubkey) {
     container.innerHTML = '<p>No public key found. Please log in first.</p>';
     return;
   }
-  
+
   // Show loading state
   container.innerHTML = `
     <div class="container">
@@ -241,13 +237,13 @@ const LoadDeletePage = async (): Promise<void> => {
 
   // Fetch latest events from relays
   await fetchMyProfileEvents(pubkey, () => {});
-  
+
   // Get all user events
   const allEvents = getAllUserEvents();
-  
+
   // Render the delete page
   container.innerHTML = generateDeletePage(allEvents);
-  
+
   // Set up delete buttons
   setupDeleteButtons(allEvents);
 };

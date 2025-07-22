@@ -4,8 +4,8 @@ import { localStorageGetItem, localStorageSetItem } from './LocalStorage';
 import { publishEventToRelay, requestEventsFromRelays } from './RelayManagement';
 
 // In-memory cache to reduce localStorage reads/writes
-const eventCache: {[key: string]: Event[]} = {};
-const profileCache: {[pubkey: string]: {[kind: number]: Event}} = {};
+const eventCache: { [key: string]: Event[] } = {};
+const profileCache: { [pubkey: string]: { [kind: number]: Event } } = {};
 
 /**
  * Check when events were last fetched from relays
@@ -72,7 +72,7 @@ export const storeMyProfileEvent = (event: Event): boolean => {
   if (localStorageGetItem('pubkey') === null) {
     throw new Error('storeMyProfileEvent no pubkey in localStorage');
   }
-  
+
   // Return false if unsupported kind or from a different pubkey
   if (
     !(event.kind === 0 || event.kind === 2 || event.kind === 10002 || event.kind === 3)
@@ -80,25 +80,25 @@ export const storeMyProfileEvent = (event: Event): boolean => {
   ) return false;
 
   const arrayname = `my-profile-event-${event.kind}`;
-  
+
   // Initialize cache if needed
   if (!eventCache[arrayname]) {
     const ls = localStorageGetItem(arrayname);
     eventCache[arrayname] = ls === null ? [] : JSON.parse(ls) as Event[];
   }
-  
+
   // Check if event already exists in cache
   if (eventCache[arrayname].some((e) => e.id === event.id)) return false;
-  
+
   // Add event to cache
   eventCache[arrayname].push(event);
-  
+
   // Efficiently update localStorage
   localStorageSetItem(arrayname, JSON.stringify(eventCache[arrayname]));
-  
+
   // Update last updated date
   updateLastUpdateDate();
-  
+
   return true;
 };
 
@@ -112,20 +112,20 @@ export const fetchCachedMyProfileEventHistory = (
 ): null | [Event, ...Event[]] => {
   // Get array name
   const arrayname = `my-profile-event-${kind}`;
-  
+
   // Use cached data if available
   if (!eventCache[arrayname]) {
     const ls = localStorageGetItem(arrayname);
     // Return null if no events are cached
     if (ls === null) return null;
-    
+
     // Parse and cache events
     eventCache[arrayname] = JSON.parse(ls) as Event[];
   }
-  
+
   // Return null if the array is empty
   if (eventCache[arrayname].length === 0) return null;
-  
+
   // Return sorted events array
   return eventCache[arrayname].sort((x, y) => y.created_at - x.created_at) as [Event, ...Event[]];
 };
@@ -147,8 +147,8 @@ export const fetchCachedMyProfileEvent = (kind: 0 | 2 | 10002 | 3): null | Event
  */
 const getRelays = () => {
   const e = fetchCachedMyProfileEvent(10002);
-  const myrelays = !e ? [] : e.tags.filter(t => t[0] === 'r').map((r) => r[1]);
-  
+  const myrelays = !e ? [] : e.tags.filter((t) => t[0] === 'r').map((r) => r[1]);
+
   // Return minimum of 3 relays, filling in with default relays (removing duplicates)
   return myrelays.length > 3 ? myrelays : [...new Set([
     ...myrelays,
@@ -175,31 +175,31 @@ export const fetchMyProfileEvents = async (
   if (!isUptodate()) {
     const starterRelays = getRelays();
     let additionalRelaysFound = false;
-    
+
     // Fetch events from relays
     await requestEventsFromRelays([pubkey], (event: Event) => {
       // Track if we find additional write relays
       if (event.kind === 10002) {
         const existingRelays = new Set(starterRelays);
         const newWriteRelays = event.tags
-          .filter(t => t[0] === 'r' && (!t[2] || t[2] === 'write'))
-          .map(t => t[1])
-          .filter(relay => !existingRelays.has(relay));
-          
+          .filter((t) => t[0] === 'r' && (!t[2] || t[2] === 'write'))
+          .map((t) => t[1])
+          .filter((relay) => !existingRelays.has(relay));
+
         if (newWriteRelays.length > 0) {
           additionalRelaysFound = true;
         }
       }
-      
+
       // Store event and process it
       storeMyProfileEvent(event);
       profileEventProcesser(event);
     }, starterRelays, [0, 2, 10002, 3]);
-    
+
     // Fetch again with expanded relay list if needed
     if (additionalRelaysFound) {
       const newRelayList = getRelays(); // This will now include any new relays found
-      
+
       // Only fetch again if we have a different relay list
       if (JSON.stringify(newRelayList) !== JSON.stringify(starterRelays)) {
         await requestEventsFromRelays([pubkey], (event: Event) => {
@@ -208,7 +208,7 @@ export const fetchMyProfileEvents = async (
         }, newRelayList, [0, 2, 10002, 3]);
       }
     }
-    
+
     // Update last fetch timestamp
     updateLastFetchDate();
   } else {
@@ -243,13 +243,13 @@ const storeProfileEvent = (event: Event) => {
 export const fetchMyContactsProfileEvents = async () => {
   const c = fetchCachedMyProfileEvent(3);
   if (!c || c.tags.length === 0) return;
-  
+
   // Filter for contacts not already in cache
   const required = c.tags
-    .filter(t => t[0] === 'p')
-    .map(t => t[1])
-    .filter(pubkey => !profileCache[pubkey]);
-  
+    .filter((t) => t[0] === 'p')
+    .map((t) => t[1])
+    .filter((pubkey) => !profileCache[pubkey]);
+
   if (required.length > 0) {
     await requestEventsFromRelays(
       required,
@@ -298,7 +298,7 @@ export const fetchProfileEvents = async (
 ): Promise<[(Event | null), ...(Event | null)[]]> => {
   // Filter out pubkeys already in cache
   const notcached = pubkeys.filter((p) => !fetchCachedProfileEvent(p, kind));
-  
+
   if (notcached.length > 0) {
     await requestEventsFromRelays(
       notcached,
@@ -307,7 +307,7 @@ export const fetchProfileEvents = async (
       [0, 10002, 3],
     );
   }
-  
+
   // Return events for all requested pubkeys
   return pubkeys.map(
     (p) => fetchCachedProfileEvent(p, kind),
@@ -349,9 +349,9 @@ export const getContactMostPopularPetname = (pubkey: string): string | null => {
       if (!pv[c]) return { ...pv, [c]: 1 };
       return { ...pv, [c]: pv[c] + 1 };
     }, {} as { [petname: string]: number });
-  
+
   if (Object.keys(petnamecounts).length === 0) return null;
-  
+
   // Return most frequent petname
   return sanitize(
     Object.keys(petnamecounts).sort((a, b) => petnamecounts[b] - petnamecounts[a])[0],
@@ -417,7 +417,7 @@ export const getContactName = (pubkey: string): string => {
     // Check my petname for contact
     const mypetname = getMyPetnameForUser(pubkey);
     if (mypetname) return mypetname;
-    
+
     // Check their kind 0 name
     if (profileCache[pubkey]) {
       if (profileCache[pubkey][0]) {
@@ -427,11 +427,11 @@ export const getContactName = (pubkey: string): string => {
       }
     }
   }
-  
+
   // Check most popular petname
   const popularpetname = getContactMostPopularPetname(pubkey);
   if (popularpetname) return `${popularpetname} (?)`;
-  
+
   // Return shortened pubkey
   return `${pubkey.substring(0, 10)}...`;
 };
@@ -443,7 +443,7 @@ export const getContactName = (pubkey: string): string => {
  */
 export const publishEvent = async (event: Event): Promise<boolean> => {
   storeMyProfileEvent(event);
-  
+
   // Get all relevant relays
   const relays = [
     ...getRelays(),
@@ -453,11 +453,11 @@ export const publishEvent = async (event: Event): Promise<boolean> => {
     'wss://relay.nostr.band',
     'wss://relay.snort.social',
   ];
-  
+
   // Use a Set to remove duplicates
   const uniqueRelays = [...new Set(relays)];
-  
-  return await publishEventToRelay(event, uniqueRelays);
+
+  return publishEventToRelay(event, uniqueRelays);
 };
 
 /**
@@ -474,44 +474,44 @@ export const submitUnsignedEvent = async (
 ): Promise<boolean> => {
   const b = document.getElementById(ElementId) as HTMLButtonElement | HTMLAnchorElement;
   if (!b) return false;
-  
+
   // Set loading status
   b.setAttribute('disabled', '');
   b.setAttribute('aria-busy', 'true');
   b.innerHTML = 'Signing...';
-  
+
   // Check if nostr extension is available
   if (!window.nostr) return new Promise((r) => { r(false); });
-  
+
   try {
     // Sign event
     const ne = await window.nostr.signEvent(e);
-    
+
     // Update button
     b.innerHTML = 'Sending...';
-    
+
     // Publish
     const r = await publishEvent(ne);
-    
+
     // Update button
     b.removeAttribute('aria-busy');
     b.innerHTML = 'Received by Relays!';
-    
+
     // Reset button after delay
     setTimeout(() => {
       b.innerHTML = innerHTMLAfterSuccess;
       b.removeAttribute('disabled');
     }, 1000);
-    
+
     return r;
   } catch (error) {
-    console.error("Error signing or publishing event:", error);
-    
+    console.error('Error signing or publishing event:', error);
+
     // Reset button
     b.removeAttribute('aria-busy');
     b.removeAttribute('disabled');
     b.innerHTML = 'Error! Try again';
-    
+
     return false;
   }
 };

@@ -5,6 +5,7 @@ import { localStorageGetItem, localStorageSetItem } from './LocalStorage';
 import { LoadMetadataPage } from './LoadMetadataPage';
 import LoadContactsPage from './LoadContactsPage';
 import LoadRelaysPage from './LoadRelaysPage';
+import { LoadBackupPage } from './LoadBackupPage';
 import LoadDeletePage from './LoadDeletePage';
 import Logout from './Logout';
 import { closeAllConnections } from './RelayManagement';
@@ -27,7 +28,7 @@ let isLoading = false;
  */
 const setPageLoading = (loading: boolean): void => {
   isLoading = loading;
-  
+
   // Update loading indicators in the UI
   const container = document.getElementById('PM-container');
   if (container && loading) {
@@ -53,15 +54,15 @@ const setPageLoading = (loading: boolean): void => {
  */
 const loadProfile = async () => {
   setPageLoading(true);
-  
+
   try {
     // Load profile page (in loading mode)
     LoadProfileHome();
-    
+
     // Enable navigation before data loads for better perceived performance
     const mainnav = document.getElementById('mainnav');
     if (mainnav) mainnav.classList.remove('inactive');
-    
+
     // Set up navigation handlers
     const setupNav = (id: string, handler: () => void) => {
       const element = document.getElementById(id);
@@ -72,36 +73,35 @@ const loadProfile = async () => {
         };
       }
     };
-    
+
     setupNav('navhome', LoadProfileHome);
     setupNav('navmetadata', LoadMetadataPage);
     setupNav('navcontacts', LoadContactsPage);
     setupNav('navrelays', LoadRelaysPage);
+    setupNav('navbackup', LoadBackupPage);
     setupNav('navdelete', LoadDeletePage);
     setupNav('navlogout', () => {
       // Close connections before logout
       closeAllConnections();
       Logout();
     });
-    
+
     // Load profile data in parallel where possible
     const loadingTasks = [
       fetchMyProfileEvents(localStorageGetItem('pubkey') as string, () => {}),
     ];
-    
+
     // Wait for profile data
     await Promise.all(loadingTasks);
-    
+
     // Update UI with loaded data
     LoadProfileHome();
-    
+
     // Continue loading contact data in background
-    fetchMyContactsProfileEvents().catch(err => 
-      console.error('Error fetching contacts profile events:', err)
-    );
+    fetchMyContactsProfileEvents().catch((err) => console.error('Error fetching contacts profile events:', err));
   } catch (error) {
     console.error('Error loading profile:', error);
-    
+
     // Show error message
     const container = document.getElementById('PM-container');
     if (container) {
@@ -156,46 +156,46 @@ const LoadLandingPage = () => {
       </div>
     </div>
   `;
-  
+
   const container = document.getElementById('PM-container');
   if (!container) return;
-  
+
   container.innerHTML = aboutcontent;
-  
+
   // Apply typing effect to title and subtitle
   setTimeout(() => {
     const titleElement = document.getElementById('title-text');
     const subtitleElement = document.getElementById('subtitle-text');
-    
+
     if (titleElement) {
-      typeWriter(titleElement, "Nostr Profile Manager", 50);
-      
+      typeWriter(titleElement, 'Nostr Profile Manager', 50);
+
       setTimeout(() => {
         if (subtitleElement) {
-          typeWriter(subtitleElement, "Secure / Backup / Refine / Delete", 30);
+          typeWriter(subtitleElement, 'Secure / Backup / Refine / Delete', 30);
         }
       }, 2000);
     }
   }, 500);
-  
+
   const loadButton = document.getElementById('loadextension');
   if (loadButton) {
     loadButton.onclick = async (ev) => {
       ev.preventDefault();
-      
+
       if (window.nostr) {
         try {
           setPageLoading(true);
           loadButton.setAttribute('aria-busy', 'true');
           loadButton.textContent = 'Connecting...';
-          
+
           const pubkey = await window.nostr.getPublicKey();
           localStorageSetItem('pubkey', pubkey);
-          
+
           loadProfile();
         } catch (error) {
           console.error('Error connecting to Nostr extension:', error);
-          
+
           loadButton.removeAttribute('aria-busy');
           loadButton.textContent = 'Connection Failed. Retry';
         } finally {

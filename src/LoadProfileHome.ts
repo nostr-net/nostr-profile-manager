@@ -133,7 +133,7 @@ export const LoadProfileHome = () => {
   const uptodate = isUptodate();
   const hadlatest = hadLatest();
   const o: HTMLElement = document.getElementById('PM-container') as HTMLElement;
-  
+
   if (noprofileinfo) {
     o.innerHTML = `
       <div class="container">
@@ -162,7 +162,7 @@ export const LoadProfileHome = () => {
       </div>
     `;
   }
-  
+
   const mbutton = document.getElementById('metadatabutton');
   if (mbutton) mbutton.onclick = () => LoadMetadataPage();
   const cbutton = document.getElementById('contactsbutton');

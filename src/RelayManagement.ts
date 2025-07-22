@@ -22,7 +22,7 @@ export const requestEventsFromRelays = async (
 ) => {
   // Filter out duplicate relays
   const uniqueRelays = [...new Set(relays)];
-  
+
   // Create subscription
   const sub = pool.sub(
     uniqueRelays,
@@ -42,7 +42,7 @@ export const requestEventsFromRelays = async (
         eventProcesser(event);
       }
     });
-    
+
     sub.on('eose', () => {
       // Close subscription but keep pool connections alive for reuse
       sub.unsub();
@@ -60,25 +60,25 @@ export const requestEventsFromRelays = async (
 export const publishEventToRelay = async (event: Event, relays: string[]): Promise<boolean> => {
   // Filter out duplicate relays
   const uniqueRelays = [...new Set(relays)];
-  
+
   try {
     const pub = pool.publish(uniqueRelays, event);
-    return new Promise((r) => {
+    return await new Promise((r) => {
       // Set a timeout to prevent hanging if relays don't respond
       const timeout = setTimeout(() => r(false), 10000);
-      
+
       pub.on('ok', () => {
         clearTimeout(timeout);
         r(true);
       });
-      
+
       pub.on('failed', () => {
         clearTimeout(timeout);
         r(false);
       });
     });
   } catch (error) {
-    console.error("Error publishing event:", error);
+    console.error('Error publishing event:', error);
     return false;
   }
 };
