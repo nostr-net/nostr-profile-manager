@@ -88,6 +88,17 @@ export const publishEventToRelay = async (event: Event, relays: string[]): Promi
  * (e.g., when switching pages or logging out)
  */
 export const closeAllConnections = (): void => {
-  pool.close();
-  activeRelays.clear();
+  try {
+    // Safely close the pool - the pool.close() method can sometimes fail
+    // if the internal state is inconsistent
+    if (pool && typeof pool.close === 'function') {
+      pool.close();
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.warn('Error closing relay connections:', error);
+  } finally {
+    // Always clear the active relays set
+    activeRelays.clear();
+  }
 };

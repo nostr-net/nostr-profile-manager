@@ -1,10 +1,21 @@
-import { Event } from 'nostr-tools';
+import { Event, UnsignedEvent, nip19 } from 'nostr-tools';
 import {
   fetchCachedMyProfileEvent, fetchCachedMyProfileEventHistory, hadLatest, isUptodate,
 } from './fetchEvents';
 import LoadContactsPage from './LoadContactsPage';
 import { LoadMetadataPage, MetadataFlex } from './LoadMetadataPage';
 import LoadRelaysPage from './LoadRelaysPage';
+import { localStorageSetItem } from './LocalStorage';
+
+declare global {
+  interface Window {
+    nostr?: {
+      getPublicKey: () => Promise<string>;
+      signEvent: (event: UnsignedEvent) => Promise<Event>;
+    };
+  }
+  function typeWriter(element: HTMLElement, text: string, speed: number): void;
+}
 
 export const generateLogoHero = () => (
   '<div class="text-center"><img class="hero-logo" src="./img/nostr-profile-manage-logo.png"></div>'
@@ -128,11 +139,188 @@ export const generateBackupHeroHeading = (
   return `<div class="backup-hero">${content}</div>`;
 };
 
+/**
+ * Setup login button handlers
+ */
+const setupLoginHandlers = () => {
+  // Apply typing effects
+  setTimeout(() => {
+    const titleElement = document.getElementById('title-text');
+    const subtitleElement = document.getElementById('subtitle-text');
+
+    if (titleElement) {
+      typeWriter(titleElement, 'Nostr Profile Manager', 50);
+
+      setTimeout(() => {
+        if (subtitleElement) {
+          typeWriter(subtitleElement, 'Secure / Backup / Refine / Delete', 30);
+        }
+      }, 2000);
+    }
+  }, 500);
+
+  // Extension login
+  const extensionButton = document.getElementById('login-extension');
+  if (extensionButton) {
+    extensionButton.onclick = async (ev) => {
+      ev.preventDefault();
+
+      if (window.nostr) {
+        try {
+          extensionButton.setAttribute('aria-busy', 'true');
+          extensionButton.textContent = 'Connecting...';
+
+          const pubkey = await window.nostr.getPublicKey();
+          localStorageSetItem('pubkey', pubkey);
+
+          // Reload to logged in state
+          window.location.reload();
+        } catch (error) {
+          // eslint-disable-next-line no-console
+          console.error('Error connecting to Nostr extension:', error);
+          extensionButton.removeAttribute('aria-busy');
+          extensionButton.textContent = 'Connection Failed. Retry';
+        }
+      } else {
+        extensionButton.outerHTML = `
+          <div class="error-message">
+            <p class="code-font">NIP-07 browser extension not detected.</p>
+            <p class="code-font">Install an extension like nos2x to proceed.</p>
+            <a href="https://github.com/nostr-protocol/nips/blob/master/07.md" role="button" class="secondary code-font">Get Browser Extension</a>
+          </div>
+        `;
+      }
+    };
+  }
+
+  // npub login
+  const npubButton = document.getElementById('login-npub');
+  if (npubButton) {
+    npubButton.onclick = (ev) => {
+      ev.preventDefault();
+
+      // Replace button with input form
+      npubButton.outerHTML = `
+        <div class="npub-input-form">
+          <input type="text" id="npub-input" placeholder="npub1... or hex pubkey" />
+          <div class="button-group">
+            <button id="npub-submit" class="secondary">Login</button>
+            <button id="npub-cancel" class="outline">Cancel</button>
+          </div>
+        </div>
+      `;
+
+      // Setup form handlers
+      const submitBtn = document.getElementById('npub-submit');
+      const cancelBtn = document.getElementById('npub-cancel');
+      const input = document.getElementById('npub-input') as HTMLInputElement;
+
+      if (input) input.focus();
+
+      if (submitBtn) {
+        submitBtn.onclick = () => {
+          const value = input?.value.trim();
+          if (value) {
+            try {
+              // Handle both hex and npub formats
+              let pubkey = value;
+
+              if (value.startsWith('npub1')) {
+                // Decode npub to hex using nostr-tools
+                const decoded = nip19.decode(value);
+                if (decoded.type !== 'npub') {
+                  throw new Error('Invalid npub format');
+                }
+                pubkey = decoded.data as string;
+              } else if (value.length === 64 && /^[0-9a-f]+$/i.test(value)) {
+                // Already hex format
+                pubkey = value;
+              } else {
+                throw new Error('Invalid pubkey format');
+              }
+
+              localStorageSetItem('pubkey', pubkey);
+              window.location.reload();
+            } catch (error) {
+              // eslint-disable-next-line no-alert
+              alert('Invalid pubkey format. Please enter a valid hex pubkey or npub.');
+            }
+          }
+        };
+      }
+
+      if (cancelBtn) {
+        cancelBtn.onclick = () => {
+          window.location.reload();
+        };
+      }
+
+      // Enter key support
+      if (input) {
+        input.onkeypress = (e) => {
+          if (e.key === 'Enter') {
+            submitBtn?.click();
+          }
+        };
+      }
+    };
+  }
+};
+
 export const LoadProfileHome = () => {
+  const o: HTMLElement = document.getElementById('PM-container') as HTMLElement;
+  const pubkey = localStorage.getItem('pubkey');
+
+  // If no user is logged in, show login interface
+  if (!pubkey) {
+    o.innerHTML = `
+      <div class="container">
+        <div class="profile-card">
+          <div class="hero">
+            ${generateLogoHero()}
+            <div id="herocontent">
+              <h1 id="title-text">Nostr Profile Manager</h1>
+              <p id="subtitle-text">Secure / Backup / Refine / Delete</p>
+              <div class="login-options">
+                <button id="login-extension" class="contrast">Login with Extension</button>
+                <button id="login-npub" class="secondary">Enter npub/pubkey</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="section-card">
+          <div class="grid">
+            <article>
+              <h4>> Backup</h4>
+              <p class="code-font">Store profile data in local storage. Protect against relay failures.</p>
+            </article>
+            <article>
+              <h4>> Refine</h4>
+              <p class="code-font">Optimize your profile. Configure relays. Manage contact list.</p>
+            </article>
+            <article>
+              <h4>> Restore</h4>
+              <p class="code-font">Recover previous profile states. View backup history.</p>
+            </article>
+            <article>
+              <h4>> Delete</h4>
+              <p class="code-font">Remove unwanted data. Broadcast deletion requests to the network.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Setup login handlers
+    setupLoginHandlers();
+    return;
+  }
+
+  // User is logged in - show profile
   const noprofileinfo = !fetchCachedMyProfileEvent(0) && !fetchCachedMyProfileEvent(3);
   const uptodate = isUptodate();
   const hadlatest = hadLatest();
-  const o: HTMLElement = document.getElementById('PM-container') as HTMLElement;
 
   if (noprofileinfo) {
     o.innerHTML = `
