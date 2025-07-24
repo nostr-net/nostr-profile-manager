@@ -791,3 +791,36 @@ img[src=""] {
   font-size: 0.9rem;
   color: var(--text-bright);
 }
+
+// Footer styles
+.footer {
+  margin-top: 3rem;
+  padding: 2rem 0;
+  border-top: 1px solid var(--border-color);
+  background-color: var(--secondary-bg);
+  
+  .footer-links {
+    text-align: center;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .footer-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    transition: color 0.2s ease;
+    
+    &:hover {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+    
+    &:visited {
+      color: var(--text-secondary);
+    }
+  }
+}

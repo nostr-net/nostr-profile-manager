@@ -289,27 +289,6 @@ export const LoadProfileHome = () => {
           </div>
         </div>
         
-        <div class="section-card">
-          <div class="grid">
-            <article>
-              <h4>> Backup</h4>
-              <p class="code-font">Store profile data in local storage. Protect against relay failures.</p>
-            </article>
-            <article>
-              <h4>> Refine</h4>
-              <p class="code-font">Optimize your profile. Configure relays. Manage contact list.</p>
-            </article>
-            <article>
-              <h4>> Restore</h4>
-              <p class="code-font">Recover previous profile states. View backup history.</p>
-            </article>
-            <article>
-              <h4>> Delete</h4>
-              <p class="code-font">Remove unwanted data. Broadcast deletion requests to the network.</p>
-            </article>
-          </div>
-        </div>
-      </div>
     `;
 
     // Setup login handlers
